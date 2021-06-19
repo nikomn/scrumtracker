@@ -1,0 +1,7 @@
+{
+  "name": "scrumtracker-app",
+  "version": "0.0.1",
+  "scripts": {
+    "postinstall": "npm install --prefix backend"
+  }
+}
