@@ -22,6 +22,13 @@ let demodata = [
     date: "2021-06-17T08:34:12.091Z",
     status: "not started"
   },
+  {
+    id: 4,
+    story: "Testing...",
+    priority: 1,
+    date: "2021-06-17T08:30:31.123Z",
+    status: "done"
+  }
 ]
 
 
