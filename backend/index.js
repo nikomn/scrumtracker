@@ -1,4 +1,6 @@
-const http = require('http')
+const express = require('express')
+const app = express()
+app.use(express.static('build'))
 
 let demodata = [
   {
@@ -32,9 +34,12 @@ let demodata = [
 ]
 
 
-const app = http.createServer((request, response) => {
-  response.writeHead(200, { 'Content-Type': 'application/json' })
-  response.end(JSON.stringify(demodata))
+app.get('/', (req, res) => {
+  res.send('<h1>Scrum Tracker app backend</h1>')
+})
+
+app.get('/api/userstorys', (req, res) => {
+  res.json(demodata)
 })
 
 
