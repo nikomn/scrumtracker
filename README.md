@@ -4,7 +4,11 @@ Full Stack -websovelluskehitys harjoitustyönä toteutettu sovellus, jonka avull
 voi seurata yksinkertaisten Scrum tekniikoita käyttävän projektin etenemistä. 
 
 Sovellus on tehty Full Stack kurssilla opittujen tekniikoiden pohjalta käyttäen
-Reactia ja Nodea. 
+Reactia ja Nodea.
+
+# Heroku
+
+Sovelluksen staging (tai näkökulmasta riippuen tuotanto) versio pyörii Herokussa osoitteessa https://scrumtracker-app.herokuapp.com/
 
 # Työaikakirjanpito
 - [Työaikakirjanpito](Dokumentit/tuntikirjanpito.md)
