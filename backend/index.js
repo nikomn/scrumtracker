@@ -2,6 +2,10 @@ const express = require('express')
 const app = express()
 app.use(express.static('build'))
 
+const cors = require('cors')
+
+app.use(cors())
+
 let demodata = [
   {
     id: 1,
@@ -38,7 +42,7 @@ app.get('/', (req, res) => {
   res.send('<h1>Scrum Tracker app backend</h1>')
 })
 
-app.get('/api/userstorys', (req, res) => {
+app.get('/api/userstories', (req, res) => {
   res.json(demodata)
 })
 

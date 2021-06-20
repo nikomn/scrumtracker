@@ -8,5 +8,5 @@
 |              | Alustava backend | 0.5 | done |
 |              | Sovellus herokuun | 1.5 | done |
 |              | Heroku-github integraatio | 1.5 | done |
-|              | Eslint käyttöön frontissa | 1 | pending |
-|              | Eslint käyttöön backendissa | 1 | pending |
+|              | Eslint käyttöön frontissa | 0.25 | done |
+|              | Eslint käyttöön backendissa | 0.25 | done |

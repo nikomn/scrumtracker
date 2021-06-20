@@ -1,2 +1,0 @@
-(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[0],{9:function(e,r,n){"use strict";n.r(r);var c=n(3),t=n.n(c),s=(n(1),n(0)),i=function(){return Object(s.jsxs)("div",{children:[Object(s.jsx)("h1",{children:"Scrum Tracker app"}),Object(s.jsx)("p",{children:"This is Scrum Tracker app"})]})};t.a.render(Object(s.jsx)(i,{}),document.getElementById("root"))}},[[9,1,2]]]);
-//# sourceMappingURL=main.8f92b98f.chunk.js.map
