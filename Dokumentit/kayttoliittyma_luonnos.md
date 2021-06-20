@@ -2,16 +2,16 @@
 
 ## Aloitussivu
 
-<kbd>!![Aloitussivu](kuvat/aloitussivu-luonnos.png)</kbd>
+<kbd>![Aloitussivu](kuvat/aloitussivu-luonnos.png)</kbd>
 
 ## Product backlog
 
-![Product Backlog](kuvat/backlog-luonnos.png)
+<kbd>![Product Backlog](kuvat/backlog-luonnos.png)</kbd>
 
 ## Sprint backlog
 
-![Sprint Backlog](kuvat/sprint-backlog-luonnos.png)
+<kbd>![Sprint Backlog](kuvat/sprint-backlog-luonnos.png)</kbd>
 
 ## Tehtävänäkymä
 
-![Tehtävänäkymä](kuvat/taskisivu-luonnos.png)
+<kbd>![Tehtävänäkymä](kuvat/taskisivu-luonnos.png)</kbd>
