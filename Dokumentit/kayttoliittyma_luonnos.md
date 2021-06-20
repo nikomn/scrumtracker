@@ -2,7 +2,7 @@
 
 ## Aloitussivu
 
-![Aloitussivu](kuvat/aloitussivu-luonnos.png)
+<kbd>!![Aloitussivu](kuvat/aloitussivu-luonnos.png)</kbd>
 
 ## Product backlog
 
