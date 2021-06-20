@@ -10,3 +10,5 @@
 |              | Heroku-github integraatio | 1.5 | done |
 |              | Eslint käyttöön frontissa | 0.25 | done |
 |              | Eslint käyttöön backendissa | 0.25 | done |
+|              | Yhteys backend/frontend välille | 0.5 | done |
+|              | Käyttöliittymän suunnittelua | 1.5 | doing |
