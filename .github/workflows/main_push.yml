@@ -20,4 +20,4 @@ jobs:
       - name: npm test frontend
         run: | 
           cd frontend
-          CI=true npm test
+          npm test
