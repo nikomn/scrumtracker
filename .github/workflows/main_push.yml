@@ -1,4 +1,4 @@
-name: Production
+name: Push to main
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  push_to_main:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
