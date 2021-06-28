@@ -1,12 +1,15 @@
-name: Push to main
+name: Pull request to staging
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    paths-ignore:
+      - 'Dokumentit/**'
+      - 'README.md'
 
 jobs:
-  push_to_main:
+  pull_request_to_main:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
