@@ -1,0 +1,23 @@
+name: Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: npm install frontend
+        run: | 
+          cd frontend
+          npm install
+      - name: npm test frontend
+        run: | 
+          cd frontend
+          CI=true npm test
