@@ -1,5 +1,7 @@
 # Scrum Tracker App
 
+![Github Actions](https://github.com/nikomn/scrumtracker/workflows/Push%20to%20main/badge.svg)
+
 Full Stack -websovelluskehitys harjoitustyönä toteutettu sovellus, jonka avulla
 voi seurata yksinkertaisten Scrum tekniikoita käyttävän projektin etenemistä. 
 
