@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserStory = ({ userstory }) => {
   return (
-    <div>
+    <div className='userstory'>
       <p>
         {userstory.story}
       </p>
