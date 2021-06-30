@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const UserStoryForm = ({ stories, setStories }) => {
+const AddUserStory = ({ stories, setStories }) => {
   const [story, setStory] = useState('')
 
   const generateId = () => {
@@ -24,19 +24,20 @@ const UserStoryForm = ({ stories, setStories }) => {
     setStories(stories.concat(newStoryObject))
   }
   return (
-    <div>
+    <div className="addUserStoryForm">
       <form onSubmit={addStory}>
         <label>
             User Story
-          <input
-            type='text'
-            value={story}
-            onChange={({ target }) => setStory(target.value)}
-          />
         </label>
+        <input
+          type='text'
+          value={story}
+          onChange={({ target }) => setStory(target.value)}
+        />
+
         <button type='submit'>Add new story</button>
       </form>
     </div>
   )
 }
-export default UserStoryForm
+export default AddUserStory

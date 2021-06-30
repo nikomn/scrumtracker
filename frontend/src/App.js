@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ProductBacklog from './components/ProductBacklog'
-import UserStoryForm from './components/UserStoryForm'
+import AddUserStory from './components/AddUserStory'
 import storyService from './services/userstories'
 
 
@@ -20,7 +20,7 @@ const App = () => {
     <div>
       <h1>Scrum Tracker app</h1>
       <ProductBacklog stories={stories} />
-      <UserStoryForm stories={stories} setStories={setStories} />
+      <AddUserStory stories={stories} setStories={setStories} />
     </div>
   )
 }
