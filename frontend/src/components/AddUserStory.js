@@ -22,6 +22,7 @@ const AddUserStory = ({ stories, setStories }) => {
       status: 'new'
     }
     setStories(stories.concat(newStoryObject))
+    setStory('')
   }
   return (
     <div className="addUserStoryForm">
