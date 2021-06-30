@@ -20,7 +20,7 @@ const App = () => {
     <div>
       <h1>Scrum Tracker app</h1>
       <ProductBacklog stories={stories} />
-      <UserStoryForm />
+      <UserStoryForm stories={stories} setStories={setStories} />
     </div>
   )
 }
