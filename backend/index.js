@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 app.use(express.static('build'))
+app.use(express.json())
 
 const cors = require('cors')
 
@@ -44,6 +45,36 @@ app.get('/', (req, res) => {
 
 app.get('/api/userstories', (req, res) => {
   res.json(demodata)
+})
+
+const generateId = () => {
+  const maxId = demodata.length > 0
+    ? Math.max(...demodata.map(n => n.id))
+    : 0
+  return maxId + 1
+}
+
+app.post('/api/userstories', (request, response) => {
+  //console.log(request.body)
+  const body = request.body
+
+  if (!body.story) {
+    return response.status(400).json({ 
+      error: 'story is empty' 
+    })
+  }
+
+  const newStoryObject = {
+    id: generateId(),
+    story: body.story,
+    priority: 9999,
+    date: new Date().toISOString(),
+    status: 'new'
+  }
+
+  demodata = demodata.concat(newStoryObject)
+
+  response.json(newStoryObject)
 })
 
 
