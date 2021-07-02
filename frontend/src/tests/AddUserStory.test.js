@@ -18,10 +18,8 @@ test('product backlog renders', () => {
 test('clicking add story button calls event handler once', async () => {
   const mockHandler = jest.fn()
 
-  const stories = []
-
   const component = render(
-    <AddUserStory stories={stories} setStories={mockHandler} />
+    <AddUserStory createNewStory={mockHandler} />
   )
 
   const button = component.getByText('Add new story')
@@ -33,10 +31,8 @@ test('clicking add story button calls event handler once', async () => {
 test('<AddUserStory /> updates parent state and calls onSubmit', () => {
   const mockHandler = jest.fn()
 
-  const stories = []
-
   const component = render(
-    <AddUserStory stories={stories} setStories={mockHandler} />
+    <AddUserStory createNewStory={mockHandler} />
   )
 
   const input = component.container.querySelector('input')
@@ -48,6 +44,6 @@ test('<AddUserStory /> updates parent state and calls onSubmit', () => {
   fireEvent.submit(form)
 
   expect(mockHandler.mock.calls).toHaveLength(1)
-  //console.log(mockHandler.mock.calls[0][0][0])
-  expect(mockHandler.mock.calls[0][0][0].story).toBe('testing adding of new user story' )
+  //console.log(mockHandler.mock.calls[0][0])
+  expect(mockHandler.mock.calls[0][0].story).toBe('testing adding of new user story' )
 })
