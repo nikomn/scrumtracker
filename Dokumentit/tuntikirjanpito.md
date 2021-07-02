@@ -8,4 +8,5 @@
 | 19.6. | 2    | Heroku/Github integraation toimintaan laittaminen, alustava frontend build herokuun, tikehitysympäristön setup |
 | 20.6. | 3    | Eslint setupin tekeminen, yhteyden muodostus front/backend välille, käyttöliittymän luonnostelua |
 | 28.6. | 2    | ProductBacklog komponentin tekeminen, Jest testauksen aloittaminen, Github actions käyttöönotto |
-| yht   | 10   | | 
+| 30.6. | 2    | AddUserStory komponentin tekeminen, storyjen lisäys frontissa + Jest testit |
+| yht   | 12   | | 
