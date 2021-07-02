@@ -1,28 +1,18 @@
 import React, { useState } from 'react'
 
-const AddUserStory = ({ stories, setStories }) => {
+const AddUserStory = ({ createNewStory }) => {
   const [story, setStory] = useState('')
-
-  const generateId = () => {
-    const maxId = stories.length > 0
-      ? Math.max(...stories.map(n => n.id))
-      : 0
-    return maxId + 1
-  }
 
 
   const addStory = (event) => {
     event.preventDefault()
     // console.log(story)
     const newStoryObject = {
-      id: generateId(),
       story: story,
-      priority: 9999,
-      date: new Date().toISOString(),
-      status: 'new'
     }
-    setStories(stories.concat(newStoryObject))
+    createNewStory(newStoryObject)
     setStory('')
+
   }
   return (
     <div className="addUserStoryForm">

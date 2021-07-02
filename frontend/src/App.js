@@ -16,11 +16,20 @@ const App = () => {
       })
   }, [])
 
+  const createUserStory = (userStoryObject) => {
+    storyService
+      .create(userStoryObject)
+      .then(response => {
+        setStories(stories.concat(response.data))
+      })
+
+  }
+
   return (
     <div>
       <h1>Scrum Tracker app</h1>
       <ProductBacklog stories={stories} />
-      <AddUserStory stories={stories} setStories={setStories} />
+      <AddUserStory createNewStory={createUserStory} />
     </div>
   )
 }
