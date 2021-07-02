@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import storyService from '../services/userstories'
 
 const AddUserStory = ({ stories, setStories }) => {
   const [story, setStory] = useState('')
@@ -21,8 +22,14 @@ const AddUserStory = ({ stories, setStories }) => {
       date: new Date().toISOString(),
       status: 'new'
     }
-    setStories(stories.concat(newStoryObject))
-    setStory('')
+
+    storyService
+      .create(newStoryObject)
+      .then(response => {
+        setStories(stories.concat(response.data))
+        setStory('')
+      })
+
   }
   return (
     <div className="addUserStoryForm">
