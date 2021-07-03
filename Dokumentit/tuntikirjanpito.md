@@ -10,4 +10,5 @@
 | 28.6. | 2    | ProductBacklog komponentin tekeminen, Jest testauksen aloittaminen, Github actions käyttöönotto |
 | 30.6. | 2    | AddUserStory komponentin tekeminen, storyjen lisäys frontissa + Jest testit |
 | 2.7. | 2    | User Storyjen lisäys backendin puolella ja frontista backendiin, testien debugausta |
-| yht   | 14   | | 
+| 3.7. | 2    | mongoDB käyttööonotto, toteutettu storyjen hakeminen ja tallennus pysyvästä tietokannasta |
+| yht   | 16   | | 
