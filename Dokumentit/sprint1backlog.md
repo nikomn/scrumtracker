@@ -7,3 +7,4 @@
 |              | Github actions käyttöönotto  | 1 | done |
 |              | Komponentti front endiin user storyjen lisäämiselle + testit  | 2 | done |
 |              | User storyjen lisäys backendissä (frontendistä backendiin)  | 2 | done |
+|              | Tietokannnan käyttöönotto (mongoDB)  | 2 | doing |
