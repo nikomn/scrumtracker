@@ -1,3 +1,5 @@
+require('dotenv').config()
+const UserStory = require('./models/userstory')
 const express = require('express')
 const app = express()
 app.use(express.static('build'))
@@ -44,7 +46,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/userstories', (req, res) => {
-  res.json(demodata)
+  UserStory.find({}).then(stories => {
+    res.json(stories)
+  })
 })
 
 const generateId = () => {
@@ -77,9 +81,7 @@ app.post('/api/userstories', (request, response) => {
   response.json(newStoryObject)
 })
 
-
-// eslint-disable-next-line no-undef
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })

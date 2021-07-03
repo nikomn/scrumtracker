@@ -28,7 +28,14 @@ const userStory = new UserStory({
   priority: 9999
 })
 
-userStory.save().then(response => {
-  console.log('user story saved!')
+// userStory.save().then(response => {
+//   console.log('user story saved!')
+//   mongoose.connection.close()
+// })
+
+UserStory.find({}).then(result => {
+  result.forEach(story => {
+    console.log(story)
+  })
   mongoose.connection.close()
 })
