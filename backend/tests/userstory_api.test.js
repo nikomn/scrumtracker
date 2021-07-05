@@ -6,9 +6,11 @@ const api = supertest(app)
 
 test('user stories are returned as json', async () => {
   await api
-    .get('/api/notes')
+    .get('/api/userstories')
     .expect(200)
     .expect('Content-Type', /application\/json/)
+    
+  
 })
 
 afterAll(() => {

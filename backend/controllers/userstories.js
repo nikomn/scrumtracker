@@ -7,6 +7,11 @@ userStoriesRouter.get('/', (request, response) => {
   })
 })
 
+/* userStoriesRouter.get('/', async (request, response) => { 
+  const stories = await UserStory.find({})
+  response.json(stories.map(story => story.toJSON()))
+}) */
+
 userStoriesRouter.post('/', (request, response) => {
   const body = request.body
 
