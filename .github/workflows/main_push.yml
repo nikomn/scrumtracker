@@ -21,3 +21,11 @@ jobs:
         run: | 
           cd frontend
           CI=true npm test
+      - name: npm install backend
+        run: | 
+          cd backend
+          npm install
+      - name: npm test backend
+        run: | 
+          cd backend
+          CI=true npm test
