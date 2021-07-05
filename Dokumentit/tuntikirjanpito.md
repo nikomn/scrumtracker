@@ -11,4 +11,5 @@
 | 30.6. | 2    | AddUserStory komponentin tekeminen, storyjen lisäys frontissa + Jest testit |
 | 2.7. | 2    | User Storyjen lisäys backendin puolella ja frontista backendiin, testien debugausta |
 | 3.7. | 4    | mongoDB käyttööonotto, toteutettu storyjen hakeminen ja tallennus pysyvästä tietokannasta, backend testauksen selvittelyä ja alustamista |
-| yht   | 18   | | 
+| 5.7. | 2    | backend testauksen selvittelyn ja alustamisen jatkotyöstämistä ja debugausta |
+| yht   | 20   | | 
