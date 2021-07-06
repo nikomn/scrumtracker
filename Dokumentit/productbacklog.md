@@ -2,9 +2,12 @@
 
 | prioriteetti | user story | sprint | status |
 | :-----------:|:-----------| :------| :------|
-|     1        | Asiakkaana haluan pystyä lisäämään uusia user storyjä backlogiin |     1  | doing |
-|     1        | Asiakkaana haluan pystyä määrittämään user storyille prioriteetin |     1  | planned |
-|              | Statukset backlogissa |        |        |
+|     1        | Asiakkaana haluan pystyä lisäämään uusia user storyjä backlogiin |     1  | done |
+|     1        | Asiakkaana haluan pystyä määrittämään user storyille prioriteetin |     2  | planned |
+|     1        | Asiakkaana haluan pystyä määrittämään user storylle statuksen (esim. done, doing, ...) |   2    | planned |
+|     1        | Asiakkaana haluan nähdä user storyjen statukset backlogissa |   2    | planned |
+|     1        | Asiakkaana haluan pysytä muokkaamaan user storyjen tietoja |   2    | planned |
+|     1        | Asiakkaana haluan pysytä poistamaan user storyjä |   2    | planned |
 |              | Sprint backlogit erillään |        |        |
 |              | Sprint backlogeissa user storyt jaoteltuna teknisinä taskeina |        |        |
 |              | Sprint kohtainen burn down |        |        |
