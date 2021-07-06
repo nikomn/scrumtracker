@@ -8,8 +8,8 @@
 |              | Komponentti front endiin user storyjen lisäämiselle + testit  | 2 | done |
 |              | User storyjen lisäys backendissä (frontendistä backendiin)  | 2 | done |
 |              | Tietokannnan käyttöönotto (mongoDB)  | 2 | done |
-|              | Backend refaktoroiminen helpommin testattavaan muotoon  | 1 | done |
-|              | Backend testauksen alustus  | 1.5 | done |
+|              | Backend refaktoroiminen helpommin testattavaan muotoon  | 1 | doing |
+|              | Backend testauksen alustus  | 1.5 | doing |
 |              | JSDoc dokumentaation hahmottelu  | 0.5 | pending |
 |              | Alustavaa tyylittelyä bootsrapillä  | 2 | pending |
 |              | Käyttöliittymään prioriteettien määrittely (lisäys lomakkeeseen) + testit  | 1.5 | pending |
