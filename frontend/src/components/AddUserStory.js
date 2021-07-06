@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const AddUserStory = ({ createNewStory }) => {
   const [story, setStory] = useState('')
   const [priority, setPriority] = useState(99)
+  const [status, setStatus] = useState('new')
 
 
   const addStory = (event) => {
@@ -10,11 +11,13 @@ const AddUserStory = ({ createNewStory }) => {
     // console.log(story)
     const newStoryObject = {
       story: story,
-      priority: priority
+      priority: priority,
+      status: status
     }
     createNewStory(newStoryObject)
     setStory('')
     setPriority(99)
+    setStatus('new')
 
   }
   return (
@@ -36,6 +39,16 @@ const AddUserStory = ({ createNewStory }) => {
             type='number'
             value={priority}
             onChange={({ target }) => setPriority(target.value)}
+          />
+        </div>
+        <div>
+          <label>
+            Status
+          </label>
+          <input id='status-input'
+            type='text'
+            value={status}
+            onChange={({ target }) => setStatus(target.value)}
           />
         </div>
 
