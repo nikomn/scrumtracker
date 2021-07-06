@@ -12,4 +12,5 @@
 | 2.7. | 2    | User Storyjen lisäys backendin puolella ja frontista backendiin, testien debugausta |
 | 3.7. | 4    | mongoDB käyttööonotto, toteutettu storyjen hakeminen ja tallennus pysyvästä tietokannasta, backend testauksen selvittelyä ja alustamista |
 | 5.7. | 2    | backend testauksen selvittelyn ja alustamisen jatkotyöstämistä ja debugausta |
-| yht   | 20   | | 
+| 6.7. | 2    | prioriteetin ja statuksen lisäys-toiminnalisuuksien toteuttaminen ja niihin liittyvät testit |
+| yht   | 22   | | 
