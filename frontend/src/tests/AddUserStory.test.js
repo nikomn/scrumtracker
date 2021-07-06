@@ -37,6 +37,7 @@ test('<AddUserStory /> updates parent state and calls onSubmit', () => {
 
   const storyinput = component.container.querySelector('#story-input')
   const priorityinput = component.container.querySelector('#priority-input')
+  const statusinput = component.container.querySelector('#status-input')
   const form = component.container.querySelector('form')
 
   fireEvent.change(storyinput, {
@@ -45,6 +46,10 @@ test('<AddUserStory /> updates parent state and calls onSubmit', () => {
   fireEvent.change(priorityinput, {
     target: { value: 123 }
   })
+  fireEvent.change(statusinput, {
+    target: { value: 'new status' }
+  })
+
 
   fireEvent.submit(form)
 
@@ -52,4 +57,5 @@ test('<AddUserStory /> updates parent state and calls onSubmit', () => {
   //console.log(mockHandler.mock.calls[0][0])
   expect(mockHandler.mock.calls[0][0].story).toBe('testing adding of new user story' )
   expect(mockHandler.mock.calls[0][0].priority).toBe('123')
+  expect(mockHandler.mock.calls[0][0].status).toBe('new status')
 })
