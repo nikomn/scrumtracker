@@ -64,11 +64,11 @@ test('all user stories are returned', async () => {
   expect(response.body).toHaveLength(demodata.length)
 })
 
-test('new user story with priority 123 can be added', async () => {
+test('new user story with priority "123" and status "testing" can be added', async () => {
   const newUserStory = {
     story: 'Testing adding a new user story',
     priority: 123,
-    status: 'new'
+    status: 'testing'
   }
 
   await addNewUserStory(newUserStory)
@@ -78,6 +78,7 @@ test('new user story with priority 123 can be added', async () => {
   expect(allProducts.body).toHaveLength(demodata.length + 1)
   expect(allProducts.body[3].story).toBe('Testing adding a new user story')
   expect(allProducts.body[3].priority).toBe(123)
+  expect(allProducts.body[3].status).toBe('testing')
   
 })
 
