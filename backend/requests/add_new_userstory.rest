@@ -2,6 +2,7 @@ POST http://localhost:3001/api/userstories
 Content-Type: application/json
 
 {
-"story":"new story"
+"story":"new story",
+"priority":123
 }
 
