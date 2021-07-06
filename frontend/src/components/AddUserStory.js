@@ -23,7 +23,7 @@ const AddUserStory = ({ createNewStory }) => {
         <label>
             User Story
         </label>
-        <input
+        <input id='story-input'
           type='text'
           value={story}
           onChange={({ target }) => setStory(target.value)}
@@ -32,7 +32,7 @@ const AddUserStory = ({ createNewStory }) => {
           <label>
             Priority
           </label>
-          <input
+          <input id='priority-input'
             type='number'
             value={priority}
             onChange={({ target }) => setPriority(target.value)}
