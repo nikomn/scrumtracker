@@ -3,6 +3,7 @@ Content-Type: application/json
 
 {
 "story":"new story",
-"priority":123
+"priority":123,
+"status":"testi"
 }
 

@@ -15,17 +15,22 @@ userStoriesRouter.get('/', (request, response) => {
 userStoriesRouter.post('/', (request, response) => {
   const body = request.body
 
-  if (!body.story) {
+  if (!body.story || body.story === '') {
     return response.status(400).json({ 
       error: 'story is empty' 
     })
+  }
+
+  let status = body.status
+  if (status === '') {
+    status = 'new'
   }
 
 
   const newStoryObject = new UserStory({
     story: body.story,
     date: new Date(),
-    status: 'new',
+    status: status,
     priority: body.priority
   })
 
