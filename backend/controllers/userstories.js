@@ -21,11 +21,12 @@ userStoriesRouter.post('/', (request, response) => {
     })
   }
 
+
   const newStoryObject = new UserStory({
     story: body.story,
     date: new Date(),
     status: 'new',
-    priority: 9999
+    priority: body.priority
   })
 
   newStoryObject.save().then(savedUserStory => {
