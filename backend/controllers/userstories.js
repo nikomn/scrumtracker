@@ -39,5 +39,12 @@ userStoriesRouter.post('/', (request, response) => {
   })
 })
 
+userStoriesRouter.put('/:id', (request, response) => {
+  UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body })
+    .then(() => {
+      response.json(request.body)
+    })
+})
+
 
 module.exports = userStoriesRouter
