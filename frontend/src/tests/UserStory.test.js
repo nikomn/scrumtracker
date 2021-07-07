@@ -17,6 +17,12 @@ test('user story content renders', () => {
   )
 
   expect(component.container).toHaveTextContent(
-    'Testing with Jest'
+    'Story: Testing with Jest'
+  )
+  expect(component.container).toHaveTextContent(
+    'Priority: 1'
+  )
+  expect(component.container).toHaveTextContent(
+    'Status: done'
   )
 })

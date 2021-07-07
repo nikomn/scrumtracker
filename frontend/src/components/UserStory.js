@@ -4,7 +4,9 @@ const UserStory = ({ userstory }) => {
   return (
     <div className='userstory'>
       <p>
-        {userstory.story}
+        User Story: {userstory.story} <br />
+        Priority: {userstory.priority} <br />
+        Status: {userstory.status}
       </p>
     </div>
   )
