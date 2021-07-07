@@ -22,6 +22,7 @@ const AddUserStory = ({ createNewStory }) => {
   }
   return (
     <div className="addUserStoryForm">
+      <h2>Add new User Story</h2>
       <form onSubmit={addStory}>
         <label>
             User Story
