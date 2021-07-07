@@ -37,6 +37,15 @@ const addNewUserStory = async (newUserStoryObject) => {
   return result
 }
 
+const modifyUserStory = async (id, modifiedData) => {
+  const result = await api
+    .put('/api/userstories/' + id)
+    .send(modifiedData)
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+  return result
+}
+
 beforeEach(async () => {
   await UserStory.deleteMany({})
 
@@ -73,13 +82,47 @@ test('new user story with priority "123" and status "testing" can be added', asy
 
   await addNewUserStory(newUserStory)
 
-  const allProducts = await getStories()
-  //console.log(allProducts.body[3])
-  expect(allProducts.body).toHaveLength(demodata.length + 1)
-  expect(allProducts.body[3].story).toBe('Testing adding a new user story')
-  expect(allProducts.body[3].priority).toBe(123)
-  expect(allProducts.body[3].status).toBe('testing')
+  const allStories = await getStories()
+  //console.log(allStories.body[3])
+  expect(allStories.body).toHaveLength(demodata.length + 1)
+  expect(allStories.body[3].story).toBe('Testing adding a new user story')
+  expect(allStories.body[3].priority).toBe(123)
+  expect(allStories.body[3].status).toBe('testing')
   
+})
+
+test('User story priority can be modified', async () => {
+  let allStories = await getStories()
+  
+  const id = allStories.body[0].id
+
+  
+  const modifiedPriority = {
+    'priority':9999999,
+  }
+
+  await modifyUserStory(id, modifiedPriority)
+  allStories = await getStories()
+
+  expect(allStories.body[0].priority).toBe(9999999)
+
+})
+
+test('User story status can be modified', async () => {
+  let allStories = await getStories()
+  
+  const id = allStories.body[0].id
+
+  
+  const modifiedStatus = {
+    'status':'modified',
+  }
+
+  await modifyUserStory(id, modifiedStatus)
+  allStories = await getStories()
+
+  expect(allStories.body[0].status).toBe('modified')
+
 })
 
 afterAll(() => {
