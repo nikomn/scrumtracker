@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ModifyUserStory = ( { stories }) => {
+const ModifyUserStory = ( { stories, updateUserStory }) => {
   const [story, setStory] = useState('')
   const [newPriority, setNewPriority] = useState('')
   const [newStatus, setNewStatus] = useState('')
@@ -8,8 +8,9 @@ const ModifyUserStory = ( { stories }) => {
 
   const modifyStory = (event) => {
     event.preventDefault()
-    const id = stories.filter(s => s.story.toLowerCase() === story.toLowerCase())
-    console.log(id)
+    const storyID = stories.filter(s => s.story.toLowerCase() === story.toLowerCase())
+    console.log(storyID)
+    const id = storyID[0].id
     // console.log(story)
     let modifiedData = null
     if (newPriority === '' && newStatus === '') {
@@ -17,29 +18,30 @@ const ModifyUserStory = ( { stories }) => {
     }
     if (newPriority !== '' && newStatus === '') {
       console.log('Changing priority')
-      modifiedData = {
-        priority: newPriority
-      }
+      modifiedData = { ...storyID, priority: newPriority }
+      // modifiedData = {
+      //   priority: newPriority
+      // }
     }
     if (newPriority === '' && newStatus !== '') {
       console.log('Changing status')
-      modifiedData = {
-        status: newStatus
-      }
+      modifiedData = { ...storyID, status: newStatus }
+      // modifiedData = {
+      //   status: newStatus
+      // }
     }
     if (newPriority !== '' && newStatus !== '') {
       console.log('Changing priority and status')
-      modifiedData = {
-        priority: newPriority,
-        status: newStatus
-      }
+      modifiedData = { ...storyID, priority: newPriority, status: newStatus }
+      // modifiedData = {
+      //   priority: newPriority,
+      //   status: newStatus
+      // }
     }
 
     console.log(modifiedData)
 
-
-
-    //createNewStory(newStoryObject)
+    updateUserStory(id, modifiedData)
     setStory('')
     setNewPriority('')
     setNewStatus('')
