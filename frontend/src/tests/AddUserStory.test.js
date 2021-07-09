@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent } from '@testing-library/react'
 import AddUserStory from '../components/AddUserStory'
 
-test('product backlog renders', () => {
+test('<AddUserStory /> renders', () => {
   const stories = []
 
   const component = render(
@@ -11,7 +11,7 @@ test('product backlog renders', () => {
   )
 
   expect(component.container).toHaveTextContent(
-    'User Story'
+    'Add new User Story'
   )
 })
 
