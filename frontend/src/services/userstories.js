@@ -10,4 +10,16 @@ const create = newObject => {
   return axios.post(baseUrl, newObject)
 }
 
-export default { getAll, create }
+const update = (id, newObject) => {
+  console.log('id:', id)
+  console.log(newObject)
+  console.log(`${baseUrl}/${id}`, newObject)
+  //const request = axios.put(`${baseUrl}/${id}`, newObject)
+  //console.log(request)
+  //return request.then(response => response.data)
+  //return axios.put(`${baseUrl}/${id}`, newObject)
+  const request = axios.put(`${baseUrl}/${id}`, newObject)
+  return request.then(response => response.data)
+}
+
+export default { getAll, create, update }
