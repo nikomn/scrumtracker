@@ -9,40 +9,13 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
   const modifyStory = (event) => {
     event.preventDefault()
     const storyID = stories.filter(s => s.story.toLowerCase() === story.toLowerCase())
-    // console.log(storyID)
-    const id = storyID[0].id
-    // // console.log(story)
-    // let modifiedData = null
-    // if (newPriority === '' && newStatus === '') {
-    //   console.log('No changes made!')
-    // }
-    // if (newPriority !== '' && newStatus === '') {
-    //   console.log('Changing priority')
-    //   modifiedData = { ...storyID, priority: newPriority }
-    //   // modifiedData = {
-    //   //   priority: newPriority
-    //   // }
-    // }
-    // if (newPriority === '' && newStatus !== '') {
-    //   console.log('Changing status')
-    //   modifiedData = { ...storyID, status: newStatus }
-    //   // modifiedData = {
-    //   //   status: newStatus
-    //   // }
-    // }
-    // if (newPriority !== '' && newStatus !== '') {
-    //   console.log('Changing priority and status')
-    //   modifiedData = { ...storyID, priority: newPriority, status: newStatus }
-    //   // modifiedData = {
-    //   //   priority: newPriority,
-    //   //   status: newStatus
-    //   // }
-    // }
+    console.log(storyID)
+    if (storyID[0]) {
+      const id = storyID[0].id
+      updateUserStory(id, newPriority, newStatus)
+    }
 
-    // console.log(modifiedData)
 
-    //updateUserStory(id, modifiedData)
-    updateUserStory(id, newPriority, newStatus)
     setStory('')
     setNewPriority('')
     setNewStatus('')
