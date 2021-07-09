@@ -14,4 +14,6 @@
 | 5.7. | 2    | backend testauksen selvittelyn ja alustamisen jatkotyöstämistä ja debugausta |
 | 6.7. | 2    | prioriteetin ja statuksen lisäys-toiminnalisuuksien toteuttaminen ja niihin liittyvät testit |
 | 7.7. | 2    | user storyjen muokkaustoiminnalisuuden toteutus backendiin ja vastaavan toiminnalisuuden alustus frontendin puolelle |
-| yht   | 24   | | 
+| 8.7. | 2    | Storyjen muokkaus frontend puolella, debugausta |
+| 9.7. | 2    | Storyjen muokkaus frontend puolella toimimaan, muokkausten testit |
+| yht   | 28   | | 
