@@ -2,13 +2,15 @@
 
 | prioriteetti | user story | sprint | status |
 | :-----------:|:-----------| :------| :------|
-|     1        | Asiakkaana haluan pystyä lisäämään uusia user storyjä backlogiin |     1  | done |
-|     1        | Asiakkaana haluan pystyä määrittämään user storyille prioriteetin |     2  | planned |
-|     1        | Asiakkaana haluan pystyä määrittämään user storylle statuksen (esim. done, doing, ...) |   2    | planned |
-|     1        | Asiakkaana haluan nähdä user storyjen statukset backlogissa |   2    | planned |
-|     1        | Asiakkaana haluan pysytä muokkaamaan user storyjen tietoja |   2    | planned |
-|     1        | Asiakkaana haluan pysytä poistamaan user storyjä |   2    | planned |
-|              | Sprint backlogit erillään |        |        |
+|     1        | Asiakkaana haluan pystyä lisäämään uusia user storyjä backlogiin |     1  | **done** |
+|     1        | Asiakkaana haluan pystyä määrittämään user storyille prioriteetin |     2  | **done** |
+|     1        | Asiakkaana haluan pystyä määrittämään user storylle statuksen (esim. done, doing, ...) |   2    | **done** |
+|     1        | Asiakkaana haluan nähdä user storyjen statukset backlogissa |   2    | **done** |
+|     1        | Asiakkaana haluan pysytä muokkaamaan user storyjen tietoja |   2    | **done** |
+|     1        | Asiakkaana haluan pystyä poistamaan user storyjä |   3    | _planned_ |
+|     1        | Asiakkaana haluan, että product backlog näkymä on selkeä ja helposti hahmotettavaissa |   3    | _planned_ |
+|     1        | Tiimiläisenä haluan, pystyä luomaan oman erillisen sprinttikohtaisen sprint backlog näkymän |    3   | _planned_ |
+|     1        | Asiakkaana ja tiimiläisenä haluan, että sprint backlogiin voi lisätä storyjä product backlogista |       |         |
 |              | Sprint backlogeissa user storyt jaoteltuna teknisinä taskeina |        |        |
 |              | Sprint kohtainen burn down |        |        |
 |              | Tiimin jäsenkohtainen työajan seuranta |        |        |
