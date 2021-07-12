@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent } from '@testing-library/react'
 import AddUserStory from '../components/AddUserStory'
 
-test('product backlog renders', () => {
+test('<AddUserStory /> renders', () => {
   const stories = []
 
   const component = render(
@@ -11,7 +11,7 @@ test('product backlog renders', () => {
   )
 
   expect(component.container).toHaveTextContent(
-    'User Story'
+    'Add new User Story'
   )
 })
 
@@ -55,6 +55,7 @@ test('<AddUserStory /> updates parent state and calls onSubmit', () => {
 
   expect(mockHandler.mock.calls).toHaveLength(1)
   //console.log(mockHandler.mock.calls[0][0])
+  //console.log(mockHandler.mock.calls[0])
   expect(mockHandler.mock.calls[0][0].story).toBe('testing adding of new user story' )
   expect(mockHandler.mock.calls[0][0].priority).toBe('123')
   expect(mockHandler.mock.calls[0][0].status).toBe('new status')

@@ -8,11 +8,14 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
 
   const modifyStory = (event) => {
     event.preventDefault()
+    //console.log(stories)
     const storyID = stories.filter(s => s.story.toLowerCase() === story.toLowerCase())
-    console.log(storyID)
+    //console.log(storyID)
     if (storyID[0]) {
       const id = storyID[0].id
       updateUserStory(id, newPriority, newStatus)
+    } else {
+      updateUserStory(null, newPriority, newStatus)
     }
 
 
@@ -28,7 +31,7 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
         <label>
             User Story to modify
         </label>
-        <input id='story-input'
+        <input id='modify-story-input'
           type='text'
           value={story}
           onChange={({ target }) => setStory(target.value)}
@@ -37,7 +40,7 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
           <label>
             New priority
           </label>
-          <input id='priority-input'
+          <input id='modify-priority-input'
             type='number'
             value={newPriority}
             onChange={({ target }) => setNewPriority(target.value)}
@@ -47,7 +50,7 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
           <label>
             New Status
           </label>
-          <input id='status-input'
+          <input id='modify-status-input'
             type='text'
             value={newStatus}
             onChange={({ target }) => setNewStatus(target.value)}
