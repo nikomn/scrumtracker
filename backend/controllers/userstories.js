@@ -1,3 +1,6 @@
+/**
+ * Module for handling all of the routes related to userstories.
+ */
 const userStoriesRouter = require('express').Router()
 const UserStory = require('../models/userstory')
 
