@@ -1,3 +1,7 @@
+/**
+ * @file userstories.js is a module for handling all of the routes related to userstories.
+ */
+
 const userStoriesRouter = require('express').Router()
 const UserStory = require('../models/userstory')
 
@@ -12,7 +16,10 @@ userStoriesRouter.get('/', (request, response) => {
   response.json(stories.map(story => story.toJSON()))
 }) */
 
+
+
 userStoriesRouter.post('/', (request, response) => {
+  
   const body = request.body
 
   if (!body.story || body.story === '') {
