@@ -55,6 +55,7 @@ test('<AddUserStory /> updates parent state and calls onSubmit', () => {
 
   expect(mockHandler.mock.calls).toHaveLength(1)
   //console.log(mockHandler.mock.calls[0][0])
+  //console.log(mockHandler.mock.calls[0])
   expect(mockHandler.mock.calls[0][0].story).toBe('testing adding of new user story' )
   expect(mockHandler.mock.calls[0][0].priority).toBe('123')
   expect(mockHandler.mock.calls[0][0].status).toBe('new status')

@@ -8,8 +8,9 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
 
   const modifyStory = (event) => {
     event.preventDefault()
+    //console.log(stories)
     const storyID = stories.filter(s => s.story.toLowerCase() === story.toLowerCase())
-    console.log(storyID)
+    //console.log(storyID)
     if (storyID[0]) {
       const id = storyID[0].id
       updateUserStory(id, newPriority, newStatus)
