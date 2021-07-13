@@ -26,6 +26,16 @@ const App = () => {
 
   }
 
+  const deleteUserStory = (id) => {
+    console.log('Story ' + id + ' will be removed...')
+    storyService
+      .remove(id)
+      // eslint-disable-next-line no-unused-vars
+      .then(response => {
+        setStories(stories.filter(s => s.id !== id))
+      })
+  }
+
   const updateUserStory = (id, newPriority, newStatus) => {
     console.log('id:', id)
     console.log('newPriority:', newPriority)
@@ -67,7 +77,7 @@ const App = () => {
   return (
     <div>
       <h1>Scrum Tracker app</h1>
-      <ProductBacklog stories={stories} />
+      <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
       <AddUserStory createNewStory={createUserStory} />
       <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
     </div>
