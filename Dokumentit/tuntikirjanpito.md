@@ -17,4 +17,5 @@
 | 8.7. | 2    | Storyjen muokkaus frontend puolella, debugausta |
 | 9.7. | 2    | Storyjen muokkaus frontend puolella toimimaan, muokkausten testit |
 | 12.7. | 2    | Storyje muokkausten testien viimeistely, backlogien päivittäminen, jsdoc dokumentoinnin alustus |
-| yht   | 30   | | 
+| 13.7. | 2    | Storyjen poistotoiminnallisuus backendiin ja frontendiin |
+| yht   | 32   | | 

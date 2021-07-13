@@ -1,7 +1,7 @@
 import React from 'react'
 import UserStory from './UserStory'
 
-const ProductBacklog = ({ stories }) => {
+const ProductBacklog = ({ stories, deleteUserStory }) => {
   return (
     <div>
       <h2>Product Backlog</h2>
@@ -9,6 +9,7 @@ const ProductBacklog = ({ stories }) => {
         {stories.map(story =>
           <li key={story.id}>
             <UserStory userstory={story} />
+            <button onClick={() => deleteUserStory(story.id)}>delete</button>
           </li>
         )}
       </ul>
