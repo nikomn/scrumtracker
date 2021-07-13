@@ -46,6 +46,13 @@ const modifyUserStory = async (id, modifiedData) => {
   return result
 }
 
+const deleteUserStory = async (id) => {
+  const result = await api
+    .delete('/api/userstories/' + id)
+    .expect(204)
+  return result
+}
+
 beforeEach(async () => {
   await UserStory.deleteMany({})
 
@@ -122,6 +129,22 @@ test('User story status can be modified', async () => {
   allStories = await getStories()
 
   expect(allStories.body[0].status).toBe('modified')
+
+})
+
+test('User story can be deleted', async () => {
+  let allStories = await getStories()
+
+  const storyToRemove = allStories.body[0]
+  const numberOfStories = allStories.body.length
+
+  //console.log(numberOfStories)
+
+  await deleteUserStory(storyToRemove.id)
+  allStories = await getStories()
+
+  expect(allStories.body[0]).not.toBe(storyToRemove)
+  expect(allStories.body.length).toBe(numberOfStories - 1)
 
 })
 

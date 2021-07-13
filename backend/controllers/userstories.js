@@ -53,5 +53,12 @@ userStoriesRouter.put('/:id', (request, response) => {
     })
 })
 
+userStoriesRouter.delete('/:id', (request, response) => {
+  UserStory.findByIdAndRemove(request.params.id)
+    .then(() => {
+      response.status(204).end()
+    })
+})
+
 
 module.exports = userStoriesRouter
