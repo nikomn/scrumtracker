@@ -4,9 +4,9 @@ const UserStory = ({ userstory }) => {
   return (
     <div className='userstory'>
       <p>
-        User Story: {userstory.story} <br />
-        Priority: {userstory.priority} <br />
-        Status: {userstory.status}
+        <b>User Story:</b> {userstory.story} <br />
+        <b>Priority:</b> {userstory.priority} <br />
+        <b>Status:</b> {userstory.status}
       </p>
     </div>
   )

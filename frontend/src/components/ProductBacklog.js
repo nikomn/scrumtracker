@@ -14,9 +14,8 @@ const ProductBacklog = ({ stories, deleteUserStory }) => {
                 <UserStory userstory={story} />
               </td>
               <td>
-                <Button variant="danger" onClick={() => deleteUserStory(story.id)}>delete</Button>
+                <Button variant="danger" size="lg" onClick={() => deleteUserStory(story.id)}>delete</Button>
               </td>
-
             </tr>
           )}
         </tbody>
