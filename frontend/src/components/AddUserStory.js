@@ -32,6 +32,7 @@ const AddUserStory = ({ createNewStory }) => {
             type="text"
             name="userstory"
             value={story}
+            placeholder="New user story"
             onChange={({ target }) => setStory(target.value)}
           />
           <Form.Label>Priority</Form.Label>
@@ -40,6 +41,7 @@ const AddUserStory = ({ createNewStory }) => {
             type="number"
             name="priority"
             value={priority}
+            placeholder="Priority"
             onChange={({ target }) => setPriority(target.value)}
           />
           <Form.Label>Status</Form.Label>
@@ -48,9 +50,10 @@ const AddUserStory = ({ createNewStory }) => {
             type="text"
             name="status"
             value={status}
+            placeholder="Status"
             onChange={({ target }) => setStatus(target.value)}
           />
-          <Button variant="primary" type="submit">
+          <Button variant="success" type="submit">
             Add new story
           </Button>
         </Form.Group>
