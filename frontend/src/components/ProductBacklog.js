@@ -1,12 +1,12 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 import UserStory from './UserStory'
 
 const ProductBacklog = ({ stories, deleteUserStory }) => {
   return (
     <div>
       <h2>Product Backlog</h2>
-      <Table striped>
+      <Table striped hover>
         <tbody>
           {stories.map(story =>
             <tr key={story.id}>
@@ -14,7 +14,7 @@ const ProductBacklog = ({ stories, deleteUserStory }) => {
                 <UserStory userstory={story} />
               </td>
               <td>
-                <button onClick={() => deleteUserStory(story.id)}>delete</button>
+                <Button variant="danger" onClick={() => deleteUserStory(story.id)}>delete</Button>
               </td>
 
             </tr>
