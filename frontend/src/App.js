@@ -75,7 +75,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Scrum Tracker app</h1>
       <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
       <AddUserStory createNewStory={createUserStory} />
