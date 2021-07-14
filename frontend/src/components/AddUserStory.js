@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
 
 const AddUserStory = ({ createNewStory }) => {
   const [story, setStory] = useState('')
@@ -23,38 +24,40 @@ const AddUserStory = ({ createNewStory }) => {
   return (
     <div className="addUserStoryForm">
       <h2>Add new User Story</h2>
-      <form onSubmit={addStory}>
-        <label>
-            User Story
-        </label>
-        <input id='story-input'
-          type='text'
-          value={story}
-          onChange={({ target }) => setStory(target.value)}
-        />
-        <div>
-          <label>
-            Priority
-          </label>
-          <input id='priority-input'
-            type='number'
+      <Form onSubmit={addStory}>
+        <Form.Group>
+          <Form.Label>User Story</Form.Label>
+          <Form.Control
+            id='story-input'
+            type="text"
+            name="userstory"
+            value={story}
+            placeholder="New user story"
+            onChange={({ target }) => setStory(target.value)}
+          />
+          <Form.Label>Priority</Form.Label>
+          <Form.Control
+            id='priority-input'
+            type="number"
+            name="priority"
             value={priority}
+            placeholder="Priority"
             onChange={({ target }) => setPriority(target.value)}
           />
-        </div>
-        <div>
-          <label>
-            Status
-          </label>
-          <input id='status-input'
-            type='text'
+          <Form.Label>Status</Form.Label>
+          <Form.Control
+            id='status-input'
+            type="text"
+            name="status"
             value={status}
+            placeholder="Status"
             onChange={({ target }) => setStatus(target.value)}
           />
-        </div>
-
-        <button type='submit'>Add new story</button>
-      </form>
+          <Button variant="success" type="submit">
+            Add new story
+          </Button>
+        </Form.Group>
+      </Form>
     </div>
   )
 }

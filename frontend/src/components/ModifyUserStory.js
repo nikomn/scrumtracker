@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
 
 const ModifyUserStory = ( { stories, updateUserStory }) => {
   const [story, setStory] = useState('')
@@ -27,38 +28,40 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
   return (
     <div className="addUserStoryForm">
       <h2>Modify User Story</h2>
-      <form onSubmit={modifyStory}>
-        <label>
-            User Story to modify
-        </label>
-        <input id='modify-story-input'
-          type='text'
-          value={story}
-          onChange={({ target }) => setStory(target.value)}
-        />
-        <div>
-          <label>
-            New priority
-          </label>
-          <input id='modify-priority-input'
-            type='number'
+      <Form onSubmit={modifyStory}>
+        <Form.Group>
+          <Form.Label>User Story to modify</Form.Label>
+          <Form.Control
+            id='modify-story-input'
+            type="text"
+            name="userstory"
+            value={story}
+            placeholder="User Story to modify"
+            onChange={({ target }) => setStory(target.value)}
+          />
+          <Form.Label>New priority</Form.Label>
+          <Form.Control
+            id='modify-priority-input'
+            type="number"
+            name="priority"
             value={newPriority}
+            placeholder="New priority"
             onChange={({ target }) => setNewPriority(target.value)}
           />
-        </div>
-        <div>
-          <label>
-            New Status
-          </label>
-          <input id='modify-status-input'
-            type='text'
+          <Form.Label>New Status</Form.Label>
+          <Form.Control
+            id='modify-status-input'
+            type="text"
+            name="status"
             value={newStatus}
+            placeholder="New Status"
             onChange={({ target }) => setNewStatus(target.value)}
           />
-        </div>
-
-        <button type='submit'>Update story</button>
-      </form>
+          <Button variant="success" type="submit">
+          Update story
+          </Button>
+        </Form.Group>
+      </Form>
     </div>
   )
 }
