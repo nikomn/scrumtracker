@@ -3,12 +3,19 @@
  */
 
 const sprintBacklogsRouter = require('express').Router()
-const SprintBacklog = require('../models/sprintbacklogs')
+const SprintBacklog = require('../models/sprintbacklog')
+const UserStory = require('../models/userstory')
  
-sprintBacklogsRouter.get('/', (request, response) => {
-  SprintBacklog.find({}).then(backlogs => {
-    response.json(backlogs.map(backlog => backlog.toJSON()))
+sprintBacklogsRouter.get('/', async (request, response) => {
+  const backlogs = await SprintBacklog.find({}).populate('userstories', {
+    story: 1,
+    priority: 1,
+    status: 1
   })
+  response.json(backlogs.map((backlog) => backlog.toJSON()))
+  // SprintBacklog.find({}).then(backlogs => {
+  //   response.json(backlogs.map(backlog => backlog.toJSON()))
+  // })
 })
 
  
@@ -32,10 +39,19 @@ sprintBacklogsRouter.post('/', (request, response) => {
   })
 })
  
-sprintBacklogsRouter.post('/:id/stories', (request, response) => {
+sprintBacklogsRouter.post('/:id/stories', async (request, response) => {
   const storyToAdd = request.body
-  const backlog = SprintBacklog.findById(request.params.id).then(() => {
-    backlog.userstories = backlog.userstories.concat(storyToAdd)
+
+  const story = await UserStory.findById(storyToAdd.id)
+
+  if (!story) {
+    return response.status(400).json({ 
+      error: 'story not found' 
+    })
+  }
+
+  SprintBacklog.findById(request.params.id).then((backlog) => {
+    backlog.userstories = backlog.userstories.concat(story)
     backlog.save()
     response.status(204).end()
   })

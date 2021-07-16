@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/sprintbacklogs/60f12384ea629a1d2553f711/stories
+Content-Type: application/json
+
+{
+    "story": "As a user I want to store my user stories in to mongodb",
+    "date": "2021-07-03T06:59:55.211Z",
+    "status": "new",
+    "priority": 9999,
+    "id": "60e00aeb9b9b21330bd61087"
+  }
+

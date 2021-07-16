@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const userStoriesRouter = require('./controllers/userstories')
+const sprintBacklogsRouter = require('./controllers/sprintbacklogs')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 
@@ -21,5 +22,6 @@ app.use(express.static('build'))
 app.use(express.json())
 
 app.use('/api/userstories', userStoriesRouter)
+app.use('/api/sprintbacklogs', sprintBacklogsRouter)
 
 module.exports = app
