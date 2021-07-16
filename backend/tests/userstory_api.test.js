@@ -56,13 +56,13 @@ const deleteUserStory = async (id) => {
 beforeEach(async () => {
   await UserStory.deleteMany({})
 
-  let productObject1 = new UserStory(demodata[0])
-  let productObject2 = new UserStory(demodata[1])
-  let productObject3 = new UserStory(demodata[2])
+  let storyObject1 = new UserStory(demodata[0])
+  let storyObject2 = new UserStory(demodata[1])
+  let storyObject3 = new UserStory(demodata[2])
   
-  await productObject1.save()
-  await productObject2.save()
-  await productObject3.save()
+  await storyObject1.save()
+  await storyObject2.save()
+  await storyObject3.save()
 
 })
 
