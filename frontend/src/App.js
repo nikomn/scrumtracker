@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import ProductBacklog from './components/ProductBacklog'
+import SprintBacklogList from './components/SprintBacklogList'
 import AddUserStory from './components/AddUserStory'
 import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
+import backlogService from './services/sprintbacklogs'
 
 import {
   Switch, Route, Link
@@ -11,6 +13,7 @@ import {
 
 const App = () => {
   const [stories, setStories] = useState([])
+  const [backlogs, setBacklogs] = useState([])
 
 
   useEffect(() => {
@@ -18,6 +21,11 @@ const App = () => {
       .getAll()
       .then(initialStories => {
         setStories(initialStories)
+      })
+    backlogService
+      .getAll()
+      .then(initialBacklogs => {
+        setBacklogs(initialBacklogs)
       })
   }, [])
 
@@ -91,7 +99,7 @@ const App = () => {
 
       <Switch>
         <Route path="/sprintbacklogs">
-          <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
+          <SprintBacklogList backlogs={backlogs} />
         </Route>
         <Route path="/">
           <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
