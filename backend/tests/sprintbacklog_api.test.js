@@ -47,10 +47,11 @@ const getStories = async () => {
 }
 
 const addUserStory = async (userStoryObject, id) => {
+  //console.log('/api/sprintbacklogs/' + id + '/stories')
   const result = await api
-    .post('/api/userstories/' + id + '/stories')
+    .post('/api/sprintbacklogs/' + id + '/stories')
     .send(userStoryObject)
-    .expect(204)
+    .expect(200)
     .expect('Content-Type', /application\/json/)
   return result
 }
@@ -95,15 +96,15 @@ test('all sprint backlogs are returned', async () => {
 test('User story can be added to existing backlog', async () => {
   const allStories = await getStories()
   let allBacklogs = await getBacklogs()
-  console.log(allBacklogs[0])
+  //console.log(allBacklogs.body)
   
-  await addUserStory(allStories[0], allBacklogs[0].id)
+  await addUserStory(allStories.body[0], allBacklogs.body[0].id)
 
   allBacklogs = await getBacklogs()
   //console.log(allStories.body[3])
-  expect(allStories.body[0].userstories[0].story).toBe('As a user I want to create new user stories')
-  expect(allStories.body[0].userstories[0].priority).toBe(1)
-  expect(allStories.body[0].userstories[0].status).toBe('done')
+  expect(allBacklogs.body[0].userstories[0].story).toBe('As a user I want to create new user stories')
+  expect(allBacklogs.body[0].userstories[0].priority).toBe(1)
+  expect(allBacklogs.body[0].userstories[0].status).toBe('done')
   
 })
 
