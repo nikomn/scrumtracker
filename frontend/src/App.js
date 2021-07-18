@@ -4,6 +4,10 @@ import AddUserStory from './components/AddUserStory'
 import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
 
+import {
+  Switch, Route, Link
+} from 'react-router-dom'
+
 
 const App = () => {
   const [stories, setStories] = useState([])
@@ -74,12 +78,27 @@ const App = () => {
     }
   }
 
+  const padding = {
+    padding: 5
+  }
+
   return (
     <div className="container">
-      <h1>Scrum Tracker app</h1>
-      <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
-      <AddUserStory createNewStory={createUserStory} />
-      <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
+      <div>
+        <Link style={padding} to="/">product backlog</Link>
+        <Link style={padding} to="/sprintbacklogs">sprint backlogs</Link>
+      </div>
+
+      <Switch>
+        <Route path="/sprintbacklogs">
+          <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
+        </Route>
+        <Route path="/">
+          <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
+          <AddUserStory createNewStory={createUserStory} />
+          <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
+        </Route>
+      </Switch>
     </div>
   )
 }
