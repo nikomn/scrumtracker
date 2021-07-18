@@ -7,8 +7,9 @@ import storyService from './services/userstories'
 import backlogService from './services/sprintbacklogs'
 
 import {
-  Switch, Route, Link
+  Switch, Route, Link, useRouteMatch
 } from 'react-router-dom'
+import SprintBacklog from './components/SprintBacklog'
 
 
 const App = () => {
@@ -90,6 +91,13 @@ const App = () => {
     padding: 5
   }
 
+  const match = useRouteMatch('/sprintbacklogs/:id')
+  const backlog = match
+    ? backlogs.find(b => b.id === match.params.id)
+    : null
+
+  //console.log(backlogs)
+
   return (
     <div className="container">
       <div>
@@ -98,6 +106,9 @@ const App = () => {
       </div>
 
       <Switch>
+        <Route path="/sprintbacklogs/:id">
+          <SprintBacklog backlog={backlog} />
+        </Route>
         <Route path="/sprintbacklogs">
           <SprintBacklogList backlogs={backlogs} />
         </Route>
