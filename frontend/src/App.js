@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import ProductBacklog from './components/ProductBacklog'
+import SprintBacklogList from './components/SprintBacklogList'
 import AddUserStory from './components/AddUserStory'
 import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
+import backlogService from './services/sprintbacklogs'
+
+import {
+  Switch, Route, Link, useRouteMatch
+} from 'react-router-dom'
+import SprintBacklog from './components/SprintBacklog'
 
 
 const App = () => {
   const [stories, setStories] = useState([])
+  const [backlogs, setBacklogs] = useState([])
 
 
   useEffect(() => {
@@ -14,6 +22,11 @@ const App = () => {
       .getAll()
       .then(initialStories => {
         setStories(initialStories)
+      })
+    backlogService
+      .getAll()
+      .then(initialBacklogs => {
+        setBacklogs(initialBacklogs)
       })
   }, [])
 
@@ -74,12 +87,49 @@ const App = () => {
     }
   }
 
+  const createSprintBacklog = (backlogObject) => {
+    backlogService
+      .create(backlogObject)
+      .then(response => {
+        setBacklogs(backlogs.concat(response.data))
+      })
+
+  }
+
+
+
+
+  const padding = {
+    padding: 5
+  }
+
+  const match = useRouteMatch('/sprintbacklogs/:id')
+  const backlog = match
+    ? backlogs.find(b => b.id === match.params.id)
+    : null
+
+  //console.log(backlogs)
+
   return (
     <div className="container">
-      <h1>Scrum Tracker app</h1>
-      <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
-      <AddUserStory createNewStory={createUserStory} />
-      <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
+      <div>
+        <Link style={padding} to="/">product backlog</Link>
+        <Link style={padding} to="/sprintbacklogs">sprint backlogs</Link>
+      </div>
+
+      <Switch>
+        <Route path="/sprintbacklogs/:id">
+          <SprintBacklog backlog={backlog} />
+        </Route>
+        <Route path="/sprintbacklogs">
+          <SprintBacklogList backlogs={backlogs} createSprintBacklog={createSprintBacklog} />
+        </Route>
+        <Route path="/">
+          <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
+          <AddUserStory createNewStory={createUserStory} />
+          <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
+        </Route>
+      </Switch>
     </div>
   )
 }
