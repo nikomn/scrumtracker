@@ -21,4 +21,5 @@
 | 14.7. | 2    | Product backlogin ja story-formien alustava bootstrap tyylittely |
 | 16.7. | 2    | Sprint backlog toiminnallisuus backendiin + alustavia testejä |
 | 18.7. | 2    | Sprint backlog toiminnallisuuden testit loppuun backendissä, sprint backlog näkymien alustaminen frontendin puolelle |
-| yht   | 38   | | 
+| 19.7. | 2    | Sprint backlog toiminnallisuuden viimeistely front endiin + testit |
+| yht   | 40   | | 

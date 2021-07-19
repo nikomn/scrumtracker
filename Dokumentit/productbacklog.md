@@ -11,7 +11,7 @@
 |     1        | Asiakkaana haluan, että product backlog näkymä on selkeä ja helposti hahmotettavaissa |   3    | **done** |
 |     1        | Tiimiläisenä haluan, pystyä luomaan oman erillisen sprinttikohtaisen sprint backlog näkymän |    4   | _planned_ |
 |     1        | Asiakkaana ja tiimiläisenä haluan, että sprint backlogiin voi lisätä storyjä product backlogista |  4   | _planned_ |
-|              | Sprint backlogeissa user storyt jaoteltuna teknisinä taskeina |        |        |
+|     1        | Sprint backlogeissa user storyt jaoteltuna teknisinä taskeina |   4    | _planned_ |
 |              | Sprint kohtainen burn down |        |        |
 |              | Tiimin jäsenkohtainen työajan seuranta |        |        |
 |              | Task kohtainen story point työmäärä-arvio |        |        |
