@@ -87,6 +87,18 @@ const App = () => {
     }
   }
 
+  const createSprintBacklog = (backlogObject) => {
+    backlogService
+      .create(backlogObject)
+      .then(response => {
+        setBacklogs(backlogs.concat(response.data))
+      })
+
+  }
+
+
+
+
   const padding = {
     padding: 5
   }
@@ -110,7 +122,7 @@ const App = () => {
           <SprintBacklog backlog={backlog} />
         </Route>
         <Route path="/sprintbacklogs">
-          <SprintBacklogList backlogs={backlogs} />
+          <SprintBacklogList backlogs={backlogs} createSprintBacklog={createSprintBacklog} />
         </Route>
         <Route path="/">
           <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />

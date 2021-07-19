@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const AddSprintBacklog = ({ createNewBacklog }) => {
+const AddSprintBacklog = ({ createSprintBacklog }) => {
   const [backlog, setBacklog] = useState('')
 
   const addBacklog = (event) => {
@@ -10,12 +10,12 @@ const AddSprintBacklog = ({ createNewBacklog }) => {
     const newBacklogObject = {
       name: backlog,
     }
-    createNewBacklog(newBacklogObject)
+    createSprintBacklog(newBacklogObject)
     setBacklog('')
 
   }
   return (
-    <div className="createNewBacklog">
+    <div className="createSprintBacklog">
       <h2>Add new Sprint backlog</h2>
       <Form onSubmit={addBacklog}>
         <Form.Group>
@@ -30,7 +30,7 @@ const AddSprintBacklog = ({ createNewBacklog }) => {
           />
 
           <Button variant="success" type="submit">
-            Add new story
+          Create
           </Button>
         </Form.Group>
       </Form>

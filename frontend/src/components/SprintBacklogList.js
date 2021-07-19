@@ -1,8 +1,10 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import AddSprintBacklog from './AddSprintBacklog'
 
-const SprintBacklogList = ({ backlogs }) => {
+
+const SprintBacklogList = ({ backlogs, createSprintBacklog }) => {
   return (
     <div>
       <h2>Sprint Backlogs</h2>
@@ -17,6 +19,7 @@ const SprintBacklogList = ({ backlogs }) => {
           )}
         </tbody>
       </Table>
+      <AddSprintBacklog createSprintBacklog={createSprintBacklog} />
     </div>
   )
 }
