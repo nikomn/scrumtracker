@@ -8,4 +8,4 @@
 | Asiakkaana haluan pystyä poistamaan user storyjä | Poistotoiminnallisuus frontendiin + testit  | 3 | done |
 | Asiakkaana haluan, että product backlog näkymä on selkeä ja helposti hahmotettavaissa | Alustavaa tyylittelyä bootsrapillä  | 3 | done |
 | Tiimiläisenä haluan, pystyä luomaan oman erillisen sprinttikohtaisen sprint backlog näkymän | Tietokannan laajennus sprint backlogeja varten  | 1.5 | done |
-| Tiimiläisenä haluan, pystyä luomaan oman erillisen sprinttikohtaisen sprint backlog näkymän | Oma komponentti sprint backlogeille  | 1.5 | pending |
+| Tiimiläisenä haluan, pystyä luomaan oman erillisen sprinttikohtaisen sprint backlog näkymän | Oma komponentti sprint backlogeille  | 1.5 | doing |
