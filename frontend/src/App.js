@@ -10,7 +10,7 @@ import {
   Switch, Route, Link, useRouteMatch
 } from 'react-router-dom'
 import SprintBacklog from './components/SprintBacklog'
-
+import UserStory from './components/UserStory'
 
 const App = () => {
   const [stories, setStories] = useState([])
@@ -18,6 +18,7 @@ const App = () => {
 
 
   useEffect(() => {
+    console.log('use effect!')
     storyService
       .getAll()
       .then(initialStories => {
@@ -108,7 +109,14 @@ const App = () => {
     ? backlogs.find(b => b.id === match.params.id)
     : null
 
-  //console.log(backlogs)
+  console.log(stories)
+  const matchStory = useRouteMatch('/userstories/:id')
+  console.log(matchStory)
+  const userstory = matchStory
+    ? stories.find(s => s.id === matchStory.params.id)
+    : null
+
+  //console.log(stories)
 
   return (
     <div className="container">
@@ -120,6 +128,9 @@ const App = () => {
       <Switch>
         <Route path="/sprintbacklogs/:id">
           <SprintBacklog backlog={backlog} />
+        </Route>
+        <Route path="/userstories/:id">
+          <UserStory userstory={userstory} />
         </Route>
         <Route path="/sprintbacklogs">
           <SprintBacklogList backlogs={backlogs} createSprintBacklog={createSprintBacklog} />
