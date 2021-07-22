@@ -97,6 +97,17 @@ const App = () => {
 
   }
 
+  const addStoryToSprintBacklog = (storyObject) => {
+    console.log('Story ' + storyObject.story)
+    alert('Story ' + storyObject.story + ' added to sprint backlog')
+    // backlogService
+    //   .addStory(id, storyObject)
+    //   .then(response => {
+    //     setBacklogs(backlogs.concat(response.data))
+    //   })
+
+  }
+
 
 
 
@@ -127,16 +138,30 @@ const App = () => {
 
       <Switch>
         <Route path="/sprintbacklogs/:id">
-          <SprintBacklog backlog={backlog} />
+          <SprintBacklog
+            backlog={backlog}
+            backlogs={backlogs}
+            addStoryToSprintBacklog={addStoryToSprintBacklog}
+          />
         </Route>
         <Route path="/userstories/:id">
-          <UserStory userstory={userstory} />
+          <UserStory
+            userstory={userstory}
+            backlogs={backlogs}
+            addStoryToSprintBacklog={addStoryToSprintBacklog}
+          />
         </Route>
         <Route path="/sprintbacklogs">
-          <SprintBacklogList backlogs={backlogs} createSprintBacklog={createSprintBacklog} />
+          <SprintBacklogList
+            backlogs={backlogs}
+            createSprintBacklog={createSprintBacklog} />
         </Route>
         <Route path="/">
-          <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
+          <ProductBacklog
+            stories={stories}
+            deleteUserStory={deleteUserStory}
+            backlogs={backlogs}
+            addStoryToSprintBacklog={addStoryToSprintBacklog} />
           <AddUserStory createNewStory={createUserStory} />
           <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
         </Route>
