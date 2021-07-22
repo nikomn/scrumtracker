@@ -23,4 +23,5 @@
 | 18.7. | 2    | Sprint backlog toiminnallisuuden testit loppuun backendissä, sprint backlog näkymien alustaminen frontendin puolelle |
 | 19.7. | 2    | Sprint backlog toiminnallisuuden viimeistely front endiin + testit |
 | 20.7. | 2    | Tuotekohtaiset sivut, React router ongelmien selvittelyä |
-| yht   | 42   | | 
+| 22.7. | 2    | Alustava toiminto storyjen lisäämiseen sprint backlogiin (frontend), refaktorointia |
+| yht   | 44   | | 
