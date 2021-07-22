@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import UserStory from './UserStory'
 
 const ProductBacklog = ({ stories, deleteUserStory }) => {
@@ -11,7 +12,7 @@ const ProductBacklog = ({ stories, deleteUserStory }) => {
           {stories.map(story =>
             <tr key={story.id}>
               <td>
-                <UserStory userstory={story} />
+                <Link to={`/userstories/${story.id}`}><UserStory userstory={story} /></Link>
               </td>
               <td>
                 <Button variant="danger" size="lg" onClick={() => deleteUserStory(story.id)}>delete</Button>

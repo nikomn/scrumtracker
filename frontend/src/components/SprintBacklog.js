@@ -1,9 +1,12 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import UserStory from './UserStory'
+import { Link } from 'react-router-dom'
 
 const SprintBacklog = ({ backlog }) => {
-  //console.log(backlog)
+  if (!backlog) {
+    return null
+  }
   return (
     <div>
       <h2>Sprint Backlog for {backlog.name}</h2>
@@ -12,7 +15,7 @@ const SprintBacklog = ({ backlog }) => {
           {backlog.userstories.map(story =>
             <tr key={story.id}>
               <td>
-                <UserStory userstory={story} />
+                <Link to={`/userstories/${story.id}`}><UserStory userstory={story} /></Link>
               </td>
             </tr>
           )}

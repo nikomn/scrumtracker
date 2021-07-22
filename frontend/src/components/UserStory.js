@@ -1,6 +1,9 @@
 import React from 'react'
 
 const UserStory = ({ userstory }) => {
+  if (!userstory) {
+    return null
+  }
   return (
     <div className='userstory'>
       <p>
