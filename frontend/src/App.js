@@ -97,9 +97,9 @@ const App = () => {
 
   }
 
-  const addStoryToSprintBacklog = (storyObject) => {
+  const addStoryToSprintBacklog = (storyObject, backlog) => {
     console.log('Story ' + storyObject.story)
-    alert('Story ' + storyObject.story + ' added to sprint backlog')
+    alert('Story ' + storyObject.story + ' added to sprint backlog ' + backlog)
     // backlogService
     //   .addStory(id, storyObject)
     //   .then(response => {

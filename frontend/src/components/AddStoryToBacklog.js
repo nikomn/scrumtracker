@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Dropdown } from 'react-bootstrap'
 
 const AddStoryToBacklog = ({ userstory, backlogs, addStoryToSprintBacklog }) => {
   const [sprintBacklog, setSprintBacklog] = useState('')
@@ -7,30 +6,27 @@ const AddStoryToBacklog = ({ userstory, backlogs, addStoryToSprintBacklog }) => 
   const addToBacklog = (event) => {
     event.preventDefault()
     // console.log(story)
-    addStoryToSprintBacklog(userstory)
+    addStoryToSprintBacklog(userstory, sprintBacklog)
     setSprintBacklog('')
 
   }
   return (
     <div className="addToSprintBacklog">
       <h2>Add story to Sprint backlog</h2>
-      <Dropdown>
-        <Dropdown.Toggle
-          variant="success"
-          id="dropdown-basic"
+      <form onSubmit={addToBacklog}>
+        <select
           value={sprintBacklog}
-          onChange={addToBacklog}
+          onChange={({ target }) => setSprintBacklog(target.value)}
         >
-          Dropdown Button
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
+          <option value='select sprint backlog'>select sprint backlog</option>
           {backlogs.map(b =>
-            <Dropdown.Item value={b.name} key={b.id}>{b.name}</Dropdown.Item>
+            <option value={b.name} key={b.id}>{b.name}</option>
           )}
-        </Dropdown.Menu>
-      </Dropdown>
-
+        </select>
+        <div>
+          <button type="submit">Add to sprintbacklog</button>
+        </div>
+      </form>
 
     </div>
   )
