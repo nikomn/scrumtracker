@@ -11,7 +11,6 @@ const create = newObject => {
 }
 
 const addStory = (id, story) => {
-  console.log(`Lisätään storyä ${story.story}`)
   const request = axios.post(`${baseUrl}/${id}/stories`, story)
   return request.then(response => response.data)
 }

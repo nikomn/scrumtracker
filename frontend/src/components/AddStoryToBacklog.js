@@ -15,6 +15,7 @@ const AddStoryToBacklog = ({ userstory, backlogs, addStoryToSprintBacklog }) => 
       <h5>Add story to Sprint backlog</h5>
       <form onSubmit={addToBacklog}>
         <select
+          id='dropdown'
           value={sprintBacklog}
           onChange={({ target }) => setSprintBacklog(target.value)}
         >
