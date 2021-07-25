@@ -1,9 +1,9 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 import UserStory from './UserStory'
 import { Link } from 'react-router-dom'
 
-const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog }) => {
+const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserStory }) => {
   if (!backlog) {
     return null
   }
@@ -15,13 +15,19 @@ const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog }) => {
           {backlog.userstories.map(story =>
             <tr key={story.id}>
               <td>
-                <Link to={`/userstories/${story.id}`}>
-                  <UserStory
-                    userstory={story}
-                    backlogs={backlogs}
-                    addStoryToSprintBacklog={addStoryToSprintBacklog}
-                  />
-                </Link>
+                <UserStory
+                  userstory={story}
+                  backlogs={backlogs}
+                  addStoryToSprintBacklog={addStoryToSprintBacklog}
+                />
+              </td>
+              <td>
+                <p>
+                  <Link to={`/userstories/${story.id}`} className="btn btn-success">Info</Link>
+                </p>
+                <p>
+                  <Button variant="danger" onClick={() => deleteUserStory(story.id)}>delete</Button>
+                </p>
               </td>
             </tr>
           )}
