@@ -19,6 +19,7 @@ const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserS
                   userstory={story}
                   backlogs={backlogs}
                   addStoryToSprintBacklog={addStoryToSprintBacklog}
+                  storyView={null}
                 />
               </td>
               <td>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ProductBacklog from './components/ProductBacklog'
 import SprintBacklogList from './components/SprintBacklogList'
 import AddUserStory from './components/AddUserStory'
-import ModifyUserStory from './components/ModifyUserStory'
+//import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
 import backlogService from './services/sprintbacklogs'
 
@@ -155,6 +155,8 @@ const App = () => {
             userstory={userstory}
             backlogs={backlogs}
             addStoryToSprintBacklog={addStoryToSprintBacklog}
+            updateUserStory={updateUserStory}
+            storyView={''}
           />
         </Route>
         <Route path="/sprintbacklogs">
@@ -169,7 +171,7 @@ const App = () => {
             backlogs={backlogs}
             addStoryToSprintBacklog={addStoryToSprintBacklog} />
           <AddUserStory createNewStory={createUserStory} />
-          <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
+          {/* <ModifyUserStory stories={stories} updateUserStory={updateUserStory} /> */}
         </Route>
       </Switch>
     </div>

@@ -1,8 +1,9 @@
 import React from 'react'
 // import React, { useState } from 'react'
 import AddStoryToBacklog from './AddStoryToBacklog'
+import ModifyUserStory from './ModifyUserStory'
 
-const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog }) => {
+const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog, updateUserStory, storyView }) => {
   // const [sprintBacklog, setSprintBacklog] = useState('')
 
   // const addToBacklog = (event) => {
@@ -36,6 +37,13 @@ const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog }) => {
         backlogs={backlogs}
         addStoryToSprintBacklog={addStoryToSprintBacklog}
       />
+      {storyView !== null ? (
+        <div>
+          <ModifyUserStory story={userstory} updateUserStory={updateUserStory} />
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   )
 }

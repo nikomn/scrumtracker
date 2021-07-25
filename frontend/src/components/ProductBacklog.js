@@ -16,6 +16,7 @@ const ProductBacklog = ({ stories, deleteUserStory, backlogs, addStoryToSprintBa
                   userstory={story}
                   backlogs={backlogs}
                   addStoryToSprintBacklog={addStoryToSprintBacklog}
+                  storyView={null}
                 />
               </td>
               <td>

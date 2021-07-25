@@ -1,26 +1,14 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const ModifyUserStory = ( { stories, updateUserStory }) => {
-  const [story, setStory] = useState('')
+const ModifyUserStory = ( { story, updateUserStory }) => {
   const [newPriority, setNewPriority] = useState('')
   const [newStatus, setNewStatus] = useState('')
 
 
   const modifyStory = (event) => {
     event.preventDefault()
-    //console.log(stories)
-    const storyID = stories.filter(s => s.story.toLowerCase() === story.toLowerCase())
-    //console.log(storyID)
-    if (storyID[0]) {
-      const id = storyID[0].id
-      updateUserStory(id, newPriority, newStatus)
-    } else {
-      updateUserStory(null, newPriority, newStatus)
-    }
-
-
-    setStory('')
+    updateUserStory(story.id, newPriority, newStatus)
     setNewPriority('')
     setNewStatus('')
 
@@ -30,15 +18,6 @@ const ModifyUserStory = ( { stories, updateUserStory }) => {
       <h2>Modify User Story</h2>
       <Form onSubmit={modifyStory}>
         <Form.Group>
-          <Form.Label>User Story to modify</Form.Label>
-          <Form.Control
-            id='modify-story-input'
-            type="text"
-            name="userstory"
-            value={story}
-            placeholder="User Story to modify"
-            onChange={({ target }) => setStory(target.value)}
-          />
           <Form.Label>New priority</Form.Label>
           <Form.Control
             id='modify-priority-input'
