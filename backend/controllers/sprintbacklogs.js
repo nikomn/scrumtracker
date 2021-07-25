@@ -53,7 +53,7 @@ sprintBacklogsRouter.post('/:id/stories', async (request, response) => {
   SprintBacklog.findById(request.params.id).then((backlog) => {
     backlog.userstories = backlog.userstories.concat(story)
     backlog.save()
-    response.json(request.body)
+    response.json(backlog)
   })
   
 })

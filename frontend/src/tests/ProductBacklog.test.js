@@ -2,6 +2,9 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent } from '@testing-library/react'
 import ProductBacklog from '../components/ProductBacklog'
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
 
 test('product backlog renders', () => {
   const stories = []
@@ -39,8 +42,12 @@ test('Clicking delete button calls delete function with story id as param', () =
     },
   ]
 
+  const backlogs = []
+
   const component = render(
-    <ProductBacklog stories={stories} deleteUserStory={mockHandler} />
+    <Router>
+      <ProductBacklog stories={stories} deleteUserStory={mockHandler} backlogs={backlogs} />
+    </Router>
   )
 
   const button = component.getAllByText('delete')

@@ -12,8 +12,10 @@ test('user story content renders', () => {
     status: 'done'
   }
 
+  const backlogs= []
+
   const component = render(
-    <UserStory userstory={story} />
+    <UserStory userstory={story} backlogs={backlogs} />
   )
 
   expect(component.container).toHaveTextContent(

@@ -1,6 +1,22 @@
 import React from 'react'
+// import React, { useState } from 'react'
+import AddStoryToBacklog from './AddStoryToBacklog'
+import ModifyUserStory from './ModifyUserStory'
 
-const UserStory = ({ userstory }) => {
+const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog, updateUserStory, storyView }) => {
+  // const [sprintBacklog, setSprintBacklog] = useState('')
+
+  // const addToBacklog = (event) => {
+  //   event.preventDefault()
+  //   // console.log(story)
+  //   addStoryToSprintBacklog(userstory)
+  //   setSprintBacklog('')
+
+  // }
+
+  if (!userstory) {
+    return null
+  }
   return (
     <div className='userstory'>
       <p>
@@ -8,6 +24,26 @@ const UserStory = ({ userstory }) => {
         <b>Priority:</b> {userstory.priority} <br />
         <b>Status:</b> {userstory.status}
       </p>
+      {/* <select
+        value={sprintBacklog}
+        onChange={addToBacklog}
+      >
+        {backlogs.map(b =>
+          <option value={b.name} key={b.id}>{b.name}</option>
+        )}
+      </select> */}
+      <AddStoryToBacklog
+        userstory={userstory}
+        backlogs={backlogs}
+        addStoryToSprintBacklog={addStoryToSprintBacklog}
+      />
+      {storyView !== null ? (
+        <div>
+          <ModifyUserStory story={userstory} updateUserStory={updateUserStory} />
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   )
 }

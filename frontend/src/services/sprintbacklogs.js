@@ -10,4 +10,9 @@ const create = newObject => {
   return axios.post(baseUrl, newObject)
 }
 
-export default { getAll, create }
+const addStory = (id, story) => {
+  const request = axios.post(`${baseUrl}/${id}/stories`, story)
+  return request.then(response => response.data)
+}
+
+export default { getAll, create, addStory }

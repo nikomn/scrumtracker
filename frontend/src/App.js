@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ProductBacklog from './components/ProductBacklog'
 import SprintBacklogList from './components/SprintBacklogList'
 import AddUserStory from './components/AddUserStory'
-import ModifyUserStory from './components/ModifyUserStory'
+//import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
 import backlogService from './services/sprintbacklogs'
 
@@ -10,7 +10,7 @@ import {
   Switch, Route, Link, useRouteMatch
 } from 'react-router-dom'
 import SprintBacklog from './components/SprintBacklog'
-
+import UserStory from './components/UserStory'
 
 const App = () => {
   const [stories, setStories] = useState([])
@@ -18,6 +18,7 @@ const App = () => {
 
 
   useEffect(() => {
+    //console.log('use effect!')
     storyService
       .getAll()
       .then(initialStories => {
@@ -40,7 +41,7 @@ const App = () => {
   }
 
   const deleteUserStory = (id) => {
-    console.log('Story ' + id + ' will be removed...')
+    //console.log('Story ' + id + ' will be removed...')
     storyService
       .remove(id)
       // eslint-disable-next-line no-unused-vars
@@ -50,31 +51,25 @@ const App = () => {
   }
 
   const updateUserStory = (id, newPriority, newStatus) => {
-    console.log('id:', id)
-    console.log('newPriority:', newPriority)
-    console.log('newStatus:', newStatus)
+    // console.log('id:', id)
+    // console.log('newPriority:', newPriority)
+    // console.log('newStatus:', newStatus)
     if (id) {
-      //const storyID = stories.filter(s => s.story.toLowerCase() === story.toLowerCase())
-      //console.log(storyID)
-      //const id = storyID[0].id
       const story = stories.find(s => s.id === id)
       let changedStory = { ...story }
-      //let changedStory = { ...story, status: newStatus, priority: newPriority }
-      // console.log(story)
-      // let modifiedData = null
       if (newPriority === '' && newStatus === '') {
-        console.log('No changes made!')
+        //console.log('No changes made!')
       }
       if (newPriority !== '' && newStatus === '') {
-        console.log('Changing priority')
+        //console.log('Changing priority')
         changedStory = { ...story, priority: newPriority }
       }
       if (newPriority === '' && newStatus !== '') {
-        console.log('Changing status')
+        //console.log('Changing status')
         changedStory = { ...story, status: newStatus }
       }
       if (newPriority !== '' && newStatus !== '') {
-        console.log('Changing priority and status')
+        //console.log('Changing priority and status')
         changedStory = { ...story, status: newStatus, priority: newPriority }
       }
 
@@ -96,6 +91,28 @@ const App = () => {
 
   }
 
+  const addStoryToSprintBacklog = async (storyObject, backlog) => {
+    if (backlog !== '') {
+      const backlogToAdd = backlogs.find(b => b.id === backlog)
+      if (!backlogToAdd.userstories.find(s => s.id === storyObject.id)) {
+        await backlogService
+          .addStory(backlog, storyObject)
+          .then(response => {
+            console.log(response)
+            setBacklogs(backlogs.map(b => b.id !== backlog ? b : response))
+          })
+        alert('Story "' + storyObject.story + '" added to sprint backlog ' + backlogToAdd.name)
+
+      } else {
+        alert('Story "' + storyObject.story + '" already in sprint backlog ' + backlogToAdd.name)
+      }
+
+    } else {
+      alert('Select backlog from the dropdown menu')
+    }
+
+  }
+
 
 
 
@@ -108,7 +125,14 @@ const App = () => {
     ? backlogs.find(b => b.id === match.params.id)
     : null
 
-  //console.log(backlogs)
+  //console.log(stories)
+  const matchStory = useRouteMatch('/userstories/:id')
+  //console.log(matchStory)
+  const userstory = matchStory
+    ? stories.find(s => s.id === matchStory.params.id)
+    : null
+
+  //console.log(stories)
 
   return (
     <div className="container">
@@ -119,15 +143,35 @@ const App = () => {
 
       <Switch>
         <Route path="/sprintbacklogs/:id">
-          <SprintBacklog backlog={backlog} />
+          <SprintBacklog
+            backlog={backlog}
+            backlogs={backlogs}
+            addStoryToSprintBacklog={addStoryToSprintBacklog}
+            deleteUserStory={deleteUserStory}
+          />
+        </Route>
+        <Route path="/userstories/:id">
+          <UserStory
+            userstory={userstory}
+            backlogs={backlogs}
+            addStoryToSprintBacklog={addStoryToSprintBacklog}
+            updateUserStory={updateUserStory}
+            storyView={''}
+          />
         </Route>
         <Route path="/sprintbacklogs">
-          <SprintBacklogList backlogs={backlogs} createSprintBacklog={createSprintBacklog} />
+          <SprintBacklogList
+            backlogs={backlogs}
+            createSprintBacklog={createSprintBacklog} />
         </Route>
         <Route path="/">
-          <ProductBacklog stories={stories} deleteUserStory={deleteUserStory} />
+          <ProductBacklog
+            stories={stories}
+            deleteUserStory={deleteUserStory}
+            backlogs={backlogs}
+            addStoryToSprintBacklog={addStoryToSprintBacklog} />
           <AddUserStory createNewStory={createUserStory} />
-          <ModifyUserStory stories={stories} updateUserStory={updateUserStory} />
+          {/* <ModifyUserStory stories={stories} updateUserStory={updateUserStory} /> */}
         </Route>
       </Switch>
     </div>
