@@ -102,13 +102,19 @@ const App = () => {
     // console.log('Backlog ' + backlog)
     if (backlog !== '') {
       const backlogToAdd = backlogs.find(b => b.id === backlog)
-      await backlogService
-        .addStory(backlog, storyObject)
-        .then(response => {
-          console.log(response)
-          setBacklogs(backlogs.map(b => b.id !== backlog ? b : response))
-        })
-      alert('Story "' + storyObject.story + '" added to sprint backlog ' + backlogToAdd.name)
+      if (!backlogToAdd.userstories.find(s => s.id === storyObject.id)) {
+        await backlogService
+          .addStory(backlog, storyObject)
+          .then(response => {
+            console.log(response)
+            setBacklogs(backlogs.map(b => b.id !== backlog ? b : response))
+          })
+        alert('Story "' + storyObject.story + '" added to sprint backlog ' + backlogToAdd.name)
+
+      } else {
+        alert('Story "' + storyObject.story + '" already in sprint backlog ' + backlogToAdd.name)
+      }
+
     } else {
       alert('Select backlog from the dropdown menu')
     }
