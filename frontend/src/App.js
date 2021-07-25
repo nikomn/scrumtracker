@@ -97,9 +97,21 @@ const App = () => {
 
   }
 
-  const addStoryToSprintBacklog = (storyObject, backlog) => {
-    console.log('Story ' + storyObject.story)
-    alert('Story ' + storyObject.story + ' added to sprint backlog ' + backlog)
+  const addStoryToSprintBacklog = async (storyObject, backlog) => {
+    // if (backlog === '') {console.log('Backlogia ei määritelty')}
+    // console.log('Backlog ' + backlog)
+    if (backlog !== '') {
+      const backlogToAdd = backlogs.find(b => b.id === backlog)
+      await backlogService
+        .addStory(backlog, storyObject)
+        .then(response => {
+          console.log(response)
+          setBacklogs(backlogs.map(b => b.id !== backlog ? b : response))
+        })
+      alert('Story "' + storyObject.story + '" added to sprint backlog ' + backlogToAdd.name)
+    } else {
+      alert('Select backlog from the dropdown menu')
+    }
     // backlogService
     //   .addStory(id, storyObject)
     //   .then(response => {

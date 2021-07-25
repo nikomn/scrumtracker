@@ -20,7 +20,7 @@ const AddStoryToBacklog = ({ userstory, backlogs, addStoryToSprintBacklog }) => 
         >
           <option value='select sprint backlog'>select sprint backlog</option>
           {backlogs.map(b =>
-            <option value={b.name} key={b.id}>{b.name}</option>
+            <option value={b.id} key={b.id}>{b.name}</option>
           )}
         </select>
         <div>
