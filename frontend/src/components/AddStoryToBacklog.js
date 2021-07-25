@@ -12,7 +12,7 @@ const AddStoryToBacklog = ({ userstory, backlogs, addStoryToSprintBacklog }) => 
   }
   return (
     <div className="addToSprintBacklog">
-      <h2>Add story to Sprint backlog</h2>
+      <h5>Add story to Sprint backlog</h5>
       <form onSubmit={addToBacklog}>
         <select
           value={sprintBacklog}

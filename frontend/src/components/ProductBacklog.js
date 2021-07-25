@@ -12,7 +12,6 @@ const ProductBacklog = ({ stories, deleteUserStory, backlogs, addStoryToSprintBa
           {stories.map(story =>
             <tr key={story.id}>
               <td>
-                <Link to={`/userstories/${story.id}`}>story</Link>
                 <UserStory
                   userstory={story}
                   backlogs={backlogs}
@@ -21,10 +20,10 @@ const ProductBacklog = ({ stories, deleteUserStory, backlogs, addStoryToSprintBa
               </td>
               <td>
                 <p>
-                  <Button variant="danger" size="lg" onClick={() => deleteUserStory(story.id)}>delete</Button>
+                  <Link to={`/userstories/${story.id}`} className="btn btn-success">Info</Link>
                 </p>
                 <p>
-                  <Link to={`/userstories/${story.id}`} className="btn btn-success">Testi</Link>
+                  <Button variant="danger" onClick={() => deleteUserStory(story.id)}>delete</Button>
                 </p>
               </td>
 
