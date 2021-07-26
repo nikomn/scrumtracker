@@ -6,8 +6,17 @@ const userStoriesRouter = require('./controllers/userstories')
 const sprintBacklogsRouter = require('./controllers/sprintbacklogs')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
+app.use(cors())
+app.use(express.static('build'))
+app.use(express.json())
+
+app.use('/api/userstories', userStoriesRouter)
+app.use('/api/sprintbacklogs', sprintBacklogsRouter)
 
 //logger.info('connecting to', config.MONGODB_URI)
+
+const path = require('path')
+app.get('*', (req, res) => res.sendFile(path.resolve('build', 'index.html')))
 
 mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
   .then(() => {
@@ -16,12 +25,5 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
   .catch((error) => {
     logger.error('error connection to MongoDB:', error.message)
   })
-
-app.use(cors())
-app.use(express.static('build'))
-app.use(express.json())
-
-app.use('/api/userstories', userStoriesRouter)
-app.use('/api/sprintbacklogs', sprintBacklogsRouter)
 
 module.exports = app
