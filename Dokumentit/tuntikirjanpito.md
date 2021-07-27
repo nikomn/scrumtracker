@@ -26,4 +26,5 @@
 | 22.7. | 2    | Alustava toiminto storyjen lisäämiseen sprint backlogiin (frontend), refaktorointia |
 | 25.7. | 3.5    | Storyjen lisääminen frontendissä + testit, storyjen muokakkaus storykohtaiselle sivulle |
 | 26.7. | 1    | React router ongelmien selvittely (build/heroku -> cannot get virhe sivujen uudelleen latauksen yhteydessä) |
-| yht   | 48.5   | | 
+| 27.7. | 1    | Lisäominaisuuksien ideointia, käyttöliittymän jatko suunnittelua |
+| yht   | 49.5   | | 
