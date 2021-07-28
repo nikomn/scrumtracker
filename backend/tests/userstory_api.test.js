@@ -9,7 +9,7 @@ let demodata = [
   {
     story: 'As a user I want to create new user stories',
     priority: 1,
-    status: 'done'
+    status: 'done',
   },
   {
     story: 'As a user I want to modify user stories',
@@ -23,6 +23,21 @@ let demodata = [
   },
 ]
 
+let demotasks = [
+  {
+    name: 'Task 1',
+    status: 'done'
+  },
+  {
+    story: 'Task 2',
+    status: 'in progress'
+  },
+  {
+    story: 'Task 3',
+    status: 'not started'
+  },
+]
+
 const getStories = async () => {
   const stories = await api.get('/api/userstories')
   return stories
@@ -32,6 +47,16 @@ const addNewUserStory = async (newUserStoryObject) => {
   const result = await api
     .post('/api/userstories')
     .send(newUserStoryObject)
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+  return result
+}
+
+const addTask = async (taskObject, id) => {
+  //console.log('/api/sprintbacklogs/' + id + '/stories')
+  const result = await api
+    .post('/api/userstories/' + id + '/tasks')
+    .send(taskObject)
     .expect(200)
     .expect('Content-Type', /application\/json/)
   return result
@@ -146,6 +171,18 @@ test('User story can be deleted', async () => {
   expect(allStories.body[0]).not.toBe(storyToRemove)
   expect(allStories.body.length).toBe(numberOfStories - 1)
 
+})
+
+test('Task can be added to existing userstory', async () => {
+  let allStories = await getStories()
+  
+  await addTask(demotasks[0], allStories.body[0].id)
+
+  allStories = await getStories()
+  //console.log(allStories.body[3])
+  expect(allStories.body[0].tasks[0].name).toBe('Task 1')
+  expect(allStories.body[0].tasks[0].status).toBe('done')
+  
 })
 
 afterAll(() => {
