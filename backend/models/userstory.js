@@ -4,7 +4,13 @@ const userStorySchema = new mongoose.Schema({
   story: String,
   date: Date,
   status: String,
-  priority: Number
+  priority: Number,
+  tasks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Task',
+    },
+  ]
 })
 
 userStorySchema.set('toJSON', {
