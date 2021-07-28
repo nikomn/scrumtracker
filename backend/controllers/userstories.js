@@ -4,6 +4,7 @@
 
 const userStoriesRouter = require('express').Router()
 const UserStory = require('../models/userstory')
+const Task = require('../models/task')
 
 userStoriesRouter.get('/', (request, response) => {
   UserStory.find({}).then(stories => {
@@ -45,6 +46,26 @@ userStoriesRouter.post('/', (request, response) => {
     response.json(savedUserStory)
   })
 })
+
+userStoriesRouter.post('/:id/tasks', async (request, response) => {
+  if (!request.body) {
+    return response.status(400).json({ 
+      error: 'task not found' 
+    })
+  }
+  
+  const taskToAdd = new Task(request.body)
+  await taskToAdd.save()
+  
+
+  UserStory.findById(request.params.id).then((story) => {
+    story.tasks = story.tasks.concat(taskToAdd)
+    story.save()
+    response.json(story)
+  })
+
+})
+
 
 userStoriesRouter.put('/:id', (request, response) => {
   UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body })
