@@ -6,10 +6,17 @@ const userStoriesRouter = require('express').Router()
 const UserStory = require('../models/userstory')
 const Task = require('../models/task')
 
-userStoriesRouter.get('/', (request, response) => {
-  UserStory.find({}).then(stories => {
-    response.json(stories.map(story => story.toJSON()))
+userStoriesRouter.get('/', async (request, response) => {
+  const userstories = await UserStory.find({}).populate('tasks', {
+    name: 1,
+    status: 1
   })
+  response.json(userstories.map((story) => story.toJSON()))
+  
+  
+  // UserStory.find({}).then(stories => {
+  //   response.json(stories.map(story => story.toJSON()))
+  // })
 })
 
 /* userStoriesRouter.get('/', async (request, response) => { 
