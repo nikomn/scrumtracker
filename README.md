@@ -18,3 +18,15 @@ Sovelluksen staging (tai näkökulmasta riippuen tuotanto) versio pyörii Heroku
 
 # Työaikakirjanpito
 - [Työaikakirjanpito](Dokumentit/tuntikirjanpito.md)
+
+# Backlogit
+
+Työn etenemistä ja suunnitelmia voi seurata product backlogista ja sprint backlogeista.
+
+- [ProductBacklog](Dokumentit/productbacklog.md)
+- [Sprint 0](Dokumentit/sprint0backlog.md)
+- [Sprint 1](Dokumentit/sprint1backlog.md)
+- [Sprint 2](Dokumentit/sprint2backlog.md)
+- [Sprint 3](Dokumentit/sprint3backlog.md)
+- [Sprint 4](Dokumentit/sprint4backlog.md)
+- [Sprint 5](Dokumentit/sprint5backlog.md)

@@ -27,4 +27,5 @@
 | 25.7. | 3.5    | Storyjen lisääminen frontendissä + testit, storyjen muokakkaus storykohtaiselle sivulle |
 | 26.7. | 1    | React router ongelmien selvittely (build/heroku -> cannot get virhe sivujen uudelleen latauksen yhteydessä) |
 | 27.7. | 1    | Lisäominaisuuksien ideointia, käyttöliittymän jatko suunnittelua |
-| yht   | 49.5   | | 
+| 28.7. | 2    | Backlogien päivittämistä, Taskien lisääminen backendiin ja testit |
+| yht   | 51.5   | | 
