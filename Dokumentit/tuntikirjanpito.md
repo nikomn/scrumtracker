@@ -28,4 +28,5 @@
 | 26.7. | 1    | React router ongelmien selvittely (build/heroku -> cannot get virhe sivujen uudelleen latauksen yhteydessä) |
 | 27.7. | 1    | Lisäominaisuuksien ideointia, käyttöliittymän jatko suunnittelua |
 | 28.7. | 2    | Backlogien päivittämistä, Taskien lisääminen backendiin ja testit |
-| yht   | 51.5   | | 
+| 2.8. | 2    | Toiminnallisuus taskien lisäämiseen frontendissä |
+| yht   | 53.5   | | 
