@@ -4,8 +4,17 @@ import { Table } from 'react-bootstrap'
 import AddStoryToBacklog from './AddStoryToBacklog'
 import ModifyUserStory from './ModifyUserStory'
 import Task from './Task'
+import AddTask from './AddTask'
 
-const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog, updateUserStory, storyView }) => {
+const UserStory = (
+  {
+    userstory,
+    backlogs,
+    addStoryToSprintBacklog,
+    updateUserStory,
+    storyView,
+    addTaskToStory
+  }) => {
   // const [sprintBacklog, setSprintBacklog] = useState('')
 
   // const addToBacklog = (event) => {
@@ -42,6 +51,7 @@ const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog, updateUserSto
               )}
             </tbody>
           </Table>
+          <AddTask createNewTask={addTaskToStory} story={userstory.id} />
         </div>
       ) : (
         <div>

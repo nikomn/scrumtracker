@@ -113,6 +113,24 @@ const App = () => {
 
   }
 
+  const addTaskToStory = async (taskObject, story) => {
+
+    const storyToAdd = stories.find(s => s.id === story)
+
+    await storyService
+      .addTask(story, taskObject)
+      .then(response => {
+        console.log(response)
+        setStories(stories.map(s => s.id !== story ? s : response))
+      })
+    alert('Task "' + taskObject.name + '" added to story ' + storyToAdd.story)
+
+
+
+
+
+  }
+
 
 
 
@@ -157,6 +175,7 @@ const App = () => {
             addStoryToSprintBacklog={addStoryToSprintBacklog}
             updateUserStory={updateUserStory}
             storyView={''}
+            addTaskToStory={addTaskToStory}
           />
         </Route>
         <Route path="/sprintbacklogs">
