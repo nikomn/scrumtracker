@@ -98,7 +98,8 @@ const App = () => {
         await backlogService
           .addStory(backlog, storyObject)
           .then(response => {
-            console.log(response)
+            //console.log(response)
+            //console.log(backlogs)
             setBacklogs(backlogs.map(b => b.id !== backlog ? b : response))
           })
         alert('Story "' + storyObject.story + '" added to sprint backlog ' + backlogToAdd.name)
@@ -114,21 +115,20 @@ const App = () => {
   }
 
   const addTaskToStory = async (taskObject, story) => {
-
-    const storyToAdd = stories.find(s => s.id === story)
+    const storyToAdd = stories.find(st => st.id === story)
+    // console.log(storyToAdd)
 
     await storyService
       .addTask(story, taskObject)
       .then(response => {
-        console.log(response)
-        setStories(stories.map(s => s.id !== story ? s : response))
+        // console.log(response)
+        const newStories = stories.map(s => s.id !== story ? s : response)
+        // setStories(stories.map(s => s.id !== story ? s : response))
+        // console.log(newStories)
+        setStories(newStories)
       })
     alert('Task "' + taskObject.name + '" added to story ' + storyToAdd.story)
-
-
-
-
-
+    // console.log(stories)
   }
 
 
