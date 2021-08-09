@@ -30,5 +30,5 @@
 | 28.7. | 2    | Backlogien päivittämistä, Taskien lisääminen backendiin ja testit |
 | 2.8. | 2    | Toiminnallisuus taskien lisäämiseen frontendissä |
 | 3.8. | 2    | Taskien lisäyksen / staten päivittämiseen liittyvien ongelmien selvittelyä |
-| 9.8. | 2    | Taskien lisäyksen / staten päivittämiseen liittyvien ongelmien jatko selvittelyä |
-| yht   | 57.5   | | 
+| 9.8. | 2.5    | Taskien lisäyksen / staten päivittämiseen liittyvien ongelmien jatko selvittelyä |
+| yht   | 58   | | 
