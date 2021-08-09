@@ -65,7 +65,10 @@ userStoriesRouter.post('/:id/tasks', async (request, response) => {
   await taskToAdd.save()
   
 
-  UserStory.findById(request.params.id).then((story) => {
+  UserStory.findById(request.params.id).populate('tasks', {
+    name: 1,
+    status: 1
+  }).then((story) => {
     story.tasks = story.tasks.concat(taskToAdd)
     story.save()
     response.json(story)

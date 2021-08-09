@@ -6,15 +6,13 @@ const AddTask = ({ createNewTask, story }) => {
   const [status, setStatus] = useState('new')
 
 
-  const addTask = async (event) => {
+  const addTask = (event) => {
     event.preventDefault()
     const newTaskObject = {
       name: task,
       status: status
     }
-    await createNewTask(newTaskObject, story)
-    window.location.reload()
-    //alert('Task "' + newTaskObject.name + '" added to story ' + story)
+    createNewTask(newTaskObject, story)
     setTask('')
     setStatus('new')
 

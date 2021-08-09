@@ -115,14 +115,14 @@ const App = () => {
   }
 
   const addTaskToStory = async (taskObject, story) => {
-    //const storyToAdd = stories.find(st => st.id === story)
+    const storyToAdd = stories.find(st => st.id === story)
 
     await storyService
       .addTask(story, taskObject)
       .then(response => {
         setStories(stories.map(s => s.id !== story ? s : response))
       })
-    //alert('Task "' + taskObject.name + '" added to story ' + storyToAdd.story)
+    alert('Task "' + taskObject.name + '" added to story ' + storyToAdd.story)
 
   }
 

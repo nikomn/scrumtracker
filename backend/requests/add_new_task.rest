@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/userstories/60e00aeb9b9b21330bd61087/tasks
+POST http://localhost:3001/api/userstories/6108e0d5d5d24b436e2227dc/tasks
 Content-Type: application/json
 
 {
-    "name": "New task 2",
+    "name": "New task test new 3",
     "status": "new"
   }
 
