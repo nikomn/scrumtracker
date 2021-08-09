@@ -115,20 +115,15 @@ const App = () => {
   }
 
   const addTaskToStory = async (taskObject, story) => {
-    const storyToAdd = stories.find(st => st.id === story)
-    // console.log(storyToAdd)
+    //const storyToAdd = stories.find(st => st.id === story)
 
     await storyService
       .addTask(story, taskObject)
       .then(response => {
-        // console.log(response)
-        const newStories = stories.map(s => s.id !== story ? s : response)
-        // setStories(stories.map(s => s.id !== story ? s : response))
-        // console.log(newStories)
-        setStories(newStories)
+        setStories(stories.map(s => s.id !== story ? s : response))
       })
-    alert('Task "' + taskObject.name + '" added to story ' + storyToAdd.story)
-    // console.log(stories)
+    //alert('Task "' + taskObject.name + '" added to story ' + storyToAdd.story)
+
   }
 
 
