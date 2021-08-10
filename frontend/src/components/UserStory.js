@@ -1,9 +1,20 @@
 import React from 'react'
 // import React, { useState } from 'react'
+import { Table } from 'react-bootstrap'
 import AddStoryToBacklog from './AddStoryToBacklog'
 import ModifyUserStory from './ModifyUserStory'
+import Task from './Task'
+import AddTask from './AddTask'
 
-const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog, updateUserStory, storyView }) => {
+const UserStory = (
+  {
+    userstory,
+    backlogs,
+    addStoryToSprintBacklog,
+    updateUserStory,
+    storyView,
+    addTaskToStory
+  }) => {
   // const [sprintBacklog, setSprintBacklog] = useState('')
 
   // const addToBacklog = (event) => {
@@ -19,30 +30,42 @@ const UserStory = ({ userstory, backlogs, addStoryToSprintBacklog, updateUserSto
   }
   return (
     <div className='userstory'>
-      <p>
-        <b>User Story:</b> {userstory.story} <br />
-        <b>Priority:</b> {userstory.priority} <br />
-        <b>Status:</b> {userstory.status}
-      </p>
-      {/* <select
-        value={sprintBacklog}
-        onChange={addToBacklog}
-      >
-        {backlogs.map(b =>
-          <option value={b.name} key={b.id}>{b.name}</option>
-        )}
-      </select> */}
-      <AddStoryToBacklog
-        userstory={userstory}
-        backlogs={backlogs}
-        addStoryToSprintBacklog={addStoryToSprintBacklog}
-      />
       {storyView !== null ? (
         <div>
+          <h1>{userstory.story}</h1>
+          <p>
+            <b>User Story:</b> {userstory.story} <br />
+            <b>Priority:</b> {userstory.priority} <br />
+            <b>Status:</b> {userstory.status}
+          </p>
           <ModifyUserStory story={userstory} updateUserStory={updateUserStory} />
+          <h2>Technical tasks</h2>
+          <Table striped hover>
+            <tbody>
+              {userstory.tasks.map(task =>
+                <tr key={task.id}>
+                  <td>
+                    <Task task={task} />
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
+          <AddTask createNewTask={addTaskToStory} story={userstory.id} />
         </div>
       ) : (
-        ''
+        <div>
+          <p>
+            <b>User Story:</b> {userstory.story} <br />
+            <b>Priority:</b> {userstory.priority} <br />
+            <b>Status:</b> {userstory.status}
+          </p>
+          <AddStoryToBacklog
+            userstory={userstory}
+            backlogs={backlogs}
+            addStoryToSprintBacklog={addStoryToSprintBacklog}
+          />
+        </div>
       )}
     </div>
   )

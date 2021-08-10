@@ -27,4 +27,9 @@ const remove = id => {
   return request.then(response => response.data)
 }
 
-export default { getAll, create, update, remove }
+const addTask = (id, task) => {
+  const request = axios.post(`${baseUrl}/${id}/tasks`, task)
+  return request.then(response => response.data)
+}
+
+export default { getAll, create, update, remove, addTask }

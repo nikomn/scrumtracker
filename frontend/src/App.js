@@ -98,7 +98,8 @@ const App = () => {
         await backlogService
           .addStory(backlog, storyObject)
           .then(response => {
-            console.log(response)
+            //console.log(response)
+            //console.log(backlogs)
             setBacklogs(backlogs.map(b => b.id !== backlog ? b : response))
           })
         alert('Story "' + storyObject.story + '" added to sprint backlog ' + backlogToAdd.name)
@@ -110,6 +111,18 @@ const App = () => {
     } else {
       alert('Select backlog from the dropdown menu')
     }
+
+  }
+
+  const addTaskToStory = async (taskObject, story) => {
+    const storyToAdd = stories.find(st => st.id === story)
+
+    await storyService
+      .addTask(story, taskObject)
+      .then(response => {
+        setStories(stories.map(s => s.id !== story ? s : response))
+      })
+    alert('Task "' + taskObject.name + '" added to story ' + storyToAdd.story)
 
   }
 
@@ -157,6 +170,7 @@ const App = () => {
             addStoryToSprintBacklog={addStoryToSprintBacklog}
             updateUserStory={updateUserStory}
             storyView={''}
+            addTaskToStory={addTaskToStory}
           />
         </Route>
         <Route path="/sprintbacklogs">

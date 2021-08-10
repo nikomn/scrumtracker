@@ -9,7 +9,8 @@ test('user story content renders', () => {
     story: 'Testing with Jest',
     priority: 1,
     date: '2021-06-17T08:30:31.123Z',
-    status: 'done'
+    status: 'done',
+    tasks: []
   }
 
   const backlogs= []
