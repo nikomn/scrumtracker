@@ -11,14 +11,15 @@
 |     1        | Asiakkaana haluan, että product backlog näkymä on selkeä ja helposti hahmotettavaissa |   3    | **done** |
 |     1        | Tiimiläisenä haluan, pystyä luomaan oman erillisen sprinttikohtaisen sprint backlog näkymän |    4   | **done** |
 |     1        | Asiakkaana ja tiimiläisenä haluan, että sprint backlogiin voi lisätä storyjä product backlogista |  4   | **done** |
-|     1        | Storyn voi merkata valmistuneeksi |     5  |  _suunniteltu_  |
-|     1        | Varsinaisten user storyjen lisäksi sprint backlog kohtaisia taskeja, joihin voi liittyä teknisiä taskeja samalla tavalla kuin varsinaisiin user storyihin |     5  | _suunniteltu_   |
-|     1        | Valmiin storyn voi vaihtaa takaisin ei-valmis tilaan |   5    | _suunniteltu_  |
-|    2         | Taskin voi merkata tehdyksi |      5 |  _suunniteltu_ |
-|     2      | Aktiivisen sprint backlogin määrittely |    5  | _suunniteltu_ |
-|     2      | User storyja voi lisätä vain aktiiviseen sprint backlogiin |   5   | _suunniteltu_ |
-|    2        | Task kohtainen story point työmäärä-arvio |    5  | _suunniteltu_ |
-|     2        | Valmista storyä ei voi lisätä sprint backlogiin |    5   | _suunniteltu_ |
+|     1        | Sprint backlogeissa user storyt jaoteltuna teknisinä taskeina |     5  |  **done**  |
+|     1        | Storyille on olemassa valmiiksi määritellyt statukset (new, planned, done), joista voi valita |     6  |  _suunniteltu_  |
+|     1        | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita |     6  |  _suunniteltu_  |
+|     1        | Varsinaisten user storyjen lisäksi sprint backlog kohtaisia taskeja, joihin voi liittyä teknisiä taskeja samalla tavalla kuin varsinaisiin user storyihin |     6  | _suunniteltu_   |
+|    2        | Story kohtainen story point työmäärä-arvio |   6   | _suunniteltu_ |
+|    2        | Task kohtainen työmäärä-arvio |       |    |
+|     2      | Aktiivisen sprint backlogin määrittely |       |  |
+|     2      | User storyja voi lisätä vain aktiiviseen sprint backlogiin |      |  |
+|     2        | Valmista storyä ei voi lisätä sprint backlogiin |        |       |
 |     3      | Sovellukseen voi luoda käyttäjätunnuksen ja salasanan |        |         |
 |     3      | Sovellusta ei saa käyttää ilman tunnuksia ja kirjautumista |        |         |
 |     3      | Sovelluksessa on 'team member'-rooli |        |         |
