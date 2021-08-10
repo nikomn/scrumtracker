@@ -50,7 +50,11 @@ sprintBacklogsRouter.post('/:id/stories', async (request, response) => {
     })
   }
 
-  SprintBacklog.findById(request.params.id).then((backlog) => {
+  SprintBacklog.findById(request.params.id).populate('userstories', {
+    story: 1,
+    priority: 1,
+    status: 1
+  }).then((backlog) => {
     backlog.userstories = backlog.userstories.concat(story)
     backlog.save()
     response.json(backlog)
