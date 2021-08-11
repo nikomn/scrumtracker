@@ -22,17 +22,17 @@ let demostories = [
   {
     story: 'As a user I want to create new user stories',
     priority: 1,
-    status: 'done'
+    status: 'new'
   },
   {
     story: 'As a user I want to modify user stories',
     priority: 2,
-    status: 'in progress'
+    status: 'new'
   },
   {
     story: 'As a user I want to delete user stories',
     priority: 99,
-    status: 'not started'
+    status: 'new'
   },
 ]
 
@@ -104,7 +104,7 @@ test('User story can be added to existing backlog', async () => {
   //console.log(allStories.body[3])
   expect(allBacklogs.body[0].userstories[0].story).toBe('As a user I want to create new user stories')
   expect(allBacklogs.body[0].userstories[0].priority).toBe(1)
-  expect(allBacklogs.body[0].userstories[0].status).toBe('done')
+  expect(allBacklogs.body[0].userstories[0].status).toBe('new')
   
 })
 
