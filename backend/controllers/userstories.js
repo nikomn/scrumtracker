@@ -40,6 +40,11 @@ userStoriesRouter.post('/', (request, response) => {
   if (status === '') {
     status = 'new'
   }
+  if (status !== 'new' || status !== 'planned' | status !== 'done') {
+    return response.status(400).json({ 
+      error: 'status must be new, planned, or done' 
+    })
+  }
 
 
   const newStoryObject = new UserStory({
