@@ -9,17 +9,17 @@ let demodata = [
   {
     story: 'As a user I want to create new user stories',
     priority: 1,
-    status: 'done',
+    status: 'new',
   },
   {
     story: 'As a user I want to modify user stories',
     priority: 2,
-    status: 'in progress'
+    status: 'new'
   },
   {
     story: 'As a user I want to delete user stories',
     priority: 99,
-    status: 'not started'
+    status: 'new'
   },
 ]
 
@@ -105,11 +105,11 @@ test('all user stories are returned', async () => {
   expect(response.body).toHaveLength(demodata.length)
 })
 
-test('new user story with priority "123" and status "testing" can be added', async () => {
+test('new user story with priority "123" and status "new" can be added', async () => {
   const newUserStory = {
     story: 'Testing adding a new user story',
     priority: 123,
-    status: 'testing'
+    status: 'new'
   }
 
   await addNewUserStory(newUserStory)
@@ -119,7 +119,7 @@ test('new user story with priority "123" and status "testing" can be added', asy
   expect(allStories.body).toHaveLength(demodata.length + 1)
   expect(allStories.body[3].story).toBe('Testing adding a new user story')
   expect(allStories.body[3].priority).toBe(123)
-  expect(allStories.body[3].status).toBe('testing')
+  expect(allStories.body[3].status).toBe('new')
   
 })
 
@@ -147,13 +147,13 @@ test('User story status can be modified', async () => {
 
   
   const modifiedStatus = {
-    'status':'modified',
+    'status':'done',
   }
 
   await modifyUserStory(id, modifiedStatus)
   allStories = await getStories()
 
-  expect(allStories.body[0].status).toBe('modified')
+  expect(allStories.body[0].status).toBe('done')
 
 })
 
@@ -182,6 +182,25 @@ test('Task can be added to existing userstory', async () => {
   //console.log(allStories.body[3])
   expect(allStories.body[0].tasks[0].name).toBe('Task 1')
   expect(allStories.body[0].tasks[0].status).toBe('done')
+  
+})
+
+test('Userstory can not be added with invalid status', async () => {
+  const newUserStory = {
+    story: 'Testing adding a new user story',
+    priority: 123,
+    status: 'not valid'
+  }
+  await api
+    .post('/api/userstories')
+    .send(newUserStory)
+    .expect(400)
+    .expect('Content-Type', /application\/json/)
+
+
+  const allStories = await getStories()
+  expect(allStories.body).toHaveLength(demodata.length)
+  
   
 })
 

@@ -3,7 +3,13 @@ const mongoose = require('mongoose')
 const userStorySchema = new mongoose.Schema({
   story: String,
   date: Date,
-  status: String,
+  status: {
+    type: String,
+    enum: {
+      values: ['new', 'planned', 'done'],
+      message: '{VALUE} is not valid value for status'
+    },
+  },
   priority: Number,
   tasks: [
     {
