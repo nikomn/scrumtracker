@@ -3,7 +3,13 @@ const mongoose = require('mongoose')
 const taskSchema = new mongoose.Schema({
   name: String,
   date: Date,
-  status: String,
+  status: {
+    type: String,
+    enum: {
+      values: ['waiting', 'doing', 'done'],
+      message: '{VALUE} is not valid value for status'
+    },
+  }
 })
 
 taskSchema.set('toJSON', {

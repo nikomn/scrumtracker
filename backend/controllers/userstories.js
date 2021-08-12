@@ -65,6 +65,12 @@ userStoriesRouter.post('/:id/tasks', async (request, response) => {
       error: 'task not found' 
     })
   }
+
+  if (request.body.status !== 'waiting' && request.body.status !== 'doing' && request.body.status !== 'done') {
+    return response.status(400).json({ 
+      error: 'status must be waiting, doing, or done' 
+    })
+  }
   
   const taskToAdd = new Task(request.body)
   await taskToAdd.save()
