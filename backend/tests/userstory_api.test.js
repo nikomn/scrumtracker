@@ -30,7 +30,7 @@ let demotasks = [
   },
   {
     story: 'Task 2',
-    status: 'in progress'
+    status: 'waiting'
   },
   {
     story: 'Task 3',
@@ -197,10 +197,25 @@ test('Userstory can not be added with invalid status', async () => {
     .expect(400)
     .expect('Content-Type', /application\/json/)
 
-
   const allStories = await getStories()
   expect(allStories.body).toHaveLength(demodata.length)
   
+  
+})
+
+test('Task can not be added with invalid status', async () => {
+  let allStories = await getStories()
+  const numOfTasks = allStories.body[0].tasks.length
+
+  await api
+    .post('/api/userstories/' + allStories.body[0].id + '/tasks')
+    .send(demotasks[2])
+    .expect(400)
+    .expect('Content-Type', /application\/json/)
+  
+  allStories = await getStories()
+  //console.log(allStories.body[3])
+  expect(allStories.body[0].tasks.length).toBe(numOfTasks)
   
 })
 
