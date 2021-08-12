@@ -47,7 +47,7 @@ const AddUserStory = ({ createNewStory }) => {
           <div>Status</div>
           <p>
             <select
-              id='dropdown'
+              id='status-dropdown'
               value={status}
               onChange={({ target }) => setStatus(target.value)}
             >

@@ -4,10 +4,13 @@ import { render, fireEvent } from '@testing-library/react'
 import ModifyUserStory from '../components/ModifyUserStory'
 
 test('<ModifyUserStory /> form renders', () => {
-  const stories = []
+  const userstory = {
+    id: 1,
+    story: 'test story'
+  }
 
   const component = render(
-    <ModifyUserStory stories={stories} updateUserStory={null} />
+    <ModifyUserStory story={userstory} updateUserStory={null} />
   )
 
   expect(component.container).toHaveTextContent(
@@ -54,15 +57,16 @@ test('<ModifyUserStory /> updates parent state and calls onSubmit', () => {
   //component.debug()
 
   const priorityinput = component.container.querySelector('#modify-priority-input')
-  const statusinput = component.container.querySelector('#modify-status-input')
+  //const statusinput = component.container.querySelector('#modify-status-input')
+  const statusdropdown = component.container.querySelector('#modify-status-dropdown')
   //console.log(statusinput)
   const form = component.container.querySelector('form')
 
   fireEvent.change(priorityinput, {
     target: { value: 123 }
   })
-  fireEvent.change(statusinput, {
-    target: { value: 'modified' }
+  fireEvent.change(statusdropdown, {
+    target: { value: 'planned' }
   })
 
 
@@ -73,5 +77,5 @@ test('<ModifyUserStory /> updates parent state and calls onSubmit', () => {
 
   expect(mockHandler.mock.calls[0][0]).toBe(1)
   expect(mockHandler.mock.calls[0][1]).toBe('123')
-  expect(mockHandler.mock.calls[0][2]).toBe('modified')
+  expect(mockHandler.mock.calls[0][2]).toBe('planned')
 })

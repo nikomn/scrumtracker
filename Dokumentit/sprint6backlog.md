@@ -4,7 +4,7 @@
 | :-----------:|:-----------| :------| :------|
 | Storyille on olemassa valmiiksi määritellyt statukset (new, planned, done), joista voi valita | Tietokanta: Storyjen statuksille validointi? | 1 | done |
 | Storyille on olemassa valmiiksi määritellyt statukset (new, planned, done), joista voi valita | Back end: Storyjen virheellisestä statuksesta virheilmoitus | 2 | done |
-| Storyille on olemassa valmiiksi määritellyt statukset (new, planned, done), joista voi valita | Front end: Storyn statuksen valinta dropdown menusta | 3 | waiting |
+| Storyille on olemassa valmiiksi määritellyt statukset (new, planned, done), joista voi valita | Front end: Storyn statuksen valinta dropdown menusta | 3 | done |
 | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita | Tietokanta: Taskien statuksille validointi? | 1 | waiting |
 | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita | Back end: Taskien virheellisestä statuksesta virheilmoitus | 2 | waiting |
 | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita | Front end: Taskin statuksen valinta dropdown menusta | 2 | waiting |
