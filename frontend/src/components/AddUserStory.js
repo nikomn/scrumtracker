@@ -44,15 +44,18 @@ const AddUserStory = ({ createNewStory }) => {
             placeholder="Priority"
             onChange={({ target }) => setPriority(target.value)}
           />
-          <Form.Label>Status</Form.Label>
-          <Form.Control
-            id='status-input'
-            type="text"
-            name="status"
-            value={status}
-            placeholder="Status"
-            onChange={({ target }) => setStatus(target.value)}
-          />
+          <div>Status</div>
+          <p>
+            <select
+              id='status-dropdown'
+              value={status}
+              onChange={({ target }) => setStatus(target.value)}
+            >
+              <option value='new'>new</option>
+              <option value='planned'>planned</option>
+              <option value='done'>done</option>
+            </select>
+          </p>
           <Button variant="success" type="submit">
             Add new story
           </Button>

@@ -3,14 +3,13 @@ import { Form, Button } from 'react-bootstrap'
 
 const ModifyUserStory = ( { story, updateUserStory }) => {
   const [newPriority, setNewPriority] = useState('')
-  const [newStatus, setNewStatus] = useState('')
+  const [newStatus, setNewStatus] = useState(story.status)
 
 
   const modifyStory = (event) => {
     event.preventDefault()
     updateUserStory(story.id, newPriority, newStatus)
     setNewPriority('')
-    setNewStatus('')
 
   }
   return (
@@ -27,15 +26,18 @@ const ModifyUserStory = ( { story, updateUserStory }) => {
             placeholder="New priority"
             onChange={({ target }) => setNewPriority(target.value)}
           />
-          <Form.Label>New Status</Form.Label>
-          <Form.Control
-            id='modify-status-input'
-            type="text"
-            name="status"
-            value={newStatus}
-            placeholder="New Status"
-            onChange={({ target }) => setNewStatus(target.value)}
-          />
+          <div>New Status</div>
+          <p>
+            <select
+              id='modify-status-dropdown'
+              value={newStatus}
+              onChange={({ target }) => setNewStatus(target.value)}
+            >
+              <option value='new'>new</option>
+              <option value='planned'>planned</option>
+              <option value='done'>done</option>
+            </select>
+          </p>
           <Button variant="success" type="submit">
           Update story
           </Button>
