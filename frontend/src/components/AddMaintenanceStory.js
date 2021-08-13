@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const AddUserStory = ({ createNewStory }) => {
+const AddMaintenanceStory = ({ createNewStory }) => {
   const [story, setStory] = useState('')
   const [priority, setPriority] = useState(99)
   const [status, setStatus] = useState('new')
@@ -14,7 +14,7 @@ const AddUserStory = ({ createNewStory }) => {
       story: story,
       priority: priority,
       status: status,
-      type: 'story'
+      type: 'other'
     }
     createNewStory(newStoryObject)
     setStory('')
@@ -65,4 +65,4 @@ const AddUserStory = ({ createNewStory }) => {
     </div>
   )
 }
-export default AddUserStory
+export default AddMaintenanceStory
