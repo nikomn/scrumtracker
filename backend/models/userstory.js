@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const userStorySchema = new mongoose.Schema({
   story: String,
+  type: String,
   date: Date,
   status: {
     type: String,

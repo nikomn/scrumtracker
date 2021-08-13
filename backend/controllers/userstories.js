@@ -49,6 +49,7 @@ userStoriesRouter.post('/', (request, response) => {
 
   const newStoryObject = new UserStory({
     story: body.story,
+    type: body.type,
     date: new Date(),
     status: status,
     priority: body.priority
