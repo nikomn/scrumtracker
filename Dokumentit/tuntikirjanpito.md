@@ -34,4 +34,5 @@
 | 10.8. | 2    | Taskien lisäyksen viimeistely + testien täydennyt, backlogien päivittämistä |
 | 11.8. | 2    | Storyille valmiiksi määritellyt statukset, backend puoli |
 | 12.8. | 2    | Storyille valmiiksi määritellyt statukset, frontend puoli, Taskeille valmiit statukset, backend puoli |
-| yht   | 64   | | 
+| 13.8. | 2    | Taskeille valmiit statukset, frontend puoli, Erilliset maintenance taskit backend puolelle ja vastaavan toiminnallisuuden alustus frontendiin |
+| yht   | 66   | | 
