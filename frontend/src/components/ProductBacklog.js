@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import UserStory from './UserStory'
 
 const ProductBacklog = ({ stories, deleteUserStory, backlogs, addStoryToSprintBacklog }) => {
+  const filteredStories = stories.filter(s => s.type === 'story')
   return (
     <div>
       <h2>Product Backlog</h2>
       <Table striped hover>
         <tbody>
-          {stories.map(story =>
+          {filteredStories.map(story =>
             <tr key={story.id}>
               <td>
                 <UserStory
