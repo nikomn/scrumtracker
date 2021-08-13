@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const AddMaintenanceStory = ({ createNewStory }) => {
+const AddMaintenanceStory = ({ createNewStory, backlog, addStoryToSprintBacklog }) => {
   const [story, setStory] = useState('')
   const [priority, setPriority] = useState(99)
   const [status, setStatus] = useState('new')
@@ -17,6 +17,8 @@ const AddMaintenanceStory = ({ createNewStory }) => {
       type: 'other'
     }
     createNewStory(newStoryObject)
+    const storyObject = backlog.userstories.find(s => s.story === story)
+    addStoryToSprintBacklog(storyObject, backlog.id)
     setStory('')
     setPriority(99)
     setStatus('new')
@@ -24,7 +26,7 @@ const AddMaintenanceStory = ({ createNewStory }) => {
   }
   return (
     <div className="addUserStoryForm">
-      <h2>Add new User Story</h2>
+      <h2>Add maintenance story</h2>
       <Form onSubmit={addStory}>
         <Form.Group>
           <Form.Label>User Story</Form.Label>
