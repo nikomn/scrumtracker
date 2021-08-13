@@ -7,7 +7,7 @@
 | Storyille on olemassa valmiiksi määritellyt statukset (new, planned, done), joista voi valita | Front end: Storyn statuksen valinta dropdown menusta | 3 | done |
 | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita | Tietokanta: Taskien statuksille validointi? | 1 | done |
 | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita | Back end: Taskien virheellisestä statuksesta virheilmoitus | 2 | done |
-| Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita | Front end: Taskin statuksen valinta dropdown menusta | 2 | waiting |
+| Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita | Front end: Taskin statuksen valinta dropdown menusta | 2 | done |
 | Varsinaisten user storyjen lisäksi sprint backlog kohtaisia taskeja, joihin voi liittyä teknisiä taskeja samalla tavalla kuin varsinaisiin user storyihin | Tietokanta: UserStory modelin laajentaminen sisältämään kenttä, joka pitää kirjaa Storyn tyypistä (UserStory, MaintenanceStory tms.)  | 2 | waiting |
 | Varsinaisten user storyjen lisäksi sprint backlog kohtaisia taskeja, joihin voi liittyä teknisiä taskeja samalla tavalla kuin varsinaisiin user storyihin | Frontend: Komponentti MaintenanceTaskien lisäämiselle  | 4 | waiting |
 | Varsinaisten user storyjen lisäksi sprint backlog kohtaisia taskeja, joihin voi liittyä teknisiä taskeja samalla tavalla kuin varsinaisiin user storyihin | Frontend: Maintenance taskien näyttäminen sprintbacklogeissa ja piilottaminen productbacklogista  | 3 | waiting |
