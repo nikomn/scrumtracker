@@ -31,15 +31,18 @@ const AddTask = ({ createNewTask, story }) => {
             placeholder="New task"
             onChange={({ target }) => setTask(target.value)}
           />
-          <Form.Label>Status</Form.Label>
-          <Form.Control
-            id='task-status-input'
-            type="text"
-            name="status"
-            value={status}
-            placeholder="Status"
-            onChange={({ target }) => setStatus(target.value)}
-          />
+          <div>Status</div>
+          <p>
+            <select
+              id='task-status-dropdown'
+              value={status}
+              onChange={({ target }) => setStatus(target.value)}
+            >
+              <option value='waiting'>waiting</option>
+              <option value='doing'>doing</option>
+              <option value='done'>done</option>
+            </select>
+          </p>
           <Button variant="success" type="submit">
             Add new task
           </Button>

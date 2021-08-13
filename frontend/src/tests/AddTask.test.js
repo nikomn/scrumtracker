@@ -45,20 +45,21 @@ test('<AddTask /> updates parent state and calls onSubmit', () => {
   )
 
   const taskinput = component.container.querySelector('#task-input')
-  const taskstatusinput = component.container.querySelector('#task-status-input')
+  //const taskstatusinput = component.container.querySelector('#task-status-input')
+  const taskstatusdropdown = component.container.querySelector('#task-status-dropdown')
   const form = component.container.querySelector('form')
 
   fireEvent.change(taskinput, {
     target: { value: 'testing adding of new task' }
   })
-  fireEvent.change(taskstatusinput, {
-    target: { value: 'testing' }
+  fireEvent.change(taskstatusdropdown, {
+    target: { value: 'doing' }
   })
 
   fireEvent.submit(form)
 
   expect(mockHandler.mock.calls).toHaveLength(1)
   expect(mockHandler.mock.calls[0][0].name).toBe('testing adding of new task')
-  expect(mockHandler.mock.calls[0][0].status).toBe('testing')
+  expect(mockHandler.mock.calls[0][0].status).toBe('doing')
 })
 
