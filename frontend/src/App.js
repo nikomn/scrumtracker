@@ -31,12 +31,15 @@ const App = () => {
       })
   }, [])
 
-  const createUserStory = (userStoryObject) => {
-    storyService
+  const createUserStory = async (userStoryObject) => {
+    let addedStory = null
+    await storyService
       .create(userStoryObject)
       .then(response => {
         setStories(stories.concat(response.data))
+        addedStory = response.data
       })
+    return addedStory
 
   }
 

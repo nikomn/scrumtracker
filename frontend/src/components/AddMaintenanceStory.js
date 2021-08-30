@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const AddMaintenanceStory = ({ createNewStory, backlog, addStoryToSprintBacklog }) => {
+const AddMaintenanceStory = ({ createNewStory, addStoryToSprintBacklog, backlog }) => {
   const [story, setStory] = useState('')
   const [priority, setPriority] = useState(99)
   const [status, setStatus] = useState('new')
 
 
-  const addStory = (event) => {
+  const addStory = async (event) => {
     event.preventDefault()
     // console.log(story)
     const newStoryObject = {
@@ -16,9 +16,9 @@ const AddMaintenanceStory = ({ createNewStory, backlog, addStoryToSprintBacklog 
       status: status,
       type: 'other'
     }
-    createNewStory(newStoryObject)
-    const storyObject = backlog.userstories.find(s => s.story === story)
-    addStoryToSprintBacklog(storyObject, backlog.id)
+    const addedStory = await createNewStory(newStoryObject)
+    addStoryToSprintBacklog(addedStory, backlog.id)
+
     setStory('')
     setPriority(99)
     setStatus('new')
