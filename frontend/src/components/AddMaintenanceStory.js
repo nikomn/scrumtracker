@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const AddMaintenanceStory = ({ createNewStory, addStoryToSprintBacklog, backlog }) => {
+const AddMaintenanceStory = ({ backlog, createMaintenanceStory }) => {
   const [story, setStory] = useState('')
   const [priority, setPriority] = useState(99)
   const [status, setStatus] = useState('new')
@@ -16,8 +16,7 @@ const AddMaintenanceStory = ({ createNewStory, addStoryToSprintBacklog, backlog 
       status: status,
       type: 'other'
     }
-    const addedStory = await createNewStory(newStoryObject)
-    addStoryToSprintBacklog(addedStory, backlog.id)
+    createMaintenanceStory(newStoryObject, backlog)
 
     setStory('')
     setPriority(99)

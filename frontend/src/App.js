@@ -32,14 +32,21 @@ const App = () => {
   }, [])
 
   const createUserStory = async (userStoryObject) => {
-    let addedStory = null
     await storyService
       .create(userStoryObject)
       .then(response => {
         setStories(stories.concat(response.data))
-        addedStory = response.data
       })
-    return addedStory
+
+  }
+
+  const createMaintenanceStory = async (userStoryObject, backlog) => {
+    await storyService
+      .create(userStoryObject)
+      .then(response => {
+        setStories(stories.concat(response.data))
+        addStoryToSprintBacklog(response.data, backlog.id)
+      })
 
   }
 
@@ -166,7 +173,7 @@ const App = () => {
             backlogs={backlogs}
             addStoryToSprintBacklog={addStoryToSprintBacklog}
             deleteUserStory={deleteUserStory}
-            createNewStory={createUserStory}
+            createMaintenanceStory={createMaintenanceStory}
           />
         </Route>
         <Route path="/userstories/:id">

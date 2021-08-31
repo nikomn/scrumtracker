@@ -4,7 +4,7 @@ import UserStory from './UserStory'
 import AddMaintenanceStory from './AddMaintenanceStory'
 import { Link } from 'react-router-dom'
 
-const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserStory, createNewStory }) => {
+const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserStory, createMaintenanceStory }) => {
   if (!backlog) {
     return null
   }
@@ -35,7 +35,7 @@ const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserS
           )}
         </tbody>
       </Table>
-      <AddMaintenanceStory backlog={backlog} addStoryToSprintBacklog={addStoryToSprintBacklog} createNewStory={createNewStory} />
+      <AddMaintenanceStory backlog={backlog} createMaintenanceStory={createMaintenanceStory} />
     </div>
   )
 }
