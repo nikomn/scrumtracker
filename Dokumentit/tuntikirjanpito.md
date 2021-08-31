@@ -35,5 +35,6 @@
 | 11.8. | 2    | Storyille valmiiksi määritellyt statukset, backend puoli |
 | 12.8. | 2    | Storyille valmiiksi määritellyt statukset, frontend puoli, Taskeille valmiit statukset, backend puoli |
 | 13.8. | 2    | Taskeille valmiit statukset, frontend puoli, Erilliset maintenance taskit backend puolelle ja vastaavan toiminnallisuuden alustus frontendiin |
-| 30.8. | 2    | Maintenance taskien lisäys frontendissä |
-| yht   | 68   | | 
+| 30.8. | 2    | Maintenance storyjen lisäys frontendissä |
+| 31.8. | 2    | Maintenance storyjen lisäys frontendissä (viimeistely ja refaktorointi) + testit |
+| yht   | 70   | | 
