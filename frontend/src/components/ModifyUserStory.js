@@ -27,17 +27,34 @@ const ModifyUserStory = ( { story, updateUserStory }) => {
             onChange={({ target }) => setNewPriority(target.value)}
           />
           <div>New Status</div>
-          <p>
-            <select
-              id='modify-status-dropdown'
-              value={newStatus}
-              onChange={({ target }) => setNewStatus(target.value)}
-            >
-              <option value='new'>new</option>
-              <option value='planned'>planned</option>
-              <option value='done'>done</option>
-            </select>
-          </p>
+          {story.type === 'story' ? (
+            <p>
+              <select
+                id='modify-status-dropdown'
+                value={newStatus}
+                onChange={({ target }) => setNewStatus(target.value)}
+              >
+                <option value='new'>new</option>
+                <option value='planned'>planned</option>
+                <option value='done'>done</option>
+              </select>
+            </p>
+
+          ) : (
+            <p>
+              <select
+                id='modify-status-dropdown'
+                value={newStatus}
+                onChange={({ target }) => setNewStatus(target.value)}
+              >
+                <option value='waiting'>waiting</option>
+                <option value='doing'>doing</option>
+                <option value='done'>done</option>
+              </select>
+            </p>
+
+          )}
+
           <Button variant="success" type="submit">
           Update story
           </Button>
