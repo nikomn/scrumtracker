@@ -26,19 +26,22 @@ test('Clicking delete button calls delete function with story id as param', () =
       id: 1,
       story: 'As a user I want to create new user stories',
       priority: 1,
-      status: 'done'
+      status: 'done',
+      type: 'story'
     },
     {
       id: 2,
       story: 'As a user I want to modify user stories',
       priority: 2,
-      status: 'in progress'
+      status: 'in progress',
+      type: 'story'
     },
     {
       id: 3,
       story: 'As a user I want to delete user stories',
       priority: 99,
-      status: 'not started'
+      status: 'not started',
+      type: 'story'
     },
   ]
 

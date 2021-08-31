@@ -47,7 +47,8 @@ test('<ModifyUserStory /> updates parent state and calls onSubmit', () => {
     id: 1,
     story: 'As a user I want to delete user stories',
     priority: 99,
-    status: 'not started'
+    status: 'not started',
+    type: 'story'
   }
 
   const component = render(
