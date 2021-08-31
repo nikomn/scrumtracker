@@ -1,9 +1,10 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 import UserStory from './UserStory'
+import AddMaintenanceStory from './AddMaintenanceStory'
 import { Link } from 'react-router-dom'
 
-const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserStory }) => {
+const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserStory, createMaintenanceStory }) => {
   if (!backlog) {
     return null
   }
@@ -34,6 +35,7 @@ const SprintBacklog = ({ backlog, backlogs, addStoryToSprintBacklog, deleteUserS
           )}
         </tbody>
       </Table>
+      <AddMaintenanceStory backlog={backlog} createMaintenanceStory={createMaintenanceStory} />
     </div>
   )
 }

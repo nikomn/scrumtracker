@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const AddUserStory = ({ createNewStory }) => {
+const AddMaintenanceStory = ({ backlog, createMaintenanceStory }) => {
   const [story, setStory] = useState('')
   const [priority, setPriority] = useState(99)
   const [status, setStatus] = useState('new')
 
 
-  const addStory = (event) => {
+  const addStory = async (event) => {
     event.preventDefault()
     // console.log(story)
     const newStoryObject = {
       story: story,
       priority: priority,
       status: status,
-      type: 'story'
+      type: 'other'
     }
-    createNewStory(newStoryObject)
+    createMaintenanceStory(newStoryObject, backlog)
+
     setStory('')
     setPriority(99)
     setStatus('new')
@@ -24,7 +25,7 @@ const AddUserStory = ({ createNewStory }) => {
   }
   return (
     <div className="addUserStoryForm">
-      <h2>Add new User Story</h2>
+      <h2>Add maintenance story</h2>
       <Form onSubmit={addStory}>
         <Form.Group>
           <Form.Label>User Story</Form.Label>
@@ -65,4 +66,4 @@ const AddUserStory = ({ createNewStory }) => {
     </div>
   )
 }
-export default AddUserStory
+export default AddMaintenanceStory

@@ -31,11 +31,21 @@ const App = () => {
       })
   }, [])
 
-  const createUserStory = (userStoryObject) => {
-    storyService
+  const createUserStory = async (userStoryObject) => {
+    await storyService
       .create(userStoryObject)
       .then(response => {
         setStories(stories.concat(response.data))
+      })
+
+  }
+
+  const createMaintenanceStory = async (userStoryObject, backlog) => {
+    await storyService
+      .create(userStoryObject)
+      .then(response => {
+        setStories(stories.concat(response.data))
+        addStoryToSprintBacklog(response.data, backlog.id)
       })
 
   }
@@ -92,8 +102,10 @@ const App = () => {
   }
 
   const addStoryToSprintBacklog = async (storyObject, backlog) => {
+    console.log(storyObject)
     if (backlog !== '') {
       const backlogToAdd = backlogs.find(b => b.id === backlog)
+      console.log(backlogToAdd)
       if (!backlogToAdd.userstories.find(s => s.id === storyObject.id)) {
         await backlogService
           .addStory(backlog, storyObject)
@@ -161,6 +173,7 @@ const App = () => {
             backlogs={backlogs}
             addStoryToSprintBacklog={addStoryToSprintBacklog}
             deleteUserStory={deleteUserStory}
+            createMaintenanceStory={createMaintenanceStory}
           />
         </Route>
         <Route path="/userstories/:id">

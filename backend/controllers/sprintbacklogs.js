@@ -41,10 +41,12 @@ sprintBacklogsRouter.post('/', (request, response) => {
  
 sprintBacklogsRouter.post('/:id/stories', async (request, response) => {
   const storyToAdd = request.body
+  console.log(storyToAdd)
 
   const story = await UserStory.findById(storyToAdd.id)
 
   if (!story) {
+    console.log('Story not found error!')
     return response.status(400).json({ 
       error: 'story not found' 
     })
