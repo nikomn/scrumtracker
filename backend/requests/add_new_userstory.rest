@@ -4,6 +4,7 @@ Content-Type: application/json
 {
 "story":"new story test 3",
 "priority":123,
+"storypoints":15,
 "status":"new",
 "type":"story"
 }
