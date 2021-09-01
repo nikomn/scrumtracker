@@ -31,3 +31,4 @@ Työn etenemistä ja suunnitelmia voi seurata product backlogista ja sprint back
 - [Sprint 4](Dokumentit/sprint4backlog.md)
 - [Sprint 5](Dokumentit/sprint5backlog.md)
 - [Sprint 6](Dokumentit/sprint6backlog.md)
+- [Sprint 7](Dokumentit/sprint7backlog.md)
