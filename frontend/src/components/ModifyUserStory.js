@@ -4,12 +4,14 @@ import { Form, Button } from 'react-bootstrap'
 const ModifyUserStory = ( { story, updateUserStory }) => {
   const [newPriority, setNewPriority] = useState('')
   const [newStatus, setNewStatus] = useState(story.status)
+  const [newStorypoints, setNewStorypoints] = useState(0)
 
 
   const modifyStory = (event) => {
     event.preventDefault()
-    updateUserStory(story.id, newPriority, newStatus)
+    updateUserStory(story.id, newPriority, newStatus, newStorypoints)
     setNewPriority('')
+    setNewStorypoints(0)
 
   }
   return (
@@ -25,6 +27,15 @@ const ModifyUserStory = ( { story, updateUserStory }) => {
             value={newPriority}
             placeholder="New priority"
             onChange={({ target }) => setNewPriority(target.value)}
+          />
+          <Form.Label>New storypoints</Form.Label>
+          <Form.Control
+            id='modify-storypoint-input'
+            type="number"
+            name="storypoints"
+            value={newStorypoints}
+            placeholder="New storypoints"
+            onChange={({ target }) => setNewStorypoints(target.value)}
           />
           <div>New Status</div>
           {story.type === 'story' ? (

@@ -60,7 +60,7 @@ const App = () => {
       })
   }
 
-  const updateUserStory = (id, newPriority, newStatus) => {
+  const updateUserStory = (id, newPriority, newStatus, newStorypoints) => {
     // console.log('id:', id)
     // console.log('newPriority:', newPriority)
     // console.log('newStatus:', newStatus)
@@ -72,15 +72,15 @@ const App = () => {
       }
       if (newPriority !== '' && newStatus === '') {
         //console.log('Changing priority')
-        changedStory = { ...story, priority: newPriority }
+        changedStory = { ...story, priority: newPriority, storypoints: newStorypoints }
       }
       if (newPriority === '' && newStatus !== '') {
         //console.log('Changing status')
-        changedStory = { ...story, status: newStatus }
+        changedStory = { ...story, status: newStatus, storypoints: newStorypoints }
       }
       if (newPriority !== '' && newStatus !== '') {
         //console.log('Changing priority and status')
-        changedStory = { ...story, status: newStatus, priority: newPriority }
+        changedStory = { ...story, status: newStatus, priority: newPriority, storypoints: newStorypoints }
       }
 
       storyService
