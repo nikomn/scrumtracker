@@ -9,16 +9,19 @@ let demodata = [
   {
     story: 'As a user I want to create new user stories',
     priority: 1,
+    storypoints: 10,
     status: 'new',
   },
   {
     story: 'As a user I want to modify user stories',
     priority: 2,
+    storypoints: 5,
     status: 'new'
   },
   {
     story: 'As a user I want to delete user stories',
     priority: 99,
+    storypoints: 15,
     status: 'new'
   },
 ]
@@ -105,10 +108,11 @@ test('all user stories are returned', async () => {
   expect(response.body).toHaveLength(demodata.length)
 })
 
-test('new user story with priority "123" and status "new" can be added', async () => {
+test('new user story with priority "123", status "new" and storypoints "1" can be added', async () => {
   const newUserStory = {
     story: 'Testing adding a new user story',
     priority: 123,
+    storypoints: 1,
     status: 'new'
   }
 
@@ -119,6 +123,7 @@ test('new user story with priority "123" and status "new" can be added', async (
   expect(allStories.body).toHaveLength(demodata.length + 1)
   expect(allStories.body[3].story).toBe('Testing adding a new user story')
   expect(allStories.body[3].priority).toBe(123)
+  expect(allStories.body[3].storypoints).toBe(1)
   expect(allStories.body[3].status).toBe('new')
   
 })
@@ -137,6 +142,23 @@ test('User story priority can be modified', async () => {
   allStories = await getStories()
 
   expect(allStories.body[0].priority).toBe(9999999)
+
+})
+
+test('User story storypoints can be modified', async () => {
+  let allStories = await getStories()
+  
+  const id = allStories.body[0].id
+
+  
+  const modifiedStorypoints = {
+    'storypoints':9999999,
+  }
+
+  await modifyUserStory(id, modifiedStorypoints)
+  allStories = await getStories()
+
+  expect(allStories.body[0].storypoints).toBe(9999999)
 
 })
 
