@@ -52,7 +52,8 @@ userStoriesRouter.post('/', (request, response) => {
     type: body.type,
     date: new Date(),
     status: status,
-    priority: body.priority
+    priority: body.priority,
+    storypoints: body.storypoints
   })
 
   newStoryObject.save().then(savedUserStory => {
