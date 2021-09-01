@@ -8,6 +8,7 @@ test('user story content renders', () => {
     id: 1,
     story: 'Testing with Jest',
     priority: 1,
+    storypoints: 5,
     date: '2021-06-17T08:30:31.123Z',
     status: 'done',
     tasks: []
@@ -24,6 +25,9 @@ test('user story content renders', () => {
   )
   expect(component.container).toHaveTextContent(
     'Priority: 1'
+  )
+  expect(component.container).toHaveTextContent(
+    'Storypoints: 5'
   )
   expect(component.container).toHaveTextContent(
     'Status: done'
