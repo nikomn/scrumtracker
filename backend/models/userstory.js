@@ -11,6 +11,7 @@ const userStorySchema = new mongoose.Schema({
       message: '{VALUE} is not valid value for status'
     },
   },
+  storypoints: Number,
   priority: Number,
   tasks: [
     {
