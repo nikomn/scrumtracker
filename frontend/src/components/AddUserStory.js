@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 const AddUserStory = ({ createNewStory }) => {
   const [story, setStory] = useState('')
   const [priority, setPriority] = useState(99)
+  const [storypoints, setStorypoints] = useState(0)
   const [status, setStatus] = useState('new')
 
 
@@ -13,12 +14,14 @@ const AddUserStory = ({ createNewStory }) => {
     const newStoryObject = {
       story: story,
       priority: priority,
+      storypoints: storypoints,
       status: status,
       type: 'story'
     }
     createNewStory(newStoryObject)
     setStory('')
     setPriority(99)
+    setStorypoints(0)
     setStatus('new')
 
   }
@@ -44,6 +47,15 @@ const AddUserStory = ({ createNewStory }) => {
             value={priority}
             placeholder="Priority"
             onChange={({ target }) => setPriority(target.value)}
+          />
+          <Form.Label>Storypoints</Form.Label>
+          <Form.Control
+            id='storypoint-input'
+            type="number"
+            name="storypoints"
+            value={storypoints}
+            placeholder="Storypoints"
+            onChange={({ target }) => setStorypoints(target.value)}
           />
           <div>Status</div>
           <p>
