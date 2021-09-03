@@ -11,18 +11,21 @@ let demodata = [
     priority: 1,
     storypoints: 10,
     status: 'new',
+    comments: []
   },
   {
     story: 'As a user I want to modify user stories',
     priority: 2,
     storypoints: 5,
-    status: 'new'
+    status: 'new',
+    comments: []
   },
   {
     story: 'As a user I want to delete user stories',
     priority: 99,
     storypoints: 15,
-    status: 'new'
+    status: 'new',
+    comments: []
   },
 ]
 
@@ -60,6 +63,16 @@ const addTask = async (taskObject, id) => {
   const result = await api
     .post('/api/userstories/' + id + '/tasks')
     .send(taskObject)
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+  return result
+}
+
+const addComment = async (commentObject, id) => {
+  //console.log('/api/sprintbacklogs/' + id + '/stories')
+  const result = await api
+    .post('/api/userstories/' + id + '/comments')
+    .send(commentObject)
     .expect(200)
     .expect('Content-Type', /application\/json/)
   return result
@@ -108,12 +121,15 @@ test('all user stories are returned', async () => {
   expect(response.body).toHaveLength(demodata.length)
 })
 
-test('new user story with priority "123", status "new" and storypoints "1" can be added', async () => {
+test('new user story with priority "123", status "new", storypoints "1" and comment "test" can be added', async () => {
   const newUserStory = {
     story: 'Testing adding a new user story',
     priority: 123,
     storypoints: 1,
-    status: 'new'
+    status: 'new',
+    comment: {
+      commentText: 'test'
+    }
   }
 
   await addNewUserStory(newUserStory)
@@ -125,6 +141,7 @@ test('new user story with priority "123", status "new" and storypoints "1" can b
   expect(allStories.body[3].priority).toBe(123)
   expect(allStories.body[3].storypoints).toBe(1)
   expect(allStories.body[3].status).toBe('new')
+  expect(allStories.body[3].comments[0].commentText).toBe('test')
   
 })
 
@@ -204,6 +221,20 @@ test('Task can be added to existing userstory', async () => {
   //console.log(allStories.body[3])
   expect(allStories.body[0].tasks[0].name).toBe('Task 1')
   expect(allStories.body[0].tasks[0].status).toBe('done')
+  
+})
+
+test('Comment can be added to existing userstory', async () => {
+  let allStories = await getStories()
+
+  const comment = {
+    commentText: 'test comment'
+  }
+  
+  await addComment(comment, allStories.body[0].id)
+
+  allStories = await getStories()
+  expect(allStories.body[0].comments[0].commentText).toBe('test comment')
   
 })
 
