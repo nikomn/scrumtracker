@@ -37,4 +37,5 @@
 | 13.8. | 2    | Taskeille valmiit statukset, frontend puoli, Erilliset maintenance taskit backend puolelle ja vastaavan toiminnallisuuden alustus frontendiin |
 | 30.8. | 2    | Maintenance storyjen lisäys frontendissä |
 | 31.8. | 2    | Maintenance storyjen lisäys frontendissä (viimeistely ja refaktorointi) + testit |
-| yht   | 70   | | 
+| 1.9. | 2    | Sprint backlogien päivittämistä, Storypointit backendiin ja frontendiin + testit |
+| yht   | 72   | | 

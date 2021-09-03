@@ -36,6 +36,7 @@ const UserStory = (
           <p>
             <b>User Story:</b> {userstory.story} <br />
             <b>Priority:</b> {userstory.priority} <br />
+            <b>Storypoints:</b> {userstory.storypoints} <br />
             <b>Status:</b> {userstory.status}
           </p>
           <ModifyUserStory story={userstory} updateUserStory={updateUserStory} />
@@ -58,6 +59,7 @@ const UserStory = (
           <p>
             <b>User Story:</b> {userstory.story} <br />
             <b>Priority:</b> {userstory.priority} <br />
+            <b>Storypoints:</b> {userstory.storypoints} <br />
             <b>Status:</b> {userstory.status}
           </p>
           <AddStoryToBacklog

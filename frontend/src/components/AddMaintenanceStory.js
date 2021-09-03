@@ -13,6 +13,7 @@ const AddMaintenanceStory = ({ backlog, createMaintenanceStory }) => {
     const newStoryObject = {
       story: story,
       priority: priority,
+      storypoints: 0,
       status: status,
       type: 'other'
     }

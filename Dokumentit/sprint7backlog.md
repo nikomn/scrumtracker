@@ -4,8 +4,8 @@
 | :-----------:|:-----------| :------| :------|
 | Story kohtainen story point työmäärä-arvio | Tietokanta: Kentän lisääminen Story modeliin  | 2 | **done** |
 | Story kohtainen story point työmäärä-arvio | Backend: Storypoint lisääminen ja muuntaminen  | 2 | **done** |
-| Story kohtainen story point työmäärä-arvio | Front end: Lomakkeiden laajentaminen siten, että story pointit määritellään ja muunnetaan  | 2 | waiting |
-| Story kohtainen story point työmäärä-arvio | Front end: Story pointien näyttäminen frontissa  | 2 | waiting |
+| Story kohtainen story point työmäärä-arvio | Front end: Lomakkeiden laajentaminen siten, että story pointit määritellään ja muunnetaan  | 2 | **done** |
+| Story kohtainen story point työmäärä-arvio | Front end: Story pointien näyttäminen frontissa  | 2 | **done** |
 | Storyihin voi lisätä kommentteja | Tietokanta: Kentän lisääminen Story modeliin  | 2 | waiting |
 | Storyihin voi lisätä kommentteja | Back end: Kommenttien lisääminen | 2 | waiting |
 | Storyihin voi lisätä kommentteja | Front end: Lomake kommenttien lisäämistä varten | 3 | waiting |
