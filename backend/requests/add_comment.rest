@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/userstories/6131cc5ed121264eb3d8adb9/comments
+Content-Type: application/json
+
+{
+    "commentText": "New comment added 2"
+  }
+

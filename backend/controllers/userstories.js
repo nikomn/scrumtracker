@@ -53,7 +53,7 @@ userStoriesRouter.post('/', async (request, response) => {
   const commentsData = []
 
   if (body.comment) {
-    const comment = new Comment(body.comment)
+    const comment = new Comment({...body.comment, date: new Date()})
     await comment.save()
     commentsData.push(comment)
   }
@@ -96,8 +96,36 @@ userStoriesRouter.post('/:id/tasks', async (request, response) => {
   UserStory.findById(request.params.id).populate('tasks', {
     name: 1,
     status: 1
+  }).populate('comments', {
+    commentText: 1,
+    date: 1
   }).then((story) => {
     story.tasks = story.tasks.concat(taskToAdd)
+    story.save()
+    response.json(story)
+  })
+
+})
+
+userStoriesRouter.post('/:id/comments', async (request, response) => {
+  if (!request.body) {
+    return response.status(400).json({ 
+      error: 'comment not found' 
+    })
+  }
+  
+  const newComment = new Comment({...request.body, date: new Date()})
+  await newComment.save()
+  
+
+  UserStory.findById(request.params.id).populate('tasks', {
+    name: 1,
+    status: 1
+  }).populate('comments', {
+    commentText: 1,
+    date: 1
+  }).then((story) => {
+    story.comments = story.comments.concat(newComment)
     story.save()
     response.json(story)
   })
