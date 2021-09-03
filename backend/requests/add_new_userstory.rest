@@ -2,10 +2,13 @@ POST http://localhost:3001/api/userstories
 Content-Type: application/json
 
 {
-"story":"new story test 3",
+"story":"new story test 6",
 "priority":123,
 "storypoints":15,
 "status":"new",
-"type":"story"
+"type":"story",
+"comment": {
+  "commentText":"test comment 2"
+}
 }
 

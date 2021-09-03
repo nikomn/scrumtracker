@@ -5,11 +5,15 @@
 const userStoriesRouter = require('express').Router()
 const UserStory = require('../models/userstory')
 const Task = require('../models/task')
+const Comment = require('../models/comment')
 
 userStoriesRouter.get('/', async (request, response) => {
   const userstories = await UserStory.find({}).populate('tasks', {
     name: 1,
     status: 1
+  }).populate('comments', {
+    commentText: 1,
+    date: 1
   })
   response.json(userstories.map((story) => story.toJSON()))
   
@@ -26,7 +30,7 @@ userStoriesRouter.get('/', async (request, response) => {
 
 
 
-userStoriesRouter.post('/', (request, response) => {
+userStoriesRouter.post('/', async (request, response) => {
   
   const body = request.body
 
@@ -46,6 +50,16 @@ userStoriesRouter.post('/', (request, response) => {
     })
   }
 
+  const commentsData = []
+
+  if (body.comment) {
+    const comment = new Comment({...body.comment, date: new Date()})
+    await comment.save()
+    commentsData.push(comment)
+  }
+
+  
+
 
   const newStoryObject = new UserStory({
     story: body.story,
@@ -53,7 +67,8 @@ userStoriesRouter.post('/', (request, response) => {
     date: new Date(),
     status: status,
     priority: body.priority,
-    storypoints: body.storypoints
+    storypoints: body.storypoints,
+    comments: commentsData
   })
 
   newStoryObject.save().then(savedUserStory => {
@@ -81,8 +96,36 @@ userStoriesRouter.post('/:id/tasks', async (request, response) => {
   UserStory.findById(request.params.id).populate('tasks', {
     name: 1,
     status: 1
+  }).populate('comments', {
+    commentText: 1,
+    date: 1
   }).then((story) => {
     story.tasks = story.tasks.concat(taskToAdd)
+    story.save()
+    response.json(story)
+  })
+
+})
+
+userStoriesRouter.post('/:id/comments', async (request, response) => {
+  if (!request.body) {
+    return response.status(400).json({ 
+      error: 'comment not found' 
+    })
+  }
+  
+  const newComment = new Comment({...request.body, date: new Date()})
+  await newComment.save()
+  
+
+  UserStory.findById(request.params.id).populate('tasks', {
+    name: 1,
+    status: 1
+  }).populate('comments', {
+    commentText: 1,
+    date: 1
+  }).then((story) => {
+    story.comments = story.comments.concat(newComment)
     story.save()
     response.json(story)
   })
