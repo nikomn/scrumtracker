@@ -15,15 +15,15 @@
 |     1        | Storyille on olemassa valmiiksi määritellyt statukset (new, planned, done), joista voi valita |     6  |  **done**  |
 |     1        | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita |     6  |  **done**  |
 |     1        | Varsinaisten user storyjen lisäksi sprint backlog kohtaisia taskeja, joihin voi liittyä teknisiä taskeja samalla tavalla kuin varsinaisiin user storyihin |     6  | **done**   |
-|    2        | Story kohtainen story point työmäärä-arvio |   7   | _suunniteltu_ |
-|    2        | Storyihin voi lisätä kommentteja |   7   | _suunniteltu_ |
-|    2        | Taskeja voi muokata |   7   | _suunniteltu_ |
-|    2        | Task kohtainen työmäärä-arvio |   7   | _suunniteltu_ |
-|     2      | Aktiivisen sprint backlogin määrittely |       |    |
-|     2      | User storyja voi lisätä vain aktiiviseen sprint backlogiin |      |    |
-|     2        | Valmista storyä ei voi lisätä sprint backlogiin |        |       |
-|     3      | Sovellukseen voi luoda käyttäjätunnuksen ja salasanan |        |         |
-|     3      | Sovellusta ei saa käyttää ilman tunnuksia ja kirjautumista |        |         |
+|    2        | Story kohtainen story point työmäärä-arvio |   7   | **done** |
+|    2        | Storyihin voi lisätä kommentteja |   8   | _suunniteltu_ |
+|     2      | Sovellukseen voi luoda käyttäjätunnuksen ja salasanan |   8   | _suunniteltu_ |
+|     2      | Sovellusta ei saa käyttää ilman tunnuksia ja kirjautumista |   8   | _suunniteltu_ |
+|    3        | Taskeja voi muokata |      |    |
+|    3        | Task kohtainen työmäärä-arvio |      |    |
+|     3      | Aktiivisen sprint backlogin määrittely |       |    |
+|     3      | User storyja voi lisätä vain aktiiviseen sprint backlogiin |      |    |
+|     3        | Valmista storyä ei voi lisätä sprint backlogiin |        |       |
 |     3      | Sovelluksessa on 'team member'-rooli |        |         |
 |     3      | Sovelluksessa on 'scrum master'-rooli (tietynlainen product kohtainen admin käyttäjä) |        |         |
 |     3      | Sovelluksessa on 'customer'-rooli |        |         |

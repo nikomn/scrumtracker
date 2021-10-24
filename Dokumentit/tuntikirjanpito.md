@@ -39,4 +39,5 @@
 | 31.8. | 2    | Maintenance storyjen lisäys frontendissä (viimeistely ja refaktorointi) + testit |
 | 1.9. | 2    | Sprint backlogien päivittämistä, Storypointit backendiin ja frontendiin + testit |
 | 3.9. | 2    | Kommenttien lisäys User storyihin backendissä + testit |
-| yht   | 74   | | 
+| 24.10. | 0.5    | Projektin viimeistelyn suunnittelu ja uudelleen orientoituminen tauon jälkeen |
+| yht   | 74.5   | | 
