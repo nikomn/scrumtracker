@@ -5,6 +5,7 @@ import AddStoryToBacklog from './AddStoryToBacklog'
 import ModifyUserStory from './ModifyUserStory'
 import Task from './Task'
 import AddTask from './AddTask'
+import AddComment from './AddComment'
 
 const UserStory = (
   {
@@ -53,6 +54,8 @@ const UserStory = (
             </tbody>
           </Table>
           <AddTask createNewTask={addTaskToStory} story={userstory.id} />
+          <h2>Comments</h2>
+          <AddComment />
         </div>
       ) : (
         <div>
