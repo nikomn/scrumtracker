@@ -29,7 +29,7 @@ const AddComment = ({ createNewComment, story }) => {
             onChange={({ target }) => setComment(target.value)}
           />
           <Button variant="success" type="submit">
-            Add new task
+            Add new comment
           </Button>
         </Form.Group>
       </Form>
