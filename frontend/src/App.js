@@ -138,6 +138,18 @@ const App = () => {
 
   }
 
+  const addCommentToStory = async (commentObject, story) => {
+    const storyToAdd = stories.find(st => st.id === story)
+
+    await storyService
+      .addComment(story, commentObject)
+      .then(response => {
+        setStories(stories.map(s => s.id !== story ? s : response))
+      })
+    alert('Comment "' + commentObject.commentText + '" added to story ' + storyToAdd.story)
+
+  }
+
 
 
 
@@ -184,6 +196,7 @@ const App = () => {
             updateUserStory={updateUserStory}
             storyView={''}
             addTaskToStory={addTaskToStory}
+            addCommentToStory={addCommentToStory}
           />
         </Route>
         <Route path="/sprintbacklogs">

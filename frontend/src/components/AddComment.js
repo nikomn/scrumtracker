@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const AddComment = () => {
+const AddComment = ({ createNewComment, story }) => {
   const [comment, setComment] = useState('')
 
 
   const addComment = (event) => {
     event.preventDefault()
-    console.log('Todo... Lisää kommentti ' + comment)
+    const newCommentObject = {
+      commentText: comment
+    }
+    createNewComment(newCommentObject, story)
     setComment('')
 
   }

@@ -32,4 +32,10 @@ const addTask = (id, task) => {
   return request.then(response => response.data)
 }
 
-export default { getAll, create, update, remove, addTask }
+const addComment = (id, comment) => {
+  const request = axios.post(`${baseUrl}/${id}/comments`, comment)
+  return request.then(response => response.data)
+}
+
+
+export default { getAll, create, update, remove, addTask, addComment }
