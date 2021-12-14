@@ -11,7 +11,8 @@ test('user story content renders', () => {
     storypoints: 5,
     date: '2021-06-17T08:30:31.123Z',
     status: 'done',
-    tasks: []
+    tasks: [],
+    comments: []
   }
 
   const backlogs= []

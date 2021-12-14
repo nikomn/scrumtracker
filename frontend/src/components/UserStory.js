@@ -5,6 +5,8 @@ import AddStoryToBacklog from './AddStoryToBacklog'
 import ModifyUserStory from './ModifyUserStory'
 import Task from './Task'
 import AddTask from './AddTask'
+import Comment from './Comment'
+import AddComment from './AddComment'
 
 const UserStory = (
   {
@@ -13,7 +15,8 @@ const UserStory = (
     addStoryToSprintBacklog,
     updateUserStory,
     storyView,
-    addTaskToStory
+    addTaskToStory,
+    addCommentToStory
   }) => {
   // const [sprintBacklog, setSprintBacklog] = useState('')
 
@@ -53,6 +56,19 @@ const UserStory = (
             </tbody>
           </Table>
           <AddTask createNewTask={addTaskToStory} story={userstory.id} />
+          <h2>Comments</h2>
+          <Table striped hover>
+            <tbody>
+              {userstory.comments.map(comment =>
+                <tr key={comment.id}>
+                  <td>
+                    <Comment comment={comment} />
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
+          <AddComment createNewComment={addCommentToStory} story={userstory.id} />
         </div>
       ) : (
         <div>

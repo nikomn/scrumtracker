@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserStory = ({ task }) => {
+const Task = ({ task }) => {
   if (!task) {
     return null
   }
@@ -14,4 +14,4 @@ const UserStory = ({ task }) => {
   )
 }
 
-export default UserStory
+export default Task
