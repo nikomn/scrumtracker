@@ -6,6 +6,7 @@ const userStoriesRouter = require('./controllers/userstories')
 const sprintBacklogsRouter = require('./controllers/sprintbacklogs')
 const tasksRouter = require('./controllers/tasks')
 const commentsRouter = require('./controllers/comments')
+const usersRouter = require('./controllers/users')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
 app.use(cors())
@@ -16,6 +17,8 @@ app.use('/api/userstories', userStoriesRouter)
 app.use('/api/sprintbacklogs', sprintBacklogsRouter)
 app.use('/api/tasks', tasksRouter)
 app.use('/api/comments', commentsRouter)
+app.use('/api/users', usersRouter)
+
 
 //logger.info('connecting to', config.MONGODB_URI)
 
