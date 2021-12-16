@@ -1,7 +1,7 @@
-PUT http://localhost:3001/api/userstories/612c7c3375516663d9a9a86f
+PUT http://localhost:3001/api/userstories/61b720b90df31200168affb7
 Content-Type: application/json
 
 {
-"storypoints":1
+"storypoints":752
 }
 
