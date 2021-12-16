@@ -41,4 +41,5 @@
 | 3.9. | 2    | Kommenttien lisäys User storyihin backendissä + testit |
 | 24.10. | 0.5    | Projektin viimeistelyn suunnittelu ja uudelleen orientoituminen tauon jälkeen |
 | 14.12. | 1.5    | Tietokannan siivousta, kommenttien lisäys ja näyttäminen frontendissä + testit |
-| yht   | 76   | | 
+| 16.12. | 1    | Alustava käyttäjien hallinta backendiin |
+| yht   | 77   | | 
