@@ -146,6 +146,18 @@ userStoriesRouter.post('/:id/tasks', async (request, response) => {
 })
 
 userStoriesRouter.post('/:id/comments', async (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
   if (!request.body) {
     return response.status(400).json({ 
       error: 'comment not found' 

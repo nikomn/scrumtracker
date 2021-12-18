@@ -82,10 +82,11 @@ const addTask = async (taskObject, id, token) => {
   return result
 }
 
-const addComment = async (commentObject, id) => {
+const addComment = async (commentObject, id, token) => {
   //console.log('/api/sprintbacklogs/' + id + '/stories')
   const result = await api
     .post('/api/userstories/' + id + '/comments')
+    .set('Authorization', `bearer ${token}`)
     .send(commentObject)
     .expect(200)
     .expect('Content-Type', /application\/json/)
@@ -263,13 +264,24 @@ test('Task can be added to existing userstory', async () => {
 })
 
 test('Comment can be added to existing userstory', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   let allStories = await getStories()
 
   const comment = {
     commentText: 'test comment'
   }
   
-  await addComment(comment, allStories.body[0].id)
+  await addComment(comment, allStories.body[0].id, token)
 
   allStories = await getStories()
   expect(allStories.body[0].comments[0].commentText).toBe('test comment')
