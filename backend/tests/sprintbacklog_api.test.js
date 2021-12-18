@@ -2,9 +2,21 @@ const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const UserStory = require('../models/userstory')
+const User = require('../models/user')
 const SprintBacklog = require('../models/sprintbacklog')
+const bcrypt = require('bcrypt')
 
 const api = supertest(app)
+
+let token = undefined
+
+const getToken = async (props) => {
+  const login = await api
+    .post('/api/login')
+    .send(props)
+    
+  return login.body.token
+}
 
 let demodata = [
   {
@@ -46,10 +58,11 @@ const getStories = async () => {
   return stories
 }
 
-const addUserStory = async (userStoryObject, id) => {
+const addUserStory = async (userStoryObject, id, token) => {
   //console.log('/api/sprintbacklogs/' + id + '/stories')
   const result = await api
     .post('/api/sprintbacklogs/' + id + '/stories')
+    .set('Authorization', `bearer ${token}`)
     .send(userStoryObject)
     .expect(200)
     .expect('Content-Type', /application\/json/)
@@ -59,6 +72,7 @@ const addUserStory = async (userStoryObject, id) => {
 
 beforeEach(async () => {
   await SprintBacklog.deleteMany({})
+  await User.deleteMany({})
 
   let backlogObject1 = new SprintBacklog(demodata[0])
   let backlogObject2 = new SprintBacklog(demodata[1])
@@ -94,11 +108,22 @@ test('all sprint backlogs are returned', async () => {
 })
 
 test('User story can be added to existing backlog', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   const allStories = await getStories()
   let allBacklogs = await getBacklogs()
   //console.log(allBacklogs.body)
   
-  await addUserStory(allStories.body[0], allBacklogs.body[0].id)
+  await addUserStory(allStories.body[0], allBacklogs.body[0].id, token)
 
   allBacklogs = await getBacklogs()
   //console.log(allStories.body[3])

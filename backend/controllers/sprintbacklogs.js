@@ -5,6 +5,15 @@
 const sprintBacklogsRouter = require('express').Router()
 const SprintBacklog = require('../models/sprintbacklog')
 const UserStory = require('../models/userstory')
+const jwt = require('jsonwebtoken')
+
+const getTokenFrom = request => {
+  const authorization = request.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    return authorization.substring(7)
+  }
+  return null
+}
  
 sprintBacklogsRouter.get('/', async (request, response) => {
   const backlogs = await SprintBacklog.find({}).populate('userstories', {
@@ -20,6 +29,18 @@ sprintBacklogsRouter.get('/', async (request, response) => {
 
  
 sprintBacklogsRouter.post('/', (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
    
   const body = request.body
  
@@ -40,6 +61,19 @@ sprintBacklogsRouter.post('/', (request, response) => {
 })
  
 sprintBacklogsRouter.post('/:id/stories', async (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
+  
   const storyToAdd = request.body
   console.log(storyToAdd)
 
