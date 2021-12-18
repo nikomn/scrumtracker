@@ -2,8 +2,20 @@ const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const UserStory = require('../models/userstory')
+const User = require('../models/user')
+const bcrypt = require('bcrypt')
 
 const api = supertest(app)
+
+let token = undefined
+
+const getToken = async (props) => {
+  const login = await api
+    .post('/api/login')
+    .send(props)
+    
+  return login.body.token
+}
 
 let demodata = [
   {
@@ -49,19 +61,21 @@ const getStories = async () => {
   return stories
 }
 
-const addNewUserStory = async (newUserStoryObject) => {
+const addNewUserStory = async (newUserStoryObject, token) => {
   const result = await api
     .post('/api/userstories')
+    .set('Authorization', `bearer ${token}`)
     .send(newUserStoryObject)
     .expect(200)
     .expect('Content-Type', /application\/json/)
   return result
 }
 
-const addTask = async (taskObject, id) => {
+const addTask = async (taskObject, id, token) => {
   //console.log('/api/sprintbacklogs/' + id + '/stories')
   const result = await api
     .post('/api/userstories/' + id + '/tasks')
+    .set('Authorization', `bearer ${token}`)
     .send(taskObject)
     .expect(200)
     .expect('Content-Type', /application\/json/)
@@ -96,6 +110,7 @@ const deleteUserStory = async (id) => {
 
 beforeEach(async () => {
   await UserStory.deleteMany({})
+  await User.deleteMany({})
 
   let storyObject1 = new UserStory(demodata[0])
   let storyObject2 = new UserStory(demodata[1])
@@ -122,6 +137,18 @@ test('all user stories are returned', async () => {
 })
 
 test('new user story with priority "123", status "new", storypoints "1" and comment "test" can be added', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+  
+  
   const newUserStory = {
     story: 'Testing adding a new user story',
     priority: 123,
@@ -132,7 +159,7 @@ test('new user story with priority "123", status "new", storypoints "1" and comm
     }
   }
 
-  await addNewUserStory(newUserStory)
+  await addNewUserStory(newUserStory, token)
 
   const allStories = await getStories()
   //console.log(allStories.body[3])
@@ -213,9 +240,20 @@ test('User story can be deleted', async () => {
 })
 
 test('Task can be added to existing userstory', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   let allStories = await getStories()
   
-  await addTask(demotasks[0], allStories.body[0].id)
+  await addTask(demotasks[0], allStories.body[0].id, token)
 
   allStories = await getStories()
   //console.log(allStories.body[3])
@@ -239,6 +277,17 @@ test('Comment can be added to existing userstory', async () => {
 })
 
 test('Userstory can not be added with invalid status', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   const newUserStory = {
     story: 'Testing adding a new user story',
     priority: 123,
@@ -246,6 +295,7 @@ test('Userstory can not be added with invalid status', async () => {
   }
   await api
     .post('/api/userstories')
+    .set('Authorization', `bearer ${token}`)
     .send(newUserStory)
     .expect(400)
     .expect('Content-Type', /application\/json/)
@@ -257,11 +307,23 @@ test('Userstory can not be added with invalid status', async () => {
 })
 
 test('Task can not be added with invalid status', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   let allStories = await getStories()
   const numOfTasks = allStories.body[0].tasks.length
 
   await api
     .post('/api/userstories/' + allStories.body[0].id + '/tasks')
+    .set('Authorization', `bearer ${token}`)
     .send(demotasks[2])
     .expect(400)
     .expect('Content-Type', /application\/json/)
