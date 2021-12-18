@@ -93,9 +93,10 @@ const addComment = async (commentObject, id, token) => {
   return result
 }
 
-const modifyUserStory = async (id, modifiedData) => {
+const modifyUserStory = async (id, modifiedData, token) => {
   const result = await api
     .put('/api/userstories/' + id)
+    .set('Authorization', `bearer ${token}`)
     .send(modifiedData)
     .expect(200)
     .expect('Content-Type', /application\/json/)
@@ -174,6 +175,17 @@ test('new user story with priority "123", status "new", storypoints "1" and comm
 })
 
 test('User story priority can be modified', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   let allStories = await getStories()
   
   const id = allStories.body[0].id
@@ -183,7 +195,7 @@ test('User story priority can be modified', async () => {
     'priority':9999999,
   }
 
-  await modifyUserStory(id, modifiedPriority)
+  await modifyUserStory(id, modifiedPriority, token)
   allStories = await getStories()
 
   expect(allStories.body[0].priority).toBe(9999999)
@@ -191,6 +203,17 @@ test('User story priority can be modified', async () => {
 })
 
 test('User story storypoints can be modified', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   let allStories = await getStories()
   
   const id = allStories.body[0].id
@@ -200,7 +223,7 @@ test('User story storypoints can be modified', async () => {
     'storypoints':9999999,
   }
 
-  await modifyUserStory(id, modifiedStorypoints)
+  await modifyUserStory(id, modifiedStorypoints, token)
   allStories = await getStories()
 
   expect(allStories.body[0].storypoints).toBe(9999999)
@@ -208,6 +231,17 @@ test('User story storypoints can be modified', async () => {
 })
 
 test('User story status can be modified', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   let allStories = await getStories()
   
   const id = allStories.body[0].id
@@ -217,7 +251,7 @@ test('User story status can be modified', async () => {
     'status':'done',
   }
 
-  await modifyUserStory(id, modifiedStatus)
+  await modifyUserStory(id, modifiedStatus, token)
   allStories = await getStories()
 
   expect(allStories.body[0].status).toBe('done')
