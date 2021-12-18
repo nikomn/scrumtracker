@@ -1,5 +1,6 @@
 POST http://localhost:3001/api/userstories
 Content-Type: application/json
+Authorization: bearer add-bearer-token-here
 
 {
 "story":"new story test 6",

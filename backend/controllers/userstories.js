@@ -6,6 +6,15 @@ const userStoriesRouter = require('express').Router()
 const UserStory = require('../models/userstory')
 const Task = require('../models/task')
 const Comment = require('../models/comment')
+const jwt = require('jsonwebtoken')
+
+const getTokenFrom = request => {
+  const authorization = request.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    return authorization.substring(7)
+  }
+  return null
+}
 
 userStoriesRouter.get('/', async (request, response) => {
   const userstories = await UserStory.find({}).populate('tasks', {
@@ -34,49 +43,78 @@ userStoriesRouter.post('/', async (request, response) => {
   
   const body = request.body
 
-  if (!body.story || body.story === '') {
-    return response.status(400).json({ 
-      error: 'story is empty' 
-    })
-  }
+  const token = getTokenFrom(request)
 
-  let status = body.status
-  if (status === '') {
-    status = 'new'
-  }
-  if (status !== 'new' && status !== 'planned' && status !== 'done') {
-    return response.status(400).json({ 
-      error: 'status must be new, planned, or done' 
-    })
-  }
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
 
-  const commentsData = []
+    if (!body.story || body.story === '') {
+      return response.status(400).json({ 
+        error: 'story is empty' 
+      })
+    }
 
-  if (body.comment) {
-    const comment = new Comment({...body.comment, date: new Date()})
-    await comment.save()
-    commentsData.push(comment)
-  }
+    let status = body.status
+    if (status === '') {
+      status = 'new'
+    }
+    if (status !== 'new' && status !== 'planned' && status !== 'done') {
+      return response.status(400).json({ 
+        error: 'status must be new, planned, or done' 
+      })
+    }
+
+    const commentsData = []
+
+    if (body.comment) {
+      const comment = new Comment({...body.comment, date: new Date()})
+      await comment.save()
+      commentsData.push(comment)
+    }
 
   
 
 
-  const newStoryObject = new UserStory({
-    story: body.story,
-    type: body.type,
-    date: new Date(),
-    status: status,
-    priority: body.priority,
-    storypoints: body.storypoints,
-    comments: commentsData
-  })
+    const newStoryObject = new UserStory({
+      story: body.story,
+      type: body.type,
+      date: new Date(),
+      status: status,
+      priority: body.priority,
+      storypoints: body.storypoints,
+      comments: commentsData
+    })
 
-  newStoryObject.save().then(savedUserStory => {
-    response.json(savedUserStory)
-  })
+    newStoryObject.save().then(savedUserStory => {
+      response.json(savedUserStory)
+    })
+
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+  }
 })
 
 userStoriesRouter.post('/:id/tasks', async (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
+
+
+
+  
+
   if (!request.body) {
     return response.status(400).json({ 
       error: 'task not found' 
@@ -108,6 +146,18 @@ userStoriesRouter.post('/:id/tasks', async (request, response) => {
 })
 
 userStoriesRouter.post('/:id/comments', async (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
   if (!request.body) {
     return response.status(400).json({ 
       error: 'comment not found' 
@@ -134,6 +184,19 @@ userStoriesRouter.post('/:id/comments', async (request, response) => {
 
 
 userStoriesRouter.put('/:id', (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
+
   UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body })
     .then(() => {
       response.json(request.body)
@@ -141,6 +204,19 @@ userStoriesRouter.put('/:id', (request, response) => {
 })
 
 userStoriesRouter.delete('/:id', (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
+  
   UserStory.findByIdAndRemove(request.params.id)
     .then(() => {
       response.status(204).end()
