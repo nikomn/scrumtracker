@@ -196,7 +196,7 @@ userStoriesRouter.put('/:id', (request, response) => {
     return response.status(401).json({ error: 'token missing or invalid' })
     
   }
-  
+
   UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body })
     .then(() => {
       response.json(request.body)
@@ -204,6 +204,19 @@ userStoriesRouter.put('/:id', (request, response) => {
 })
 
 userStoriesRouter.delete('/:id', (request, response) => {
+  const token = getTokenFrom(request)
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET)
+    if (!token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+  } catch (error) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+    
+  }
+  
   UserStory.findByIdAndRemove(request.params.id)
     .then(() => {
       response.status(204).end()

@@ -103,9 +103,10 @@ const modifyUserStory = async (id, modifiedData, token) => {
   return result
 }
 
-const deleteUserStory = async (id) => {
+const deleteUserStory = async (id, token) => {
   const result = await api
     .delete('/api/userstories/' + id)
+    .set('Authorization', `bearer ${token}`)
     .expect(204)
   return result
 }
@@ -259,6 +260,17 @@ test('User story status can be modified', async () => {
 })
 
 test('User story can be deleted', async () => {
+  const passwordHash = await bcrypt.hash('testing', 10)
+  let user = new User({ username: 'testing', passwordHash })
+
+  await user.save()
+  user = {
+    username: 'testing',
+    password: 'testing',
+  }
+
+  token = await getToken(user)
+
   let allStories = await getStories()
 
   const storyToRemove = allStories.body[0]
@@ -266,7 +278,7 @@ test('User story can be deleted', async () => {
 
   //console.log(numberOfStories)
 
-  await deleteUserStory(storyToRemove.id)
+  await deleteUserStory(storyToRemove.id, token)
   allStories = await getStories()
 
   expect(allStories.body[0]).not.toBe(storyToRemove)
