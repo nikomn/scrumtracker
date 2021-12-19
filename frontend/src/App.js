@@ -81,25 +81,43 @@ const App = () => {
     // console.log('newStatus:', newStatus)
     if (id) {
       const story = stories.find(s => s.id === id)
-      let changedStory = { ...story }
-      if (newPriority === '' && newStatus === '') {
-        //console.log('No changes made!')
+      //let changedStory = { ...story }
+      let newData = {
+        priority: story.priority,
+        storypoints: story.storypoints,
+        status: story.status
       }
-      if (newPriority !== '' && newStatus === '') {
-        //console.log('Changing priority')
-        changedStory = { ...story, priority: newPriority, storypoints: newStorypoints }
+      if (newData.priority !== newPriority) {
+        newData = { ...newData, priority: newPriority }
       }
-      if (newPriority === '' && newStatus !== '') {
-        //console.log('Changing status')
-        changedStory = { ...story, status: newStatus, storypoints: newStorypoints }
+      if (newData.storypoints !== newStorypoints) {
+        newData = { ...newData, storypoints: newStorypoints }
       }
-      if (newPriority !== '' && newStatus !== '') {
-        //console.log('Changing priority and status')
-        changedStory = { ...story, status: newStatus, priority: newPriority, storypoints: newStorypoints }
+      if (newData.status !== newStatus) {
+        newData = { ...newData, status: newStatus }
       }
+      // if (story.priority === newPriority)
+      // if (newPriority === '' && newStatus === '') {
+      //   //console.log('No changes made!')
+      // }
+      // if (newPriority !== '' && newStatus === '') {
+      //   //console.log('Changing priority')
+      //   //changedStory = { ...story, priority: newPriority, storypoints: newStorypoints }
+      //   newData = { priority: newPriority, storypoints: newStorypoints }
+      // }
+      // if (newPriority === '' && newStatus !== '') {
+      //   //console.log('Changing status')
+      //   //changedStory = { ...story, status: newStatus, storypoints: newStorypoints }
+      //   newData = { status: newStatus, storypoints: newStorypoints }
+      // }
+      // if (newPriority !== '' && newStatus !== '') {
+      //   //console.log('Changing priority and status')
+      //   //changedStory = { ...story, status: newStatus, priority: newPriority, storypoints: newStorypoints }
+      //   newData = { status: newStatus, priority: newPriority, storypoints: newStorypoints }
+      // }
 
       storyService
-        .update(id, changedStory)
+        .update(id, newData)
         .then(returnedStory => {
           console.log(returnedStory)
           setStories(stories.map(s => s.id !== id ? s : returnedStory))
