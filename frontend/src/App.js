@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import ProductBacklog from './components/ProductBacklog'
 import SprintBacklogList from './components/SprintBacklogList'
 import AddUserStory from './components/AddUserStory'
+import LoginForm from './components/loginForm'
 //import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
 import backlogService from './services/sprintbacklogs'
+import loginService from './services/login'
 
 import {
   Switch, Route, Link, useRouteMatch
@@ -15,6 +17,7 @@ import UserStory from './components/UserStory'
 const App = () => {
   const [stories, setStories] = useState([])
   const [backlogs, setBacklogs] = useState([])
+  const [user, setUser] = useState(null)
 
 
   useEffect(() => {
@@ -30,6 +33,17 @@ const App = () => {
         setBacklogs(initialBacklogs)
       })
   }, [])
+
+  const handleLogin = async (username, password) => {
+    try {
+      const user = await loginService.login({
+        username, password,
+      })
+      setUser(user)
+    } catch (exception) {
+      alert('wrong credentials')
+    }
+  }
 
   const createUserStory = async (userStoryObject) => {
     await storyService
@@ -171,51 +185,59 @@ const App = () => {
 
   //console.log(stories)
 
-  return (
-    <div className="container">
-      <div>
-        <Link style={padding} to="/">product backlog</Link>
-        <Link style={padding} to="/sprintbacklogs">sprint backlogs</Link>
-      </div>
+  if (user === null) {
+    return (
+      <LoginForm handleLogin={handleLogin}/>
+    )
+  } else {
 
-      <Switch>
-        <Route path="/sprintbacklogs/:id">
-          <SprintBacklog
-            backlog={backlog}
-            backlogs={backlogs}
-            addStoryToSprintBacklog={addStoryToSprintBacklog}
-            deleteUserStory={deleteUserStory}
-            createMaintenanceStory={createMaintenanceStory}
-          />
-        </Route>
-        <Route path="/userstories/:id">
-          <UserStory
-            userstory={userstory}
-            backlogs={backlogs}
-            addStoryToSprintBacklog={addStoryToSprintBacklog}
-            updateUserStory={updateUserStory}
-            storyView={''}
-            addTaskToStory={addTaskToStory}
-            addCommentToStory={addCommentToStory}
-          />
-        </Route>
-        <Route path="/sprintbacklogs">
-          <SprintBacklogList
-            backlogs={backlogs}
-            createSprintBacklog={createSprintBacklog} />
-        </Route>
-        <Route path="/">
-          <ProductBacklog
-            stories={stories}
-            deleteUserStory={deleteUserStory}
-            backlogs={backlogs}
-            addStoryToSprintBacklog={addStoryToSprintBacklog} />
-          <AddUserStory createNewStory={createUserStory} />
-          {/* <ModifyUserStory stories={stories} updateUserStory={updateUserStory} /> */}
-        </Route>
-      </Switch>
-    </div>
-  )
+    return (
+      <div className="container">
+        <div>
+          <Link style={padding} to="/">product backlog</Link>
+          <Link style={padding} to="/sprintbacklogs">sprint backlogs</Link>
+        </div>
+
+        <Switch>
+          <Route path="/sprintbacklogs/:id">
+            <SprintBacklog
+              backlog={backlog}
+              backlogs={backlogs}
+              addStoryToSprintBacklog={addStoryToSprintBacklog}
+              deleteUserStory={deleteUserStory}
+              createMaintenanceStory={createMaintenanceStory}
+            />
+          </Route>
+          <Route path="/userstories/:id">
+            <UserStory
+              userstory={userstory}
+              backlogs={backlogs}
+              addStoryToSprintBacklog={addStoryToSprintBacklog}
+              updateUserStory={updateUserStory}
+              storyView={''}
+              addTaskToStory={addTaskToStory}
+              addCommentToStory={addCommentToStory}
+            />
+          </Route>
+          <Route path="/sprintbacklogs">
+            <SprintBacklogList
+              backlogs={backlogs}
+              createSprintBacklog={createSprintBacklog} />
+          </Route>
+          <Route path="/">
+            <ProductBacklog
+              stories={stories}
+              deleteUserStory={deleteUserStory}
+              backlogs={backlogs}
+              addStoryToSprintBacklog={addStoryToSprintBacklog} />
+            <AddUserStory createNewStory={createUserStory} />
+            {/* <ModifyUserStory stories={stories} updateUserStory={updateUserStory} /> */}
+          </Route>
+        </Switch>
+      </div>
+    )
+
+  }
 }
 
 export default App
