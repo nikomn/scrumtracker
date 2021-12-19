@@ -40,6 +40,7 @@ const App = () => {
         username, password,
       })
       setUser(user)
+      storyService.setToken(user.token)
     } catch (exception) {
       alert('wrong credentials')
     }
