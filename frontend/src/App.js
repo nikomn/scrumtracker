@@ -41,6 +41,7 @@ const App = () => {
       })
       setUser(user)
       storyService.setToken(user.token)
+      backlogService.setToken(user.token)
     } catch (exception) {
       alert('wrong credentials')
     }
