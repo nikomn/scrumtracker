@@ -34,11 +34,24 @@ const App = () => {
       })
   }, [])
 
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedScrumtrackerappUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      storyService.setToken(user.token)
+      backlogService.setToken(user.token)
+    }
+  }, [])
+
   const handleLogin = async (username, password) => {
     try {
       const user = await loginService.login({
         username, password,
       })
+      window.localStorage.setItem(
+        'loggedScrumtrackerappUser', JSON.stringify(user)
+      )
       setUser(user)
       storyService.setToken(user.token)
       backlogService.setToken(user.token)
