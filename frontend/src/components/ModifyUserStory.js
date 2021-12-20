@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
 const ModifyUserStory = ( { story, updateUserStory }) => {
-  const [newPriority, setNewPriority] = useState('')
+  const [newPriority, setNewPriority] = useState(story.priority)
   const [newStatus, setNewStatus] = useState(story.status)
-  const [newStorypoints, setNewStorypoints] = useState(0)
+  const [newStorypoints, setNewStorypoints] = useState(story.storypoints)
 
 
   const modifyStory = (event) => {
