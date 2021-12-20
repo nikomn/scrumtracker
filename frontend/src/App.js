@@ -13,6 +13,7 @@ import {
 } from 'react-router-dom'
 import SprintBacklog from './components/SprintBacklog'
 import UserStory from './components/UserStory'
+//import { Button } from 'react-bootstrap'
 
 const App = () => {
   const [stories, setStories] = useState([])
@@ -43,6 +44,7 @@ const App = () => {
       backlogService.setToken(user.token)
     }
   }, [])
+
 
   const handleLogin = async (username, password) => {
     try {
@@ -210,6 +212,14 @@ const App = () => {
         <div>
           <Link style={padding} to="/">product backlog</Link>
           <Link style={padding} to="/sprintbacklogs">sprint backlogs</Link>
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={() => {
+              window.localStorage.clear()
+              setUser(null)
+            }}
+          >Logout</button>
         </div>
 
         <Switch>
