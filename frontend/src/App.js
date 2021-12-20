@@ -96,25 +96,6 @@ const App = () => {
       if (newData.status !== newStatus) {
         newData = { ...newData, status: newStatus }
       }
-      // if (story.priority === newPriority)
-      // if (newPriority === '' && newStatus === '') {
-      //   //console.log('No changes made!')
-      // }
-      // if (newPriority !== '' && newStatus === '') {
-      //   //console.log('Changing priority')
-      //   //changedStory = { ...story, priority: newPriority, storypoints: newStorypoints }
-      //   newData = { priority: newPriority, storypoints: newStorypoints }
-      // }
-      // if (newPriority === '' && newStatus !== '') {
-      //   //console.log('Changing status')
-      //   //changedStory = { ...story, status: newStatus, storypoints: newStorypoints }
-      //   newData = { status: newStatus, storypoints: newStorypoints }
-      // }
-      // if (newPriority !== '' && newStatus !== '') {
-      //   //console.log('Changing priority and status')
-      //   //changedStory = { ...story, status: newStatus, priority: newPriority, storypoints: newStorypoints }
-      //   newData = { status: newStatus, priority: newPriority, storypoints: newStorypoints }
-      // }
 
       storyService
         .update(id, newData)

@@ -199,11 +199,17 @@ userStoriesRouter.put('/:id', async (request, response) => {
 
   console.log(request.params.id)
   console.log(request.body)
+  
 
-  await UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body })
-    .then(() => {
-      response.json(request.body)
-    })
+  await UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body }, { new: true }).populate('tasks', {
+    name: 1,
+    status: 1
+  }).populate('comments', {
+    commentText: 1,
+    date: 1
+  }).then((modifiedUserStory) => {
+    response.json(modifiedUserStory)
+  })
 })
 
 userStoriesRouter.delete('/:id', (request, response) => {
