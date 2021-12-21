@@ -1,24 +1,24 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent } from '@testing-library/react'
-import LoginForm from '../components/loginForm'
+import NewUserForm from '../components/NewUserForm'
 
-test('<LoginForm /> renders', () => {
+test('<NewUserForm /> renders', () => {
 
   const component = render(
-    <LoginForm handleLogin={null} />
+    <NewUserForm createUser={null} />
   )
 
   expect(component.container).toHaveTextContent(
-    'Login'
+    'Create new user'
   )
 })
 
-test('<LoginForm /> updates parent state and calls onSubmit', () => {
+test('<NewUserForm /> updates parent state and calls onSubmit', () => {
   const mockHandler = jest.fn()
 
   const component = render(
-    <LoginForm handleLogin={mockHandler} />
+    <NewUserForm createUser={mockHandler} />
   )
 
   const nameinput = component.container.querySelector('#username-input')
