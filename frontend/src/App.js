@@ -2,19 +2,23 @@ import React, { useState, useEffect } from 'react'
 import ProductBacklog from './components/ProductBacklog'
 import SprintBacklogList from './components/SprintBacklogList'
 import AddUserStory from './components/AddUserStory'
+import LoginForm from './components/loginForm'
 //import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
 import backlogService from './services/sprintbacklogs'
+import loginService from './services/login'
 
 import {
   Switch, Route, Link, useRouteMatch
 } from 'react-router-dom'
 import SprintBacklog from './components/SprintBacklog'
 import UserStory from './components/UserStory'
+//import { Button } from 'react-bootstrap'
 
 const App = () => {
   const [stories, setStories] = useState([])
   const [backlogs, setBacklogs] = useState([])
+  const [user, setUser] = useState(null)
 
 
   useEffect(() => {
@@ -30,6 +34,33 @@ const App = () => {
         setBacklogs(initialBacklogs)
       })
   }, [])
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedScrumtrackerappUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      storyService.setToken(user.token)
+      backlogService.setToken(user.token)
+    }
+  }, [])
+
+
+  const handleLogin = async (username, password) => {
+    try {
+      const user = await loginService.login({
+        username, password,
+      })
+      window.localStorage.setItem(
+        'loggedScrumtrackerappUser', JSON.stringify(user)
+      )
+      setUser(user)
+      storyService.setToken(user.token)
+      backlogService.setToken(user.token)
+    } catch (exception) {
+      alert('wrong credentials')
+    }
+  }
 
   const createUserStory = async (userStoryObject) => {
     await storyService
@@ -66,25 +97,24 @@ const App = () => {
     // console.log('newStatus:', newStatus)
     if (id) {
       const story = stories.find(s => s.id === id)
-      let changedStory = { ...story }
-      if (newPriority === '' && newStatus === '') {
-        //console.log('No changes made!')
+      //let changedStory = { ...story }
+      let newData = {
+        priority: story.priority,
+        storypoints: story.storypoints,
+        status: story.status
       }
-      if (newPriority !== '' && newStatus === '') {
-        //console.log('Changing priority')
-        changedStory = { ...story, priority: newPriority, storypoints: newStorypoints }
+      if (newData.priority !== newPriority) {
+        newData = { ...newData, priority: newPriority }
       }
-      if (newPriority === '' && newStatus !== '') {
-        //console.log('Changing status')
-        changedStory = { ...story, status: newStatus, storypoints: newStorypoints }
+      if (newData.storypoints !== newStorypoints) {
+        newData = { ...newData, storypoints: newStorypoints }
       }
-      if (newPriority !== '' && newStatus !== '') {
-        //console.log('Changing priority and status')
-        changedStory = { ...story, status: newStatus, priority: newPriority, storypoints: newStorypoints }
+      if (newData.status !== newStatus) {
+        newData = { ...newData, status: newStatus }
       }
 
       storyService
-        .update(id, changedStory)
+        .update(id, newData)
         .then(returnedStory => {
           console.log(returnedStory)
           setStories(stories.map(s => s.id !== id ? s : returnedStory))
@@ -171,51 +201,67 @@ const App = () => {
 
   //console.log(stories)
 
-  return (
-    <div className="container">
-      <div>
-        <Link style={padding} to="/">product backlog</Link>
-        <Link style={padding} to="/sprintbacklogs">sprint backlogs</Link>
-      </div>
+  if (user === null) {
+    return (
+      <LoginForm handleLogin={handleLogin}/>
+    )
+  } else {
 
-      <Switch>
-        <Route path="/sprintbacklogs/:id">
-          <SprintBacklog
-            backlog={backlog}
-            backlogs={backlogs}
-            addStoryToSprintBacklog={addStoryToSprintBacklog}
-            deleteUserStory={deleteUserStory}
-            createMaintenanceStory={createMaintenanceStory}
-          />
-        </Route>
-        <Route path="/userstories/:id">
-          <UserStory
-            userstory={userstory}
-            backlogs={backlogs}
-            addStoryToSprintBacklog={addStoryToSprintBacklog}
-            updateUserStory={updateUserStory}
-            storyView={''}
-            addTaskToStory={addTaskToStory}
-            addCommentToStory={addCommentToStory}
-          />
-        </Route>
-        <Route path="/sprintbacklogs">
-          <SprintBacklogList
-            backlogs={backlogs}
-            createSprintBacklog={createSprintBacklog} />
-        </Route>
-        <Route path="/">
-          <ProductBacklog
-            stories={stories}
-            deleteUserStory={deleteUserStory}
-            backlogs={backlogs}
-            addStoryToSprintBacklog={addStoryToSprintBacklog} />
-          <AddUserStory createNewStory={createUserStory} />
-          {/* <ModifyUserStory stories={stories} updateUserStory={updateUserStory} /> */}
-        </Route>
-      </Switch>
-    </div>
-  )
+    return (
+      <div className="container">
+        <div>
+          <Link style={padding} to="/">product backlog</Link>
+          <Link style={padding} to="/sprintbacklogs">sprint backlogs</Link>
+          <button
+            type="button"
+            className="btn btn-outline-primary"
+            onClick={() => {
+              window.localStorage.clear()
+              setUser(null)
+            }}
+          >Logout</button>
+        </div>
+
+        <Switch>
+          <Route path="/sprintbacklogs/:id">
+            <SprintBacklog
+              backlog={backlog}
+              backlogs={backlogs}
+              addStoryToSprintBacklog={addStoryToSprintBacklog}
+              deleteUserStory={deleteUserStory}
+              createMaintenanceStory={createMaintenanceStory}
+            />
+          </Route>
+          <Route path="/userstories/:id">
+            <UserStory
+              userstory={userstory}
+              backlogs={backlogs}
+              addStoryToSprintBacklog={addStoryToSprintBacklog}
+              updateUserStory={updateUserStory}
+              storyView={''}
+              addTaskToStory={addTaskToStory}
+              addCommentToStory={addCommentToStory}
+            />
+          </Route>
+          <Route path="/sprintbacklogs">
+            <SprintBacklogList
+              backlogs={backlogs}
+              createSprintBacklog={createSprintBacklog} />
+          </Route>
+          <Route path="/">
+            <ProductBacklog
+              stories={stories}
+              deleteUserStory={deleteUserStory}
+              backlogs={backlogs}
+              addStoryToSprintBacklog={addStoryToSprintBacklog} />
+            <AddUserStory createNewStory={createUserStory} />
+            {/* <ModifyUserStory stories={stories} updateUserStory={updateUserStory} /> */}
+          </Route>
+        </Switch>
+      </div>
+    )
+
+  }
 }
 
 export default App

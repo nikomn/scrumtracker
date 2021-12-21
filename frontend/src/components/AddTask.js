@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 
 const AddTask = ({ createNewTask, story }) => {
   const [task, setTask] = useState('')
-  const [status, setStatus] = useState('new')
+  const [status, setStatus] = useState('waiting')
 
 
   const addTask = (event) => {
@@ -14,7 +14,7 @@ const AddTask = ({ createNewTask, story }) => {
     }
     createNewTask(newTaskObject, story)
     setTask('')
-    setStatus('new')
+    setStatus('waiting')
 
   }
   return (

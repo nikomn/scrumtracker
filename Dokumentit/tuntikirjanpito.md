@@ -43,4 +43,6 @@
 | 14.12. | 1.5    | Tietokannan siivousta, kommenttien lisäys ja näyttäminen frontendissä + testit |
 | 16.12. | 1    | Alustava käyttäjien hallinta backendiin |
 | 18.12. | 2    | Alustava käyttäjien lisäys yms. toiminnont backendiin + testit |
-| yht   | 79   | | 
+| 19.12. | 2.5    | Alustava käyttäjien hallinta frontendiin |
+| 20.12. | 2    | Kirjautumistoiminnallisuudet frontendiin, storyjen yms. lisääminen ja muokkaaminen vain kirjautuneille |
+| yht   | 83.5   | | 

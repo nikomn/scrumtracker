@@ -183,7 +183,7 @@ userStoriesRouter.post('/:id/comments', async (request, response) => {
 })
 
 
-userStoriesRouter.put('/:id', (request, response) => {
+userStoriesRouter.put('/:id', async (request, response) => {
   const token = getTokenFrom(request)
 
   try {
@@ -197,10 +197,19 @@ userStoriesRouter.put('/:id', (request, response) => {
     
   }
 
-  UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body })
-    .then(() => {
-      response.json(request.body)
-    })
+  console.log(request.params.id)
+  console.log(request.body)
+  
+
+  await UserStory.findByIdAndUpdate(request.params.id,{ $set:request.body }, { new: true }).populate('tasks', {
+    name: 1,
+    status: 1
+  }).populate('comments', {
+    commentText: 1,
+    date: 1
+  }).then((modifiedUserStory) => {
+    response.json(modifiedUserStory)
+  })
 })
 
 userStoriesRouter.delete('/:id', (request, response) => {
