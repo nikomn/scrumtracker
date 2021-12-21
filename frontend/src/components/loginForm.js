@@ -32,7 +32,7 @@ const Login = ({ handleLogin }) => {
           <Form.Control
             id='password-input'
             type="password"
-            name="pasword"
+            name="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
           />
