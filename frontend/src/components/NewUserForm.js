@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-const Login = ({ handleLogin }) => {
+const NewUser = ({ createUser }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
 
-  const login = (event) => {
+  const createNewUser = (event) => {
     event.preventDefault()
     //alert('logging in...')
-    handleLogin(username, password)
+    createUser(username, password)
     setUsername('')
     setPassword('')
 
   }
   return (
-    <div className="loginForm">
+    <div className="newUserForm">
       <h1>Wellcome to Scrum Tracker App</h1>
-      <h2>Login</h2>
-      <Form onSubmit={login}>
+      <h2>Create new user</h2>
+      <Form onSubmit={createNewUser}>
         <Form.Group>
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -32,16 +32,16 @@ const Login = ({ handleLogin }) => {
           <Form.Control
             id='password-input'
             type="password"
-            name="pasword"
+            name="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
           />
           <Button variant="success" type="submit">
-            Login
+            Create account
           </Button>
         </Form.Group>
       </Form>
     </div>
   )
 }
-export default Login
+export default NewUser

@@ -3,6 +3,7 @@ import ProductBacklog from './components/ProductBacklog'
 import SprintBacklogList from './components/SprintBacklogList'
 import AddUserStory from './components/AddUserStory'
 import LoginForm from './components/loginForm'
+import NewUserForm from './components/NewUserForm'
 //import ModifyUserStory from './components/ModifyUserStory'
 import storyService from './services/userstories'
 import backlogService from './services/sprintbacklogs'
@@ -59,6 +60,22 @@ const App = () => {
       backlogService.setToken(user.token)
     } catch (exception) {
       alert('wrong credentials')
+    }
+  }
+
+  const createUser = async (username, password) => {
+    try {
+      const user = await loginService.create({
+        username, password,
+      })
+      window.localStorage.setItem(
+        'loggedScrumtrackerappUser', JSON.stringify(user)
+      )
+      setUser(user)
+      storyService.setToken(user.token)
+      backlogService.setToken(user.token)
+    } catch (exception) {
+      alert('username already in use!')
     }
   }
 
@@ -203,7 +220,22 @@ const App = () => {
 
   if (user === null) {
     return (
-      <LoginForm handleLogin={handleLogin}/>
+      //<LoginForm handleLogin={handleLogin} />
+      <div className="container">
+        <div>
+          <Link style={padding} to="/">login</Link>
+          <Link style={padding} to="/newuser">create account</Link>
+        </div>
+
+        <Switch>
+          <Route path="/newuser">
+            <NewUserForm createUser={createUser} />
+          </Route>
+          <Route path="/">
+            <LoginForm handleLogin={handleLogin} />
+          </Route>
+        </Switch>
+      </div>
     )
   } else {
 
