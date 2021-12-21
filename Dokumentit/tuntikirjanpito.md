@@ -45,4 +45,5 @@
 | 18.12. | 2    | Alustava käyttäjien lisäys yms. toiminnont backendiin + testit |
 | 19.12. | 2.5    | Alustava käyttäjien hallinta frontendiin |
 | 20.12. | 2    | Kirjautumistoiminnallisuudet frontendiin, storyjen yms. lisääminen ja muokkaaminen vain kirjautuneille |
-| yht   | 83.5   | | 
+| 21.12. | 2    | Kirjautumistoiminnallisuudelle testejä, toiminnallisuus uusien käyttäjien luomiseen + testit |
+| yht   | 85.5   | | 
