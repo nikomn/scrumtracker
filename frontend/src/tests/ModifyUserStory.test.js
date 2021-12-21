@@ -6,7 +6,11 @@ import ModifyUserStory from '../components/ModifyUserStory'
 test('<ModifyUserStory /> form renders', () => {
   const userstory = {
     id: 1,
-    story: 'test story'
+    story: 'As a user I want to modify user stories',
+    priority: 99,
+    status: 'new',
+    storypoints: 2,
+    type: 'story'
   }
 
   const component = render(
@@ -22,10 +26,12 @@ test('clicking update story button calls event handler once', async () => {
   const mockHandler = jest.fn()
 
   const storyObject = {
-    id: 1,
+    id: 2,
     story: 'As a user I want to delete user stories',
     priority: 99,
-    status: 'not started'
+    status: 'new',
+    storypoints: 2,
+    type: 'story'
   }
 
   const component = render(
@@ -48,7 +54,7 @@ test('<ModifyUserStory /> updates parent state and calls onSubmit', () => {
     story: 'As a user I want to delete user stories',
     priority: 99,
     storypoints: 5,
-    status: 'not started',
+    status: 'new',
     type: 'story'
   }
 
