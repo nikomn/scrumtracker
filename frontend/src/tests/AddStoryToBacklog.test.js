@@ -47,7 +47,7 @@ test('<AddStoryToBacklog /> updates parent state and calls onSubmit', () => {
     />
   )
 
-  const backlogdropdown = component.container.querySelector('#dropdown')
+  const backlogdropdown = component.container.querySelector('#backlog-dropdown')
   const form = component.container.querySelector('form')
 
   //component.debug(backlogdropdown)
