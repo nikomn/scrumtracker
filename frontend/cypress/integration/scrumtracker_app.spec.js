@@ -48,5 +48,16 @@ describe('Scrumtracker app', function() {
       cy.get('#delete-story-button').click()
       cy.contains('Testing with Cyppress').should('not.exist')
     })
+
+    it('userstoryinfo can be opened', function() {
+      cy.get('#story-input').type('Testing with Cyppress')
+      cy.get('#priority-input').type('10')
+      cy.get('#storypoint-input').type('10')
+      cy.get('#status-dropdown').select('planned')
+      cy.get('#new-story-button').click()
+      cy.contains('Testing with Cyppress')
+      cy.get('#storyinfo-button').click()
+      cy.contains('Modify User Story')
+    })
   })
 })
