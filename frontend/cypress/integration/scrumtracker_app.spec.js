@@ -14,4 +14,22 @@ describe('Scrumtracker app', function() {
 
     cy.contains('Add new User Story')
   })
+
+  describe('when logged in', function() {
+    beforeEach(function() {
+      cy.contains('Login')
+      cy.get('#username-input').type('test1')
+      cy.get('#password-input').type('test1')
+      cy.get('#login-button').click()
+    })
+
+    it('new userstory can be created', function() {
+      cy.get('#story-input').type('New userstory from cypress')
+      cy.get('#priority-input').type('10')
+      cy.get('#storypoint-input').type('10')
+      cy.get('#status-dropdown').select('planned')
+      cy.get('#new-story-button').click()
+      cy.contains('New userstory from cypress')
+    })
+  })
 })
