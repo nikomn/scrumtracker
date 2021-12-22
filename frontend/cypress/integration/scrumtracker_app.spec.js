@@ -100,6 +100,11 @@ describe('Scrumtracker app', function() {
         cy.get('#add-task-button').click()
         cy.contains('Task: New task from Cypress')
       })
+      it('new comment can be added', function() {
+        cy.get('#comment-input').type('New comment from Cypress')
+        cy.get('#comment-button').click()
+        cy.contains('New comment from Cypress')
+      })
     })
   })
 })
