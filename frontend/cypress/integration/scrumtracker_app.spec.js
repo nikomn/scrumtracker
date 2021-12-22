@@ -1,5 +1,11 @@
 describe('Scrumtracker app', function() {
   beforeEach(function() {
+    cy.request('POST', 'http://localhost:3001/api/testing/reset')
+    const user = {
+      username: 'test1',
+      password: 'test1'
+    }
+    cy.request('POST', 'http://localhost:3001/api/users/', user)
     cy.visit('http://localhost:3000')
   })
 
@@ -33,9 +39,14 @@ describe('Scrumtracker app', function() {
     })
 
     it('userstory can be deleted', function() {
-      cy.contains('New userstory from cypress')
+      cy.get('#story-input').type('Testing with Cyppress')
+      cy.get('#priority-input').type('10')
+      cy.get('#storypoint-input').type('10')
+      cy.get('#status-dropdown').select('planned')
+      cy.get('#new-story-button').click()
+      cy.contains('Testing with Cyppress')
       cy.get('#delete-story-button').click()
-      cy.contains('New userstory from cypress').should('not.exist')
+      cy.contains('Testing with Cyppress').should('not.exist')
     })
   })
 })
