@@ -43,7 +43,7 @@ const AddTask = ({ createNewTask, story }) => {
               <option value='done'>done</option>
             </select>
           </p>
-          <Button variant="success" type="submit">
+          <Button variant="success" type="submit" id='add-task-button' >
             Add new task
           </Button>
         </Form.Group>

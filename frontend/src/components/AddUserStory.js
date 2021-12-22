@@ -69,7 +69,7 @@ const AddUserStory = ({ createNewStory }) => {
               <option value='done'>done</option>
             </select>
           </p>
-          <Button variant="success" type="submit">
+          <Button variant='success' type='submit' id='new-story-button'>
             Add new story
           </Button>
         </Form.Group>

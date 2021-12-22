@@ -22,10 +22,10 @@ const ProductBacklog = ({ stories, deleteUserStory, backlogs, addStoryToSprintBa
               </td>
               <td>
                 <p>
-                  <Link to={`/userstories/${story.id}`} className="btn btn-success">Info</Link>
+                  <Link to={`/userstories/${story.id}`} className="btn btn-success" id='storyinfo-button' >Info</Link>
                 </p>
                 <p>
-                  <Button variant="danger" onClick={() => deleteUserStory(story.id)}>delete</Button>
+                  <Button variant="danger" id='delete-story-button' onClick={() => deleteUserStory(story.id)}>delete</Button>
                 </p>
               </td>
 

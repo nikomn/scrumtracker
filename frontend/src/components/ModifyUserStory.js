@@ -66,7 +66,7 @@ const ModifyUserStory = ( { story, updateUserStory }) => {
 
           )}
 
-          <Button variant="success" type="submit">
+          <Button variant="success" type="submit" id='modify-story-button' >
           Update story
           </Button>
         </Form.Group>

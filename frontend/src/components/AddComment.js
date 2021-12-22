@@ -28,7 +28,7 @@ const AddComment = ({ createNewComment, story }) => {
             placeholder="New comment"
             onChange={({ target }) => setComment(target.value)}
           />
-          <Button variant="success" type="submit">
+          <Button variant="success" type="submit" id='comment-button'>
             Add new comment
           </Button>
         </Form.Group>

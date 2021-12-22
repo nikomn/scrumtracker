@@ -36,7 +36,7 @@ const Login = ({ handleLogin }) => {
             value={password}
             onChange={({ target }) => setPassword(target.value)}
           />
-          <Button variant="success" type="submit">
+          <Button variant="success" type="submit" id="login-button">
             Login
           </Button>
         </Form.Group>
