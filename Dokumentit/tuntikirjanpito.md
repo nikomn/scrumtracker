@@ -46,4 +46,5 @@
 | 19.12. | 2.5    | Alustava käyttäjien hallinta frontendiin |
 | 20.12. | 2    | Kirjautumistoiminnallisuudet frontendiin, storyjen yms. lisääminen ja muokkaaminen vain kirjautuneille |
 | 21.12. | 2    | Kirjautumistoiminnallisuudelle testejä, toiminnallisuus uusien käyttäjien luomiseen + testit |
-| yht   | 85.5   | | 
+| 22.12. | 2.5    | End to end testauksen toteuttaminen |
+| yht   | 88   | | 
