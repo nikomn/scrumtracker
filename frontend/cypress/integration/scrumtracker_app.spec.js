@@ -31,5 +31,11 @@ describe('Scrumtracker app', function() {
       cy.get('#new-story-button').click()
       cy.contains('New userstory from cypress')
     })
+
+    it('userstory can be deleted', function() {
+      cy.contains('New userstory from cypress')
+      cy.get('#delete-story-button').click()
+      cy.contains('New userstory from cypress').should('not.exist')
+    })
   })
 })
