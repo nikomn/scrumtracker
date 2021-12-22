@@ -31,6 +31,8 @@ describe('Scrumtracker app', function() {
 
     it('new userstory can be created', function() {
       cy.get('#story-input').type('New userstory from cypress')
+      cy.get('#priority-input').clear()
+      cy.get('#storypoint-input').clear()
       cy.get('#priority-input').type('10')
       cy.get('#storypoint-input').type('10')
       cy.get('#status-dropdown').select('planned')
@@ -40,6 +42,8 @@ describe('Scrumtracker app', function() {
 
     it('userstory can be deleted', function() {
       cy.get('#story-input').type('Testing with Cyppress')
+      cy.get('#priority-input').clear()
+      cy.get('#storypoint-input').clear()
       cy.get('#priority-input').type('10')
       cy.get('#storypoint-input').type('10')
       cy.get('#status-dropdown').select('planned')
@@ -51,6 +55,8 @@ describe('Scrumtracker app', function() {
 
     it('userstoryinfo can be opened', function() {
       cy.get('#story-input').type('Testing with Cyppress')
+      cy.get('#priority-input').clear()
+      cy.get('#storypoint-input').clear()
       cy.get('#priority-input').type('10')
       cy.get('#storypoint-input').type('10')
       cy.get('#status-dropdown').select('planned')
@@ -64,6 +70,7 @@ describe('Scrumtracker app', function() {
       beforeEach(function() {
         cy.get('#story-input').type('Testing with Cyppress')
         cy.get('#priority-input').clear()
+        cy.get('#storypoint-input').clear()
         cy.get('#priority-input').type('10')
         cy.get('#storypoint-input').type('10')
         cy.get('#status-dropdown').select('planned')
@@ -86,6 +93,12 @@ describe('Scrumtracker app', function() {
         cy.contains('Priority: 25')
         cy.contains('Storypoints: 25')
         cy.contains('Status: done')
+      })
+      it('new task can be added', function() {
+        cy.get('#task-input').type('New task from Cypress')
+        cy.get('#task-status-dropdown').select('doing')
+        cy.get('#add-task-button').click()
+        cy.contains('Task: New task from Cypress')
       })
     })
   })
