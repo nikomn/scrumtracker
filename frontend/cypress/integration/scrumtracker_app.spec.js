@@ -74,6 +74,28 @@ describe('Scrumtracker app', function() {
       cy.contains('Cypress test backlog')
     })
 
+    it('userstory can be added to backlog', function() {
+      cy.contains('sprint backlogs').click()
+      cy.contains('Sprint Backlogs')
+      cy.get('#backlog-input').type('Cypress test backlog')
+      cy.get('#backlog-button').click()
+      cy.contains('Cypress test backlog')
+      cy.contains('product backlog').click()
+      cy.get('#story-input').type('Testing with Cyppress')
+      cy.get('#priority-input').clear()
+      cy.get('#storypoint-input').clear()
+      cy.get('#priority-input').type('10')
+      cy.get('#storypoint-input').type('10')
+      cy.get('#status-dropdown').select('planned')
+      cy.get('#new-story-button').click()
+      cy.contains('Testing with Cyppress')
+      cy.get('#backlog-dropdown').select('Cypress test backlog')
+      cy.get('#add-to-backlog-button').click()
+      cy.contains('sprint backlogs').click()
+      cy.contains('Cypress test backlog').click()
+      cy.contains('Testing with Cyppress')
+    })
+
     describe('and userstoryinfo opened', function() {
       beforeEach(function() {
         cy.get('#story-input').type('Testing with Cyppress')
