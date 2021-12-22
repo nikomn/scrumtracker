@@ -29,7 +29,7 @@ const AddSprintBacklog = ({ createSprintBacklog }) => {
             onChange={({ target }) => setBacklog(target.value)}
           />
 
-          <Button variant="success" type="submit">
+          <Button variant="success" type="submit" id='backlog-button' >
           Create
           </Button>
         </Form.Group>

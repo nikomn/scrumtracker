@@ -66,6 +66,14 @@ describe('Scrumtracker app', function() {
       cy.contains('Modify User Story')
     })
 
+    it('new backlog can be created', function() {
+      cy.contains('sprint backlogs').click()
+      cy.contains('Sprint Backlogs')
+      cy.get('#backlog-input').type('Cypress test backlog')
+      cy.get('#backlog-button').click()
+      cy.contains('Cypress test backlog')
+    })
+
     describe('and userstoryinfo opened', function() {
       beforeEach(function() {
         cy.get('#story-input').type('Testing with Cyppress')
