@@ -87,6 +87,21 @@ Frontendin automaattiset testit voi ajaa komennolla:
 $ CI=true npm test
 ```
 
+## End to end testit
+
+e2e testit saa ajettua seuraavasti:
+
+```bash
+$ cd backend
+$ npm run start:test
+# Uusi terminaali
+$ cd frontend
+$ npm start
+# Uusi terminaali
+$ cd frontend
+$ npm run cypress open
+```
+
 ## Käyttöohjeet
 
 [Sovelluksen käyttöohje loppukäyttäjille](Dokumentit/kayttoohje.md)
