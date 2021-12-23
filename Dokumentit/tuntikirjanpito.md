@@ -47,4 +47,5 @@
 | 20.12. | 2    | Kirjautumistoiminnallisuudet frontendiin, storyjen yms. lisääminen ja muokkaaminen vain kirjautuneille |
 | 21.12. | 2    | Kirjautumistoiminnallisuudelle testejä, toiminnallisuus uusien käyttäjien luomiseen + testit |
 | 22.12. | 2.5    | End to end testauksen toteuttaminen |
-| yht   | 88   | | 
+| 23.12. | 2    | Käyttöohjeiden kirjoittaminen, siivousta, viimeistelyä |
+| yht   | 90   | | 
