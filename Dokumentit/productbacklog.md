@@ -16,9 +16,9 @@
 |     1        | Taskeille on olemassa valmiiksi määritellyt statukset (waiting, doing, done), joista voi valita |     6  |  **done**  |
 |     1        | Varsinaisten user storyjen lisäksi sprint backlog kohtaisia taskeja, joihin voi liittyä teknisiä taskeja samalla tavalla kuin varsinaisiin user storyihin |     6  | **done**   |
 |    2        | Story kohtainen story point työmäärä-arvio |   7   | **done** |
-|    2        | Storyihin voi lisätä kommentteja |   8   | _suunniteltu_ |
-|     2      | Sovellukseen voi luoda käyttäjätunnuksen ja salasanan |   8   | _suunniteltu_ |
-|     2      | Sovellusta ei saa käyttää ilman tunnuksia ja kirjautumista |   8   | _suunniteltu_ |
+|    2        | Storyihin voi lisätä kommentteja |   8   | **done** |
+|     2      | Sovellukseen voi luoda käyttäjätunnuksen ja salasanan |   8   | **done** |
+|     2      | Sovellusta ei saa käyttää ilman tunnuksia ja kirjautumista |   8   | **done** |
 |    3        | Taskeja voi muokata |      |    |
 |    3        | Task kohtainen työmäärä-arvio |      |    |
 |     3      | Aktiivisen sprint backlogin määrittely |       |    |
