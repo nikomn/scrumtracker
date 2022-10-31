@@ -108,7 +108,7 @@ $ npm run cypress open
 
 ## Heroku
 
-Sovelluksen staging (tai näkökulmasta riippuen tuotanto) versio pyörii Herokussa osoitteessa https://scrumtracker-app.herokuapp.com/
+~~Sovelluksen staging (tai näkökulmasta riippuen tuotanto) versio pyörii Herokussa osoitteessa~~ **Update 1.11.2022** Sovellus ei enää pyöri Herokussa.
 
 ## Työaikakirjanpito
 - [Työaikakirjanpito](Dokumentit/tuntikirjanpito.md)
